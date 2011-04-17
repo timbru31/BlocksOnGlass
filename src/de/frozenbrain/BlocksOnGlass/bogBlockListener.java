@@ -16,10 +16,15 @@ public class bogBlockListener extends BlockListener {
 	public bogBlockListener(bogPlugin plugin) {
 		this.plugin = plugin;
 	}
-
+	
 	@Override
 	public void onBlockPhysics(BlockPhysicsEvent event) {
-		if(event.getBlock().getType() == Material.TORCH) {
+		if((event.getBlock().getType() == Material.TORCH) ||
+				(event.getBlock().getType() == Material.REDSTONE_TORCH_ON) ||
+				(event.getBlock().getType() == Material.REDSTONE_TORCH_OFF) ||
+				(event.getBlock().getType() == Material.RAILS) ||
+				(event.getBlock().getType() == Material.REDSTONE_WIRE) ||
+				(event.getBlock().getType() == Material.LADDER)) {
 			if(getAttachedBlock(event.getBlock()) == Material.GLASS) { 
 				event.setCancelled(true);
 			}
@@ -73,19 +78,48 @@ public class bogBlockListener extends BlockListener {
 	
 	private Material getAttachedBlock(Block block) {
 		byte data = block.getData();
-		switch (data) {
-			case 0x1:
-				return block.getFace(BlockFace.NORTH).getType();
-			case 0x2:
-				return block.getFace(BlockFace.SOUTH).getType();
-			case 0x3:
-				return block.getFace(BlockFace.EAST).getType();
-			case 0x4:
-				return block.getFace(BlockFace.WEST).getType();
-			case 0x5:
-				return block.getFace(BlockFace.DOWN).getType();
-			default:
-				return Material.AIR;
+		if(block.getType() == Material.RAILS) {
+			switch (data) {
+				case 0x3:
+					return block.getFace(BlockFace.NORTH).getType();
+				case 0x2:
+					return block.getFace(BlockFace.SOUTH).getType();
+				case 0x4:
+					return block.getFace(BlockFace.EAST).getType();
+				case 0x5:
+					return block.getFace(BlockFace.WEST).getType();
+				default:
+					return block.getFace(BlockFace.DOWN).getType();
+			}
+		} else if(block.getType() == Material.REDSTONE_WIRE) {
+			return block.getFace(BlockFace.DOWN).getType();
+		} else if(block.getType() == Material.LADDER) {
+			switch (data) {
+				case 0x2:
+					return block.getFace(BlockFace.EAST).getType();
+				case 0x3:
+					return block.getFace(BlockFace.WEST).getType();
+				case 0x4:
+					return block.getFace(BlockFace.NORTH).getType();
+				case 0x5:
+					return block.getFace(BlockFace.SOUTH).getType();
+			}
+			return null;
+		} else {
+			switch (data) {
+				case 0x1:
+					return block.getFace(BlockFace.NORTH).getType();
+				case 0x2:
+					return block.getFace(BlockFace.SOUTH).getType();
+				case 0x3:
+					return block.getFace(BlockFace.EAST).getType();
+				case 0x4:
+					return block.getFace(BlockFace.WEST).getType();
+				case 0x5:
+					return block.getFace(BlockFace.DOWN).getType();
+				default:
+					return Material.AIR;
+			}
 		}
 	}
 	
