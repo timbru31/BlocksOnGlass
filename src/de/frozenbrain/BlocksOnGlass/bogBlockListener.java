@@ -96,13 +96,13 @@ public class bogBlockListener extends BlockListener {
 		} else if(block.getType() == Material.LADDER) {
 			switch (data) {
 				case 0x2:
-					return block.getFace(BlockFace.EAST).getType();
-				case 0x3:
 					return block.getFace(BlockFace.WEST).getType();
+				case 0x3:
+					return block.getFace(BlockFace.EAST).getType();
 				case 0x4:
-					return block.getFace(BlockFace.NORTH).getType();
-				case 0x5:
 					return block.getFace(BlockFace.SOUTH).getType();
+				case 0x5:
+					return block.getFace(BlockFace.NORTH).getType();
 			}
 			return null;
 		} else {

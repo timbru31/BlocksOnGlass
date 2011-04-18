@@ -71,7 +71,6 @@ public class bogPlayerListener extends PlayerListener {
 				} else if((event.getPlayer().getItemInHand().getType() == Material.LADDER) && (block.getFace(event.getBlockFace()).getType() != Material.LADDER)) {
 					block.setType(Material.DIRT);
 					block.getFace(event.getBlockFace()).setType(Material.LADDER);
-					event.getClickedBlock().setType(Material.GLASS);
 					switch(event.getBlockFace()) {
 						case SOUTH:
 							block.getFace(event.getBlockFace()).setData((byte) 0x5);
@@ -86,6 +85,7 @@ public class bogPlayerListener extends PlayerListener {
 							block.getFace(event.getBlockFace()).setData((byte) 0x2);
 							break;
 					}
+					event.getClickedBlock().setType(Material.GLASS);
 					if(event.getItem().getAmount() == 1) {
 						event.getPlayer().getInventory().remove(event.getItem());
 					} else {
