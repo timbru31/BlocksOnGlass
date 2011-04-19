@@ -1,5 +1,6 @@
 package de.frozenbrain.BlocksOnGlass;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -9,7 +10,6 @@ import org.bukkit.event.player.PlayerListener;
 
 public class bogPlayerListener extends PlayerListener {
 
-	@SuppressWarnings("unused")
 	private final bogPlugin plugin;
 	
 	public bogPlayerListener(final bogPlugin plugin) {
@@ -24,118 +24,158 @@ public class bogPlayerListener extends PlayerListener {
 			Block block = event.getClickedBlock();
 			
 			if(	(block.getType() == Material.GLASS) &&
-				(event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
+				(event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
+				(block.getFace(event.getBlockFace()).getType() == Material.AIR)) {
 				
-				if((event.getPlayer().getItemInHand().getType() == Material.TORCH) && (block.getFace(event.getBlockFace()).getType() != Material.TORCH)) {
+				if((event.getPlayer().getItemInHand().getType() == Material.TORCH) && !(event.getBlockFace() == BlockFace.DOWN) && plugin.canPlaceTorch) {
 					block.setType(Material.DIRT);
 					block.getFace(event.getBlockFace()).setType(Material.TORCH);
+					fixTorch(block.getFace(event.getBlockFace()), event.getBlockFace());
 					event.getClickedBlock().setType(Material.GLASS);
-					if(getAttachedBlock(block.getFace(event.getBlockFace())).getType() != Material.GLASS) {
-						fixTorch(block.getFace(event.getBlockFace()));
-					}
-					if(event.getItem().getAmount() == 1) {
-						event.getPlayer().getInventory().remove(event.getItem());
-					} else {
-						event.getItem().setAmount(event.getItem().getAmount() - 1);
-					}
-				} else if((event.getPlayer().getItemInHand().getType() == Material.REDSTONE_TORCH_ON) && (block.getFace(event.getBlockFace()).getType() != Material.REDSTONE_TORCH_ON)) {
+					takeItem(event);
+					
+				} else if((event.getPlayer().getItemInHand().getType() == Material.REDSTONE_TORCH_ON) && !(event.getBlockFace() == BlockFace.DOWN) && plugin.canPlaceRSTorch) {
 					block.setType(Material.DIRT);
 					block.getFace(event.getBlockFace()).setType(Material.REDSTONE_TORCH_ON);
+					fixTorch(block.getFace(event.getBlockFace()), event.getBlockFace());
 					event.getClickedBlock().setType(Material.GLASS);
-					if(getAttachedBlock(block.getFace(event.getBlockFace())).getType() != Material.GLASS) {
-						fixTorch(block.getFace(event.getBlockFace()));
-					}
-					if(event.getItem().getAmount() == 1) {
-						event.getPlayer().getInventory().remove(event.getItem());
-					} else {
-						event.getItem().setAmount(event.getItem().getAmount() - 1);
-					}
-				} else if((event.getPlayer().getItemInHand().getType() == Material.RAILS) && (block.getFace(event.getBlockFace()).getType() != Material.RAILS)) {
+					takeItem(event);
+					
+				} else if((event.getPlayer().getItemInHand().getType() == Material.LADDER) && !(event.getBlockFace() == BlockFace.DOWN) && !(event.getBlockFace() == BlockFace.UP) && plugin.canPlaceLadders) {
+					block.setType(Material.DIRT);
+					block.getFace(event.getBlockFace()).setType(Material.LADDER);
+					fixLadder(block.getFace(event.getBlockFace()), event.getBlockFace());
+					event.getClickedBlock().setType(Material.GLASS);
+					takeItem(event);
+					
+				} else if((event.getPlayer().getItemInHand().getType() == Material.RAILS) && (event.getBlockFace() == BlockFace.UP) && plugin.canPlaceRails) {
 					block.setType(Material.DIRT);
 					block.getFace(event.getBlockFace()).setType(Material.RAILS);
 					event.getClickedBlock().setType(Material.GLASS);
-					if(event.getItem().getAmount() == 1) {
-						event.getPlayer().getInventory().remove(event.getItem());
-					} else {
-						event.getItem().setAmount(event.getItem().getAmount() - 1);
-					}
-				} else if((event.getPlayer().getItemInHand().getType() == Material.REDSTONE) && (block.getFace(event.getBlockFace()).getType() != Material.REDSTONE_WIRE)) {
+					takeItem(event);
+					
+				} else if((event.getPlayer().getItemInHand().getType() == Material.REDSTONE) && (event.getBlockFace() == BlockFace.UP) && plugin.canPlaceRedstone) {
 					block.setType(Material.DIRT);
 					block.getFace(event.getBlockFace()).setType(Material.REDSTONE_WIRE);
 					event.getClickedBlock().setType(Material.GLASS);
-					if(event.getItem().getAmount() == 1) {
-						event.getPlayer().getInventory().remove(event.getItem());
-					} else {
-						event.getItem().setAmount(event.getItem().getAmount() - 1);
-					}
-				} else if((event.getPlayer().getItemInHand().getType() == Material.LADDER) && (block.getFace(event.getBlockFace()).getType() != Material.LADDER)) {
+					takeItem(event);
+					
+				} else if((event.getPlayer().getItemInHand().getType() == Material.WOOD_DOOR) && (event.getBlockFace() == BlockFace.UP) && plugin.canPlaceDoors) {
 					block.setType(Material.DIRT);
-					block.getFace(event.getBlockFace()).setType(Material.LADDER);
-					switch(event.getBlockFace()) {
-						case SOUTH:
-							block.getFace(event.getBlockFace()).setData((byte) 0x5);
-							break;
-						case WEST:
-							block.getFace(event.getBlockFace()).setData((byte) 0x3);
-							break;
-						case NORTH:
-							block.getFace(event.getBlockFace()).setData((byte) 0x4);
-							break;
-						case EAST:
-							block.getFace(event.getBlockFace()).setData((byte) 0x2);
-							break;
-					}
+					block.getFace(event.getBlockFace()).setType(Material.WOODEN_DOOR);
+					block.getFace(event.getBlockFace(), 2).setType(Material.WOODEN_DOOR);
+					block.getFace(event.getBlockFace(), 2).setData((byte) 0x8);
 					event.getClickedBlock().setType(Material.GLASS);
-					if(event.getItem().getAmount() == 1) {
-						event.getPlayer().getInventory().remove(event.getItem());
-					} else {
-						event.getItem().setAmount(event.getItem().getAmount() - 1);
-					}
-				} 
-				
+					fixDoor(block.getFace(event.getBlockFace()), event.getPlayer().getLocation());
+					takeItem(event);
+					
+				} else if((event.getPlayer().getItemInHand().getType() == Material.IRON_DOOR) && (event.getBlockFace() == BlockFace.UP) && plugin.canPlaceDoors) {
+					block.setType(Material.DIRT);
+					block.getFace(event.getBlockFace()).setType(Material.IRON_DOOR_BLOCK);
+					block.getFace(event.getBlockFace(), 2).setType(Material.IRON_DOOR_BLOCK);
+					block.getFace(event.getBlockFace(), 2).setData((byte) 0x8);
+					event.getClickedBlock().setType(Material.GLASS);
+					fixDoor(block.getFace(event.getBlockFace()), event.getPlayer().getLocation());
+					takeItem(event);
+					
+				}
 			}
 		}
 	}
 	
-	private void fixTorch(Block block) {
-		Block north = block.getFace(BlockFace.NORTH);
-		Block east = block.getFace(BlockFace.EAST);
-		Block south = block.getFace(BlockFace.SOUTH);
-		Block west = block.getFace(BlockFace.WEST);
-		Block down = block.getFace(BlockFace.DOWN);
-		
-		if(north.getType() == Material.GLASS) {
-			block.setData((byte) 0x1);
-		}
-		if(east.getType() == Material.GLASS) {
-			block.setData((byte) 0x3);
-		}
-		if(south.getType() == Material.GLASS) {
-			block.setData((byte) 0x2);
-		}
-		if(west.getType() == Material.GLASS) {
-			block.setData((byte) 0x4);
-		}
-		if(down.getType() == Material.GLASS) {
-			block.setData((byte) 0x5);
+	private void takeItem(PlayerInteractEvent event) {
+		if(event.getItem().getAmount() == 1) {
+			event.getPlayer().getInventory().setItemInHand(null);
+		} else {
+			event.getItem().setAmount(event.getItem().getAmount() - 1);
 		}
 	}
 	
-	private Block getAttachedBlock(Block block) {
-		byte data = block.getData();
-		switch (data) {
-			case 0x1:
-				return block.getFace(BlockFace.NORTH);
-			case 0x2:
-				return block.getFace(BlockFace.SOUTH);
-			case 0x3:
-				return block.getFace(BlockFace.EAST);
-			case 0x4:
-				return block.getFace(BlockFace.WEST);
-			case 0x5:
-				return block.getFace(BlockFace.DOWN);
-			default:
-				return null;
+	private void fixDoor(Block block, Location loc) {
+		int i1 = floor_double((double)(((loc.getYaw() + 180F) * 4F) / 360F) - 0.5D) & 3;
+		block.setData((byte) i1);
+		if(isDoorLeft(block)) {
+			i1 = i1 - 1;
+			if(i1 == -1) {
+				i1 = 3;
+			}
+			i1 = i1 + 4;
+		}
+        block.setData((byte) i1);
+        block.getFace(BlockFace.UP).setData((byte)((byte) i1 + (byte) 0x8));
+	}
+	
+	private int floor_double(double d)
+    {
+        int i = (int)d;
+        return d >= (double)i ? i : i - 1;
+    }
+	
+	private void fixLadder(Block block, BlockFace face) {
+		switch(face) {
+			case SOUTH:
+				block.setData((byte) 0x5);
+				break;
+			case WEST:
+				block.setData((byte) 0x3);
+				break;
+			case NORTH:
+				block.setData((byte) 0x4);
+				break;
+			case EAST:
+				block.setData((byte) 0x2);
+				break;
 		}
 	}
+	
+	private void fixTorch(Block block, BlockFace face) {
+		switch(face) {
+		case NORTH:
+			block.setData((byte) 0x2);
+			break;
+		case EAST:
+			block.setData((byte) 0x4);
+			break;
+		case SOUTH:
+			block.setData((byte) 0x1);
+			break;
+		case WEST:
+			block.setData((byte) 0x3);
+			break;
+		case UP:
+			block.setData((byte) 0x5);
+			break;
+		}
+	}
+	
+	private boolean isDoorLeft(Block checkDoor) {
+    	byte data = checkDoor.getData();
+    	BlockFace checkDouble = null;
+    	BlockFace checkTurned = null;
+    	if(plugin.hasBit(data, (byte) 0x1) && !plugin.hasBit(data, (byte) 0x3)) {
+    		checkTurned = BlockFace.NORTH;
+    		checkDouble = BlockFace.SOUTH;
+    	} else if(plugin.hasBit(data, (byte) 0x2) && !plugin.hasBit(data, (byte) 0x3)) {
+    		checkTurned = BlockFace.EAST;
+    		checkDouble = BlockFace.WEST;
+    	} else if(plugin.hasBit(data, (byte) 0x3)) {
+    		checkTurned = BlockFace.SOUTH;
+    		checkDouble = BlockFace.NORTH;
+    	} else {
+    		checkTurned = BlockFace.WEST;
+    		checkDouble = BlockFace.EAST;
+    	}
+    	
+    	if((checkDoor.getFace(checkDouble).getType() == Material.WOODEN_DOOR) || (checkDoor.getFace(checkDouble).getType() == Material.IRON_DOOR_BLOCK)) {
+    		return true;
+    	} else if(checkDoor.getFace(checkDouble).getType() == Material.AIR) {
+    		if((checkDoor.getFace(checkTurned).getType() != Material.AIR)) {
+    			return true;
+    		} else {
+    			return false;
+    		}
+    	} else {
+    		return false;
+    	}
+    }
 }

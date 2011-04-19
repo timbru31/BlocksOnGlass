@@ -10,7 +10,6 @@ import org.bukkit.inventory.ItemStack;
 
 public class bogBlockListener extends BlockListener {
 	
-	@SuppressWarnings("unused")
 	private final bogPlugin plugin;
 	
 	public bogBlockListener(bogPlugin plugin) {
@@ -24,7 +23,9 @@ public class bogBlockListener extends BlockListener {
 				(event.getBlock().getType() == Material.REDSTONE_TORCH_OFF) ||
 				(event.getBlock().getType() == Material.RAILS) ||
 				(event.getBlock().getType() == Material.REDSTONE_WIRE) ||
-				(event.getBlock().getType() == Material.LADDER)) {
+				(event.getBlock().getType() == Material.LADDER) ||
+				(event.getBlock().getType() == Material.WOODEN_DOOR) ||
+				(event.getBlock().getType() == Material.IRON_DOOR_BLOCK)) {
 			if(getAttachedBlock(event.getBlock()) == Material.GLASS) { 
 				event.setCancelled(true);
 			}
@@ -93,6 +94,13 @@ public class bogBlockListener extends BlockListener {
 			}
 		} else if(block.getType() == Material.REDSTONE_WIRE) {
 			return block.getFace(BlockFace.DOWN).getType();
+		} else if((block.getType() == Material.WOODEN_DOOR) ||
+					(block.getType() == Material.IRON_DOOR_BLOCK)) {
+			if(plugin.hasBit(block.getData(), (byte) 0x8)) {
+				return block.getFace(BlockFace.DOWN, 2).getType();
+			} else {
+				return block.getFace(BlockFace.DOWN).getType();
+			}
 		} else if(block.getType() == Material.LADDER) {
 			switch (data) {
 				case 0x2:
