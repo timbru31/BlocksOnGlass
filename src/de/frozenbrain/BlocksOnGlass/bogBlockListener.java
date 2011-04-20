@@ -92,8 +92,10 @@ public class bogBlockListener extends BlockListener {
 				default:
 					return block.getFace(BlockFace.DOWN).getType();
 			}
-		} else if(block.getType() == Material.REDSTONE_WIRE) {
+			
+		} else if((block.getType() == Material.REDSTONE_WIRE) || (block.getType() == Material.BED_BLOCK)) {
 			return block.getFace(BlockFace.DOWN).getType();
+			
 		} else if((block.getType() == Material.WOODEN_DOOR) ||
 					(block.getType() == Material.IRON_DOOR_BLOCK)) {
 			if(plugin.hasBit(block.getData(), (byte) 0x8)) {
@@ -101,6 +103,7 @@ public class bogBlockListener extends BlockListener {
 			} else {
 				return block.getFace(BlockFace.DOWN).getType();
 			}
+			
 		} else if(block.getType() == Material.LADDER) {
 			switch (data) {
 				case 0x2:
@@ -113,6 +116,7 @@ public class bogBlockListener extends BlockListener {
 					return block.getFace(BlockFace.NORTH).getType();
 			}
 			return null;
+			
 		} else {
 			switch (data) {
 				case 0x1:

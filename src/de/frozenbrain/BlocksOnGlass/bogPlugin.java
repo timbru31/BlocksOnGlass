@@ -17,6 +17,7 @@ public class bogPlugin extends JavaPlugin {
 	public boolean canPlaceRails;
 	public boolean canPlaceLadders;
 	public boolean canPlaceDoors;
+	public boolean canPlaceBeds;
 	
 	public void onEnable() {
 		reloadConfig();
@@ -43,6 +44,7 @@ public class bogPlugin extends JavaPlugin {
 		canPlaceRails = config.getBoolean("allowRail", true);
 		canPlaceLadders = config.getBoolean("allowLadder", true);
 		canPlaceDoors = config.getBoolean("allowDoor", true);
+		canPlaceBeds = config.getBoolean("allowBed", true);
 		config.save();
 	}
 	

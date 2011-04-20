@@ -60,7 +60,7 @@ public class bogPlayerListener extends PlayerListener {
 					event.getClickedBlock().setType(Material.GLASS);
 					takeItem(event);
 					
-				} else if((event.getPlayer().getItemInHand().getType() == Material.WOOD_DOOR) && (event.getBlockFace() == BlockFace.UP) && plugin.canPlaceDoors) {
+				} else if((event.getPlayer().getItemInHand().getType() == Material.WOOD_DOOR) && (event.getBlockFace() == BlockFace.UP) && (block.getFace(event.getBlockFace(), 2).getType() == Material.AIR) && plugin.canPlaceDoors) {
 					block.setType(Material.DIRT);
 					block.getFace(event.getBlockFace()).setType(Material.WOODEN_DOOR);
 					block.getFace(event.getBlockFace(), 2).setType(Material.WOODEN_DOOR);
@@ -69,7 +69,7 @@ public class bogPlayerListener extends PlayerListener {
 					fixDoor(block.getFace(event.getBlockFace()), event.getPlayer().getLocation());
 					takeItem(event);
 					
-				} else if((event.getPlayer().getItemInHand().getType() == Material.IRON_DOOR) && (event.getBlockFace() == BlockFace.UP) && plugin.canPlaceDoors) {
+				} else if((event.getPlayer().getItemInHand().getType() == Material.IRON_DOOR) && (event.getBlockFace() == BlockFace.UP) && (block.getFace(event.getBlockFace(), 2).getType() == Material.AIR) && plugin.canPlaceDoors) {
 					block.setType(Material.DIRT);
 					block.getFace(event.getBlockFace()).setType(Material.IRON_DOOR_BLOCK);
 					block.getFace(event.getBlockFace(), 2).setType(Material.IRON_DOOR_BLOCK);
@@ -78,6 +78,32 @@ public class bogPlayerListener extends PlayerListener {
 					fixDoor(block.getFace(event.getBlockFace()), event.getPlayer().getLocation());
 					takeItem(event);
 					
+				} else if((event.getPlayer().getItemInHand().getType() == Material.BED) && (event.getBlockFace() == BlockFace.UP) && plugin.canPlaceBeds) {
+					int orientation = floor_double((double)((event.getPlayer().getLocation().getYaw() * 4F) / 360F) + 0.5D) & 3;
+					BlockFace face = BlockFace.UP;
+					switch(orientation) {
+						case 0:
+							face = BlockFace.WEST;
+							break;
+						case 1:
+							face = BlockFace.NORTH;
+							break;
+						case 2:
+							face = BlockFace.EAST;
+							break;
+						case 3:
+							face = BlockFace.SOUTH;
+							break;
+					}
+					if((face != BlockFace.UP) && (block.getFace(face).getType() != Material.AIR) && (block.getFace(BlockFace.UP).getFace(face).getType() == Material.AIR)) {
+						block.setType(Material.DIRT);
+						block.getFace(BlockFace.UP).setType(Material.BED_BLOCK);
+						block.getFace(BlockFace.UP).setData((byte) orientation);
+						block.getFace(BlockFace.UP).getFace(face).setType(Material.BED_BLOCK);
+						block.getFace(BlockFace.UP).getFace(face).setData((byte)((byte) orientation + (byte) 0x8));
+						event.getClickedBlock().setType(Material.GLASS);
+						takeItem(event);
+					}
 				}
 			}
 		}
