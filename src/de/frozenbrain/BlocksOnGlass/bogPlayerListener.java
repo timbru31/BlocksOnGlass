@@ -54,6 +54,18 @@ public class bogPlayerListener extends PlayerListener {
 					event.getClickedBlock().setType(Material.GLASS);
 					takeItem(event);
 					
+				} else if((event.getPlayer().getItemInHand().getType() == Material.POWERED_RAIL) && (event.getBlockFace() == BlockFace.UP) && plugin.canPlacePoweredRails) {
+					block.setType(Material.DIRT);
+					block.getFace(event.getBlockFace()).setType(Material.POWERED_RAIL);
+					event.getClickedBlock().setType(Material.GLASS);
+					takeItem(event);
+					
+				} else if((event.getPlayer().getItemInHand().getType() == Material.DETECTOR_RAIL) && (event.getBlockFace() == BlockFace.UP) && plugin.canPlaceDetectorRails) {
+					block.setType(Material.DIRT);
+					block.getFace(event.getBlockFace()).setType(Material.DETECTOR_RAIL);
+					event.getClickedBlock().setType(Material.GLASS);
+					takeItem(event);
+					
 				} else if((event.getPlayer().getItemInHand().getType() == Material.REDSTONE) && (event.getBlockFace() == BlockFace.UP) && plugin.canPlaceRedstone) {
 					block.setType(Material.DIRT);
 					block.getFace(event.getBlockFace()).setType(Material.REDSTONE_WIRE);

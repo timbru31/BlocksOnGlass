@@ -22,6 +22,8 @@ public class bogBlockListener extends BlockListener {
 				(event.getBlock().getType() == Material.REDSTONE_TORCH_ON) ||
 				(event.getBlock().getType() == Material.REDSTONE_TORCH_OFF) ||
 				(event.getBlock().getType() == Material.RAILS) ||
+				(event.getBlock().getType() == Material.DETECTOR_RAIL) ||
+				(event.getBlock().getType() == Material.POWERED_RAIL) ||
 				(event.getBlock().getType() == Material.REDSTONE_WIRE) ||
 				(event.getBlock().getType() == Material.LADDER) ||
 				(event.getBlock().getType() == Material.WOODEN_DOOR) ||
@@ -79,7 +81,9 @@ public class bogBlockListener extends BlockListener {
 	
 	private Material getAttachedBlock(Block block) {
 		byte data = block.getData();
-		if(block.getType() == Material.RAILS) {
+		if((block.getType() == Material.RAILS) ||
+				(block.getType() == Material.DETECTOR_RAIL) ||
+				(block.getType() == Material.POWERED_RAIL)) {
 			switch (data) {
 				case 0x3:
 					return block.getFace(BlockFace.NORTH).getType();

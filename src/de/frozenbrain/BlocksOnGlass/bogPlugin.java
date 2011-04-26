@@ -15,6 +15,8 @@ public class bogPlugin extends JavaPlugin {
 	public boolean canPlaceRSTorch;
 	public boolean canPlaceRedstone;
 	public boolean canPlaceRails;
+	public boolean canPlacePoweredRails;
+	public boolean canPlaceDetectorRails;
 	public boolean canPlaceLadders;
 	public boolean canPlaceDoors;
 	public boolean canPlaceBeds;
@@ -42,6 +44,8 @@ public class bogPlugin extends JavaPlugin {
 		canPlaceRSTorch = config.getBoolean("allowRedstoneTorch", true);
 		canPlaceRedstone = config.getBoolean("allowRedstone", true);
 		canPlaceRails = config.getBoolean("allowRail", true);
+		canPlacePoweredRails = config.getBoolean("allowPoweredRail", true);
+		canPlaceDetectorRails = config.getBoolean("allowDetectorRail", true);
 		canPlaceLadders = config.getBoolean("allowLadder", true);
 		canPlaceDoors = config.getBoolean("allowDoor", true);
 		canPlaceBeds = config.getBoolean("allowBed", true);
