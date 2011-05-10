@@ -16,12 +16,15 @@ public class bogPlayerListener extends PlayerListener {
 	@Override
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		
-		if(event.hasBlock() && event.hasItem() && (event.getAction() == Action.RIGHT_CLICK_BLOCK) && (event.getClickedBlock().getType() == Material.GLASS) && (event.getItem().getTypeId() >= 323)) {
+		if(event.hasBlock() && event.hasItem() && (event.getAction() == Action.RIGHT_CLICK_BLOCK) && (event.getClickedBlock().getType() == Material.GLASS)) {
 			
 			if(plugin.Permissions == null) return;
 			
-			if(!plugin.Permissions.has(event.getPlayer(), "bog." + event.getItem().getType().name().toLowerCase())) event.setCancelled(true);
-			
+			if(plugin.blocks.contains(event.getItem().getType())) {
+				if(!plugin.Permissions.has(event.getPlayer(), "bog." + event.getItem().getType().name().toLowerCase())) {
+					event.setCancelled(true);
+				}
+			}
 		}
     }
 }

@@ -1,5 +1,8 @@
 package de.frozenbrain.BlocksOnGlass;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.server.Block;
 import net.minecraft.server.Material;
 
@@ -17,6 +20,7 @@ public class bogPlugin extends JavaPlugin {
 	
 	private final bogPlayerListener playerListener = new bogPlayerListener(this);
 	public PermissionHandler Permissions;
+	public List<org.bukkit.Material> blocks = new ArrayList<org.bukkit.Material>();
 	
 	public void onEnable() {
 		PluginManager pm = getServer().getPluginManager();
@@ -34,6 +38,23 @@ public class bogPlugin extends JavaPlugin {
         
 		PluginDescriptionFile pdfFile = this.getDescription();
         System.out.println( pdfFile.getName() + " version " + pdfFile.getVersion() + " is enabled!" );
+        
+        blocks.add(org.bukkit.Material.POWERED_RAIL);
+        blocks.add(org.bukkit.Material.DETECTOR_RAIL);
+        blocks.add(org.bukkit.Material.TORCH);
+        blocks.add(org.bukkit.Material.LADDER);
+        blocks.add(org.bukkit.Material.RAILS);
+        blocks.add(org.bukkit.Material.LEVER);
+        blocks.add(org.bukkit.Material.STONE_PLATE);
+        blocks.add(org.bukkit.Material.WOOD_PLATE);
+        blocks.add(org.bukkit.Material.REDSTONE_TORCH_ON);
+        blocks.add(org.bukkit.Material.STONE_BUTTON);
+        blocks.add(org.bukkit.Material.SIGN);
+        blocks.add(org.bukkit.Material.WOOD_DOOR);
+        blocks.add(org.bukkit.Material.IRON_DOOR);
+        blocks.add(org.bukkit.Material.REDSTONE);
+        blocks.add(org.bukkit.Material.BED);
+        blocks.add(org.bukkit.Material.DIODE);
         
         setupPermissions();
 	}

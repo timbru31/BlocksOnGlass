@@ -1,13 +1,11 @@
 package de.frozenbrain.BlocksOnGlass;
 
-import java.util.Random;
-
 import net.minecraft.server.Block;
-import net.minecraft.server.BlockBreakable;
+import net.minecraft.server.BlockGlass;
 import net.minecraft.server.Material;
 import net.minecraft.server.StepSound;
 
-public class bogBlockGlass extends BlockBreakable {
+public class bogBlockGlass extends BlockGlass {
 
     public bogBlockGlass(int i, int j, Material material, boolean flag) {
         super(i, j, material, flag);
@@ -15,10 +13,6 @@ public class bogBlockGlass extends BlockBreakable {
 
     public boolean a() {
         return true;
-    }
-    
-    public int a(Random random) {
-        return 0;
     }
     
     protected bogBlockGlass setHardness(float f) {
