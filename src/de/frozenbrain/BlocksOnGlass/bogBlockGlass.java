@@ -11,6 +11,7 @@ public class bogBlockGlass extends BlockGlass {
         super(i, j, material, flag);
     }
 
+    @Override
     public boolean a() {
         return true;
     }

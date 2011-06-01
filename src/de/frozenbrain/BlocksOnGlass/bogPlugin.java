@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.minecraft.server.Block;
 import net.minecraft.server.Material;
+import net.minecraft.server.MaterialMapColor;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.Event.Priority;
@@ -26,13 +27,10 @@ public class bogPlugin extends JavaPlugin {
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvent(Event.Type.PLAYER_INTERACT, playerListener, Priority.Normal, this);
 		
-		Block[] blockList = Block.byId;
-		
 		for(int i=0;i<255;i++) {
-			if(blockList[i] instanceof net.minecraft.server.BlockGlass) {
-				blockList[i] = null;
-				blockList[i] = (new bogBlockGlass(20, 49, Material.SHATTERABLE, true)).setHardness(0.3F).setSound(Block.j).a("glass");
-				Block.q[i] = 0;
+			if(Block.byId[i] instanceof net.minecraft.server.BlockGlass) {
+				Block.byId[i] = null;
+				Block.byId[i] = new bogBlockGlass(20, 49, new Material(MaterialMapColor.b), true).setHardness(0.3F).setSound(Block.j).a("glass");
 			}
 		}
         
@@ -55,6 +53,7 @@ public class bogPlugin extends JavaPlugin {
         blocks.add(org.bukkit.Material.REDSTONE);
         blocks.add(org.bukkit.Material.BED);
         blocks.add(org.bukkit.Material.DIODE);
+        blocks.add(org.bukkit.Material.TRAP_DOOR);
         
         setupPermissions();
 	}
