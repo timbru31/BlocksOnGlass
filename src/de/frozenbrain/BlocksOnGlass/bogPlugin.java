@@ -31,6 +31,7 @@ public class bogPlugin extends JavaPlugin {
 			if(Block.byId[i] instanceof net.minecraft.server.BlockGlass) {
 				Block.byId[i] = null;
 				Block.byId[i] = new bogBlockGlass(20, 49, new Material(MaterialMapColor.b), true).setHardness(0.3F).setSound(Block.j).a("glass");
+				Block.q[i] = 0;
 			}
 		}
         
