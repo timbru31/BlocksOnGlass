@@ -15,14 +15,21 @@ public class bogPlayerListener extends PlayerListener {
 	
 	@Override
 	public void onPlayerInteract(PlayerInteractEvent event) {
+		if(plugin.Permissions == null) return;
 		
-		if(event.hasBlock() && event.hasItem() && (event.getAction() == Action.RIGHT_CLICK_BLOCK) && (event.getClickedBlock().getType() == Material.GLASS)) {
+		if(event.hasBlock() && event.hasItem() && (event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
 			
-			if(plugin.Permissions == null) return;
-			
-			if(plugin.blocks.contains(event.getItem().getType())) {
-				if(!plugin.Permissions.has(event.getPlayer(), "bog." + event.getItem().getType().name().toLowerCase())) {
-					event.setCancelled(true);
+			if(event.getClickedBlock().getType() == Material.GLASS) {
+				if(plugin.blocks.contains(event.getItem().getType())) {
+					if(!plugin.Permissions.has(event.getPlayer(), "bog." + event.getItem().getType().name().toLowerCase())) {
+						event.setCancelled(true);
+					}
+				}
+			} else if(event.getClickedBlock().getType() == Material.FENCE) {
+				if(plugin.blocks.contains(event.getItem().getType()) && !plugin.fenceWhitelist.contains(event.getItem().getType())) {
+					if(!plugin.Permissions.has(event.getPlayer(), "bof." + event.getItem().getType().name().toLowerCase())) {
+						event.setCancelled(true);
+					}
 				}
 			}
 		}
