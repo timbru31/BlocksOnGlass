@@ -1,4 +1,4 @@
-package de.frozenbrain.BlocksOnGlass;
+package de.frozenbrain.BlocksOnGlass.blocks;
 
 import net.minecraft.server.Block;
 import net.minecraft.server.BlockGlass;
@@ -16,7 +16,7 @@ public class bogBlockGlass extends BlockGlass {
         return true;
     }
     
-    protected bogBlockGlass setHardness(float f) {
+    public bogBlockGlass setHardness(float f) {
         this.strength = f;
         if (this.durability < f * 5.0F) {
             this.durability = f * 5.0F;
@@ -25,7 +25,7 @@ public class bogBlockGlass extends BlockGlass {
         return this;
     }
     
-    protected Block setSound(StepSound stepsound) {
+    public Block setSound(StepSound stepsound) {
         this.stepSound = stepsound;
         return this;
     }

@@ -1,6 +1,5 @@
-package de.frozenbrain.BlocksOnGlass;
+package de.frozenbrain.BlocksOnGlass.blocks;
 
-import net.minecraft.server.AxisAlignedBB;
 import net.minecraft.server.Block;
 import net.minecraft.server.BlockFence;
 import net.minecraft.server.StepSound;
@@ -23,16 +22,14 @@ public class bogBlockFence extends BlockFence {
     }
     
     @Override
-    public AxisAlignedBB e(World world, int i, int j, int k) {
-        return AxisAlignedBB.b((double) i, (double) j, (double) k, (double) i, (double) j, (double) k);
-    }
-    
-    @Override
     public boolean canPlace(World world, int i, int j, int k) {
+    	if(de.frozenbrain.BlocksOnGlass.bogPlugin.fenceFix) {
+    		return true;
+    	}
         return world.getTypeId(i, j - 1, k) == this.id ? true : (!world.getMaterial(i, j - 1, k).isBuildable() ? false : super.canPlace(world, i, j, k));
     }
     
-    protected bogBlockFence setHardness(float f) {
+    public bogBlockFence setHardness(float f) {
         this.strength = f;
         if (this.durability < f * 5.0F) {
             this.durability = f * 5.0F;
@@ -41,7 +38,7 @@ public class bogBlockFence extends BlockFence {
         return this;
     }
     
-    protected Block setSound(StepSound stepsound) {
+    public Block setSound(StepSound stepsound) {
         this.stepSound = stepsound;
         return this;
     }

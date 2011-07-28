@@ -1,8 +1,10 @@
-package de.frozenbrain.BlocksOnGlass;
+package de.frozenbrain.BlocksOnGlass.listeners;
 
 import org.bukkit.Material;
 import org.bukkit.event.block.BlockListener;
 import org.bukkit.event.block.SnowFormEvent;
+
+import de.frozenbrain.BlocksOnGlass.bogPlugin;
 
 public class bogBlockListener extends BlockListener {
 
