@@ -1,4 +1,4 @@
 name: BlocksOnGlass
 main: de.frozenbrain.BlocksOnGlass.bogPlugin
-version: 0.41
+version: 0.44
 commands:

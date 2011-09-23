@@ -8,7 +8,7 @@ public class bogBlockLeaves extends BlockLeaves {
 	
 	public bogBlockLeaves(int i, int j) {
         super(i, j);
-        this.br = false; // n()
+        this.bE = false; // n()
     }
 	
 	@Override

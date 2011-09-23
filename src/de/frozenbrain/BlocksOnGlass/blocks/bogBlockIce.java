@@ -1,14 +1,32 @@
 package de.frozenbrain.BlocksOnGlass.blocks;
 
-import net.minecraft.server.Material;
-import net.minecraft.server.MaterialMapColor;
+import net.minecraft.server.Block;
+import net.minecraft.server.BlockIce;
+import net.minecraft.server.StepSound;
 
-public class bogBlockIce extends bogBlockGlass {
+public class bogBlockIce extends BlockIce {
 
 	public bogBlockIce(int i, int j) {
-        super(i, j, new Material(MaterialMapColor.g), true);
-        this.frictionFactor = 0.98F;
-        this.a(true);
+        super(i, j);
+    }
+	
+    @Override
+    public boolean a() {
+        return true;
+    }
+    
+    public bogBlockIce setHardness(float f) {
+        this.strength = f;
+        if (this.durability < f * 5.0F) {
+            this.durability = f * 5.0F;
+        }
+
+        return this;
+    }
+    
+    public Block setSound(StepSound stepsound) {
+        this.stepSound = stepsound;
+        return this;
     }
 
 }

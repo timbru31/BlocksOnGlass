@@ -37,7 +37,7 @@ public class bogPlugin extends JavaPlugin {
 	public void onEnable() {
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvent(Event.Type.PLAYER_INTERACT, playerListener, Priority.Normal, this);
-		pm.registerEvent(Event.Type.SNOW_FORM, blockListener, Priority.Normal, this);
+		pm.registerEvent(Event.Type.BLOCK_FORM, blockListener, Priority.Normal, this);
 		
 		modifyBlocks();
 		setupBlockLists();
@@ -59,9 +59,9 @@ public class bogPlugin extends JavaPlugin {
 	
 	private void modifyBlocks() {
 		Block.byId[Block.GLASS.id] = null;
-		Block.byId[Block.GLASS.id] = new bogBlockGlass(20, 49, Material.SHATTERABLE, true).setHardness(0.3F).setSound(Block.j).a("glass");
+		Block.byId[Block.GLASS.id] = new bogBlockGlass(Block.GLASS.id, 49, Material.SHATTERABLE, true).setHardness(0.3F).setSound(Block.j).a("glass");
 		try {
-			Field field = Material.SHATTERABLE.getClass().getDeclaredField("F");
+			Field field = Material.SHATTERABLE.getClass().getDeclaredField("G");
 			field.setAccessible(true);
 			field.setBoolean(Material.SHATTERABLE, false);
 		} catch (Exception e) {
@@ -70,17 +70,24 @@ public class bogPlugin extends JavaPlugin {
 		Block.q[Block.GLASS.id] = 0;
 		
 		Block.byId[Block.FENCE.id] = null;
-		Block.byId[Block.FENCE.id] = new bogBlockFence(85, 4).setHardness(0.3F).setResistance(5F).setSound(Block.e).a("fence");
+		Block.byId[Block.FENCE.id] = new bogBlockFence(Block.FENCE.id, 4).setHardness(0.3F).setResistance(5F).setSound(Block.e).a("fence");
 		Block.q[Block.FENCE.id] = 0;
 		
 		Block.byId[Block.ICE.id] = null;
-		Block.byId[Block.ICE.id] = new bogBlockIce(79, 67).setHardness(0.5F).setSound(Block.j).a("ice");
+		Block.byId[Block.ICE.id] = new bogBlockIce(Block.ICE.id, 67).setHardness(0.5F).setSound(Block.j).a("ice");
+		try {
+			Field field = Material.ICE.getClass().getDeclaredField("G");
+			field.setAccessible(true);
+			field.setBoolean(Material.ICE, false);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		Block.q[Block.ICE.id] = 3;
 		
 		Block.byId[Block.LEAVES.id] = null;
-		Block.byId[Block.LEAVES.id] = new bogBlockLeaves(18, 52).setHardness(0.2F).setSound(Block.g).a("leaves");
+		Block.byId[Block.LEAVES.id] = new bogBlockLeaves(Block.LEAVES.id, 52).setHardness(0.2F).setSound(Block.g).a("leaves");
 		try {
-			Field field = Material.LEAVES.getClass().getDeclaredField("F");
+			Field field = Material.LEAVES.getClass().getDeclaredField("G");
 			field.setAccessible(true);
 			field.setBoolean(Material.LEAVES, false);
 		} catch (Exception e) {
@@ -93,7 +100,7 @@ public class bogPlugin extends JavaPlugin {
 	private void restoreBlocks() {
 		Block.byId[Block.GLASS.id] = Block.GLASS;
 		try {
-			Field field = Material.SHATTERABLE.getClass().getDeclaredField("F");
+			Field field = Material.SHATTERABLE.getClass().getDeclaredField("G");
 			field.setAccessible(true);
 			field.setBoolean(Material.SHATTERABLE, true);
 		} catch (Exception e) {
@@ -101,9 +108,16 @@ public class bogPlugin extends JavaPlugin {
 		}
 		Block.byId[Block.FENCE.id] = Block.FENCE;
 		Block.byId[Block.ICE.id] = Block.ICE;
+		try {
+			Field field = Material.ICE.getClass().getDeclaredField("G");
+			field.setAccessible(true);
+			field.setBoolean(Material.ICE, true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		Block.byId[Block.LEAVES.id] = Block.LEAVES;
 		try {
-			Field field = Material.LEAVES.getClass().getDeclaredField("F");
+			Field field = Material.LEAVES.getClass().getDeclaredField("G");
 			field.setAccessible(true);
 			field.setBoolean(Material.LEAVES, true);
 		} catch (Exception e) {
