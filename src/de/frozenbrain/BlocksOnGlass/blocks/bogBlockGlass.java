@@ -30,3 +30,5 @@ public class bogBlockGlass extends BlockGlass {
         return this;
     }
 }
+
+//stone = (new BlockStone(1, 1)).setHardness(1.5F).setResistance(10F).setStepSound(soundStoneFootstep).setBlockName("stone");

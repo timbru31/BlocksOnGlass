@@ -9,14 +9,10 @@ import net.minecraft.server.Material;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.Event.Priority;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.util.config.Configuration;
-
-import com.nijiko.permissions.PermissionHandler;
-import com.nijikokun.bukkit.Permissions.Permissions;
+import org.bukkit.configuration.file.*;
 
 import de.frozenbrain.BlocksOnGlass.blocks.bogBlockFence;
 import de.frozenbrain.BlocksOnGlass.blocks.bogBlockGlass;
@@ -25,36 +21,58 @@ import de.frozenbrain.BlocksOnGlass.blocks.bogBlockLeaves;
 import de.frozenbrain.BlocksOnGlass.listeners.bogBlockListener;
 import de.frozenbrain.BlocksOnGlass.listeners.bogPlayerListener;
 
+/**
+ * 
+ * Hi,
+ * I made some changes! I hope it's okay, I'll make a pull request so you can easily add them!
+ * 
+ * First:
+ * I removed the old Permision 3.XX stuff (Or was it even 2.XX?)
+ * Because nobody uses this anymore. (bPermisions and PermissionsEX are the future)
+ * 
+ * I added some new items (flowers etc.)
+ * 
+ * I updated the config to the new API
+ * 
+ * I added support for Nether fences! (Permission: bonf.* -> Block On Nether Fences!)
+ * I added support for glowstone, too! (Because it's again like glass....) (Permission: bogl.* -> Block On Glowstone!)
+ * 
+ * Fixed some bugs ;)
+ * 
+ * Small things like,
+ * Version info at onDisable
+ *
+ */
+
 public class bogPlugin extends JavaPlugin {
 	
 	private final bogPlayerListener playerListener = new bogPlayerListener(this);
 	private final bogBlockListener blockListener = new bogBlockListener(this);
-	public PermissionHandler Permissions;
 	public List<org.bukkit.Material> blocks = new ArrayList<org.bukkit.Material>();
-	public List<org.bukkit.Material> fenceWhitelist = new ArrayList<org.bukkit.Material>();
-	public static boolean fenceFix;
+	public FileConfiguration config;
 	
 	public void onEnable() {
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvent(Event.Type.PLAYER_INTERACT, playerListener, Priority.Normal, this);
 		pm.registerEvent(Event.Type.BLOCK_FORM, blockListener, Priority.Normal, this);
+        
+		// Config (updated to new API!)
+		config = this.getConfig();
+		config.addDefault("botanical", false);
+		config.options().copyDefaults(true);
+		saveConfig();
 		
 		modifyBlocks();
 		setupBlockLists();
         
-        Configuration config = getConfiguration();
-        fenceFix = config.getBoolean("fencefix", true);
-        config.save();
-        
 		PluginDescriptionFile pdfFile = this.getDescription();
-        System.out.println( pdfFile.getName() + " version " + pdfFile.getVersion() + " is enabled!" );
-
-        setupPermissions();
+        System.out.println(pdfFile.getName() + " version " + pdfFile.getVersion() + " is enabled!");
 	}
 	
 	public void onDisable() {
 		restoreBlocks();
-		System.out.println("BlocksOnGlass disabled.");
+		PluginDescriptionFile pdfFile = this.getDescription();
+		System.out.println(pdfFile.getName() + " version " + pdfFile.getVersion() + " is disabled!");
 	}
 	
 	private void modifyBlocks() {
@@ -142,21 +160,16 @@ public class bogPlugin extends JavaPlugin {
         blocks.add(org.bukkit.Material.BED);
         blocks.add(org.bukkit.Material.DIODE);
         blocks.add(org.bukkit.Material.TRAP_DOOR);
-        
-        fenceWhitelist.add(org.bukkit.Material.TORCH);
-        fenceWhitelist.add(org.bukkit.Material.REDSTONE_TORCH_ON);
+        // new added but only if the server admin wants the flower stuff
+        if (config.getBoolean("botanicle") == true) {
+        	blocks.add(org.bukkit.Material.RED_ROSE);
+        	blocks.add(org.bukkit.Material.YELLOW_FLOWER);
+        	blocks.add(org.bukkit.Material.DEAD_BUSH);
+        	blocks.add(org.bukkit.Material.RED_MUSHROOM);
+        	blocks.add(org.bukkit.Material.BROWN_MUSHROOM);
+        	blocks.add(org.bukkit.Material.SAPLING);
+        	blocks.add(org.bukkit.Material.CACTUS);
+        	blocks.add(org.bukkit.Material.SUGAR_CANE);
+        }
 	}
-	
-	private void setupPermissions() {
-	      Plugin test = this.getServer().getPluginManager().getPlugin("Permissions");
-	      PluginDescriptionFile pdfFile = this.getDescription();
-	      if (this.Permissions == null) {
-	          if (test != null) {
-	              this.Permissions = ((Permissions)test).getHandler();
-	              System.out.println("[" + pdfFile.getName() + "] Permission system detected.");
-	          } else {
-	              System.out.println("[" + pdfFile.getName() + "] Permission system not detected.");
-	          }
-	      }
-	  }
 }

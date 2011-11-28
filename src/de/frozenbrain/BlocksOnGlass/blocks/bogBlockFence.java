@@ -23,9 +23,6 @@ public class bogBlockFence extends BlockFence {
     
     @Override
     public boolean canPlace(World world, int i, int j, int k) {
-    	if(de.frozenbrain.BlocksOnGlass.bogPlugin.fenceFix) {
-    		return true;
-    	}
         return world.getTypeId(i, j - 1, k) == this.id ? true : (!world.getMaterial(i, j - 1, k).isBuildable() ? false : super.canPlace(world, i, j, k));
     }
     
