@@ -19,6 +19,7 @@ import de.frozenbrain.BlocksOnGlass.blocks.bogBlockGlass;
 import de.frozenbrain.BlocksOnGlass.blocks.bogBlockIce;
 import de.frozenbrain.BlocksOnGlass.blocks.bogBlockLeaves;
 import de.frozenbrain.BlocksOnGlass.listeners.bogBlockListener;
+import de.frozenbrain.BlocksOnGlass.listeners.bogEntityListener;
 import de.frozenbrain.BlocksOnGlass.listeners.bogPlayerListener;
 
 /**
@@ -48,17 +49,21 @@ public class bogPlugin extends JavaPlugin {
 	
 	private final bogPlayerListener playerListener = new bogPlayerListener(this);
 	private final bogBlockListener blockListener = new bogBlockListener(this);
+	private final bogEntityListener entityListener = new bogEntityListener(this);
 	public List<org.bukkit.Material> blocks = new ArrayList<org.bukkit.Material>();
-	public FileConfiguration config;
+	public static FileConfiguration config;
 	
 	public void onEnable() {
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvent(Event.Type.PLAYER_INTERACT, playerListener, Priority.Normal, this);
 		pm.registerEvent(Event.Type.BLOCK_FORM, blockListener, Priority.Normal, this);
+		// Added new event for cancelling the damage under fences...
+		pm.registerEvent(Event.Type.ENTITY_DAMAGE, entityListener, Event.Priority.Normal, this);
         
 		// Config (updated to new API!)
 		config = this.getConfig();
 		config.addDefault("botanical", false);
+		config.addDefault("fencefix", true);
 		config.options().copyDefaults(true);
 		saveConfig();
 		
@@ -77,7 +82,7 @@ public class bogPlugin extends JavaPlugin {
 	
 	private void modifyBlocks() {
 		Block.byId[Block.GLASS.id] = null;
-		Block.byId[Block.GLASS.id] = new bogBlockGlass(Block.GLASS.id, 49, Material.SHATTERABLE, true).setHardness(0.3F).setSound(Block.j).a("glass");
+		Block.byId[Block.GLASS.id] = new bogBlockGlass(Block.GLASS.id, 49, Material.EARTH, true).setHardness(0.3F).setSound(Block.j).a("glass");
 		try {
 			Field field = Material.SHATTERABLE.getClass().getDeclaredField("G");
 			field.setAccessible(true);
@@ -113,6 +118,14 @@ public class bogPlugin extends JavaPlugin {
 		}
 		Block.q[Block.LEAVES.id] = 1; // f(1)
 		Block.t[Block.LEAVES.id] = true; // g()
+		
+		
+		// I added NetherFence support
+		// Because it's the same class (both are extending BlockFence) I use the old fence class, too!
+		
+		Block.byId[Block.NETHER_FENCE.id] = null;
+		Block.byId[Block.NETHER_FENCE.id] = new bogBlockFence(Block.NETHER_FENCE.id, 4).setHardness(0.3F).setResistance(5F).setSound(Block.e).a("netherfence");
+		Block.q[Block.NETHER_FENCE.id] = 0;
 	}
 	
 	private void restoreBlocks() {
@@ -141,6 +154,9 @@ public class bogPlugin extends JavaPlugin {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		// I added NetherFence support
+		Block.byId[Block.NETHER_FENCE.id] = Block.NETHER_FENCE;
 	}
 	
 	private void setupBlockLists() {
