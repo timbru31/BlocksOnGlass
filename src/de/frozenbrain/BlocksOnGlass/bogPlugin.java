@@ -71,7 +71,7 @@ public class bogPlugin extends JavaPlugin {
 		setupBlockLists();
         
 		PluginDescriptionFile pdfFile = this.getDescription();
-        System.out.println(pdfFile.getName() + " version " + pdfFile.getVersion() + " is enabled!");
+        System.out.println(pdfFile.getName() + " version " + pdfFile.getVersion() + " by xGhOsTkiLLeRx is enabled!");
 	}
 	
 	public void onDisable() {
@@ -101,7 +101,7 @@ public class bogPlugin extends JavaPlugin {
 		try {
 			Field field = Material.ICE.getClass().getDeclaredField("G");
 			field.setAccessible(true);
-			field.setBoolean(Material.ICE, false);
+			field.setBoolean(Material.EARTH, true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -110,13 +110,13 @@ public class bogPlugin extends JavaPlugin {
 		Block.byId[Block.LEAVES.id] = null;
 		Block.byId[Block.LEAVES.id] = new bogBlockLeaves(Block.LEAVES.id, 52).setHardness(0.2F).setSound(Block.g).a("leaves");
 		try {
-			Field field = Material.LEAVES.getClass().getDeclaredField("G");
+			Field field = Material.LEAVES.getClass().getDeclaredField("E");
 			field.setAccessible(true);
-			field.setBoolean(Material.LEAVES, false);
+			field.setBoolean(Material.EARTH, true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		Block.q[Block.LEAVES.id] = 1; // f(1)
+		Block.q[Block.LEAVES.id] = 0; // f(1)
 		Block.t[Block.LEAVES.id] = true; // g()
 		
 		
@@ -124,7 +124,7 @@ public class bogPlugin extends JavaPlugin {
 		// Because it's the same class (both are extending BlockFence) I use the old fence class, too!
 		
 		Block.byId[Block.NETHER_FENCE.id] = null;
-		Block.byId[Block.NETHER_FENCE.id] = new bogBlockFence(Block.NETHER_FENCE.id, 4).setHardness(0.3F).setResistance(5F).setSound(Block.e).a("netherfence");
+		Block.byId[Block.NETHER_FENCE.id] = new bogBlockFence(Block.NETHER_FENCE.id, 4).setHardness(0.3F).setResistance(5F).setSound(Block.e).a("netherFence");
 		Block.q[Block.NETHER_FENCE.id] = 0;
 	}
 	
