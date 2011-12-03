@@ -87,6 +87,7 @@ public class bogPlugin extends JavaPlugin {
 			Field field = Material.SHATTERABLE.getClass().getDeclaredField("G");
 			field.setAccessible(true);
 			field.setBoolean(Material.SHATTERABLE, false);
+			System.out.println("Glass field:" +field);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -101,7 +102,8 @@ public class bogPlugin extends JavaPlugin {
 		try {
 			Field field = Material.ICE.getClass().getDeclaredField("G");
 			field.setAccessible(true);
-			field.setBoolean(Material.EARTH, true);
+			field.setBoolean(Material.ICE, true);
+			System.out.println(field);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -110,9 +112,9 @@ public class bogPlugin extends JavaPlugin {
 		Block.byId[Block.LEAVES.id] = null;
 		Block.byId[Block.LEAVES.id] = new bogBlockLeaves(Block.LEAVES.id, 52).setHardness(0.2F).setSound(Block.g).a("leaves");
 		try {
-			Field field = Material.LEAVES.getClass().getDeclaredField("E");
+			Field field = Material.LEAVES.getClass().getDeclaredField("G");
 			field.setAccessible(true);
-			field.setBoolean(Material.EARTH, true);
+			field.setBoolean(Material.LEAVES, true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
