@@ -1,4 +1,479 @@
 name: BlocksOnGlass
 main: de.frozenbrain.BlocksOnGlass.bogPlugin
 version: 0.45
-commands:
+permissions:
+    bog.*:
+        children:
+            bog.powered_rail: true
+            bog.detector_rail: true
+            bog.torch: true
+            bog.ladder: true
+            bog.rails: true
+            bog.lever: true
+            bog.stone_plate: true
+            bog.wood_plate: true
+            bog.redstone_torch_on: true
+            bog.stone_button: true
+            bog.wood_door: true
+            bog.iron_door: true
+            bog.redstone: true
+            bog.bed: true
+            bog.diode: true
+            bog.red_rose: true
+            bog.yellow_flower: true
+            bog.dead_bush: true
+            bog.red_mushroom: true
+            bog.brown_mushroom: true
+            bog.sapling: true
+            bog.cactus: true
+            bog.sugar_cane: true
+        description: Allows all bog permissions
+    bog.powered_rail:
+        default: op
+        description: Allows the item powered_rail
+    bog.detector_rail:
+        default: op
+        description: Allows the item detector_rail
+    bog.torch:
+        default: op
+        description: Allows the item torch
+    bog.ladder:
+        default: op
+        description: Allows the item ladder
+    bog.rails:
+        default: op
+        description: Allows the item rails
+    bog.lever:
+        default: op
+        description: Allows the item lever
+    bog.stone_plate:
+        default: op
+        description: Allows the item stone_plate
+    bog.wood_plate:
+        default: op
+        description: Allows the item wood_plate
+    bog.redstone_torch_on:
+        default: op
+        description: Allows the item redstone_torch_on
+    bog.stone_button:
+        default: op
+        description: Allows the item stone_button
+    bog.wood_door:
+        default: op
+        description: Allows the item wood_door
+    bog.iron_door:
+        default: op
+        description: Allows the item iron_door
+    bog.redstone:
+        default: op
+        description: Allows the item redstone
+    bog.bed:
+        default: op
+        description: Allows the item bed
+    bog.diode:
+        default: op
+        description: Allows the item diode
+    bog.red_rose:
+        default: op
+        description: Allows the item red_rose
+    bog.yellow_flower:
+        default: op
+        description: Allows the item yellow_flower
+    bog.dead_bush:
+        default: op
+        description: Allows the item dead_bush
+    bog.red_mushroom:
+        default: op
+        description: Allows the item red_mushroom
+    bog.brown_mushroom:
+        default: op
+        description: Allows the item brown_mushroom
+    bog.sapling:
+        default: op
+        description: Allows the item sapling
+    bog.cactus:
+        default: op
+        description: Allows the item cactus
+    bog.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
+    boi.*:
+        children:
+            boi.powered_rail: true
+            boi.detector_rail: true
+            boi.torch: true
+            boi.ladder: true
+            boi.rails: true
+            boi.lever: true
+            boi.stone_plate: true
+            boi.wood_plate: true
+            boi.redstone_torch_on: true
+            boi.stone_button: true
+            boi.wood_door: true
+            boi.iron_door: true
+            boi.redstone: true
+            boi.bed: true
+            boi.diode: true
+            boi.red_rose: true
+            boi.yellow_flower: true
+            boi.dead_bush: true
+            boi.red_mushroom: true
+            boi.brown_mushroom: true
+            boi.sapling: true
+            boi.cactus: true
+            boi.sugar_cane: true
+        description: Allows all boi permissions
+    boi.powered_rail:
+        default: op
+        description: Allows the item powered_rail
+    boi.detector_rail:
+        default: op
+        description: Allows the item detector_rail
+    boi.torch:
+        default: op
+        description: Allows the item torch
+    boi.ladder:
+        default: op
+        description: Allows the item ladder
+    boi.rails:
+        default: op
+        description: Allows the item rails
+    boi.lever:
+        default: op
+        description: Allows the item lever
+    boi.stone_plate:
+        default: op
+        description: Allows the item stone_plate
+    boi.wood_plate:
+        default: op
+        description: Allows the item wood_plate
+    boi.redstone_torch_on:
+        default: op
+        description: Allows the item redstone_torch_on
+    boi.stone_button:
+        default: op
+        description: Allows the item stone_button
+    boi.wood_door:
+        default: op
+        description: Allows the item wood_door
+    boi.iron_door:
+        default: op
+        description: Allows the item iron_door
+    boi.redstone:
+        default: op
+        description: Allows the item redstone
+    boi.bed:
+        default: op
+        description: Allows the item bed
+    boi.diode:
+        default: op
+        description: Allows the item diode
+    boi.red_rose:
+        default: op
+        description: Allows the item red_rose
+    boi.yellow_flower:
+        default: op
+        description: Allows the item yellow_flower
+    boi.dead_bush:
+        default: op
+        description: Allows the item dead_bush
+    boi.red_mushroom:
+        default: op
+        description: Allows the item red_mushroom
+    boi.brown_mushroom:
+        default: op
+        description: Allows the item brown_mushroom
+    boi.sapling:
+        default: op
+        description: Allows the item sapling
+    boi.cactus:
+        default: op
+        description: Allows the item cactus
+    boi.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
+    bof.*:
+        children:
+            bof.powered_rail: true
+            bof.detector_rail: true
+            bof.torch: true
+            bof.ladder: true
+            bof.rails: true
+            bof.lever: true
+            bof.stone_plate: true
+            bof.wood_plate: true
+            bof.redstone_torch_on: true
+            bof.stone_button: true
+            bof.wood_door: true
+            bof.iron_door: true
+            bof.redstone: true
+            bof.bed: true
+            bof.diode: true
+            bof.red_rose: true
+            bof.yellow_flower: true
+            bof.dead_bush: true
+            bof.red_mushroom: true
+            bof.brown_mushroom: true
+            bof.sapling: true
+            bof.cactus: true
+            bof.sugar_cane: true
+        description: Allows all bof permissions
+    bof.powered_rail:
+        default: op
+        description: Allows the item powered_rail
+    bof.detector_rail:
+        default: op
+        description: Allows the item detector_rail
+    bof.torch:
+        default: op
+        description: Allows the item torch
+    bof.ladder:
+        default: op
+        description: Allows the item ladder
+    bof.rails:
+        default: op
+        description: Allows the item rails
+    bof.lever:
+        default: op
+        description: Allows the item lever
+    bof.stone_plate:
+        default: op
+        description: Allows the item stone_plate
+    bof.wood_plate:
+        default: op
+        description: Allows the item wood_plate
+    bof.redstone_torch_on:
+        default: op
+        description: Allows the item redstone_torch_on
+    bof.stone_button:
+        default: op
+        description: Allows the item stone_button
+    bof.wood_door:
+        default: op
+        description: Allows the item wood_door
+    bof.iron_door:
+        default: op
+        description: Allows the item iron_door
+    bof.redstone:
+        default: op
+        description: Allows the item redstone
+    bof.bed:
+        default: op
+        description: Allows the item bed
+    bof.diode:
+        default: op
+        description: Allows the item diode
+    bof.red_rose:
+        default: op
+        description: Allows the item red_rose
+    bof.yellow_flower:
+        default: op
+        description: Allows the item yellow_flower
+    bof.dead_bush:
+        default: op
+        description: Allows the item dead_bush
+    bof.red_mushroom:
+        default: op
+        description: Allows the item red_mushroom
+    bof.brown_mushroom:
+        default: op
+        description: Allows the item brown_mushroom
+    bof.sapling:
+        default: op
+        description: Allows the item sapling
+    bof.cactus:
+        default: op
+        description: Allows the item cactus
+    bof.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
+    bol.*:
+        children:
+            bol.powered_rail: true
+            bol.detector_rail: true
+            bol.torch: true
+            bol.ladder: true
+            bol.rails: true
+            bol.lever: true
+            bol.stone_plate: true
+            bol.wood_plate: true
+            bol.redstone_torch_on: true
+            bol.stone_button: true
+            bol.wood_door: true
+            bol.iron_door: true
+            bol.redstone: true
+            bol.bed: true
+            bol.diode: true
+            bol.red_rose: true
+            bol.yellow_flower: true
+            bol.dead_bush: true
+            bol.red_mushroom: true
+            bol.brown_mushroom: true
+            bol.sapling: true
+            bol.cactus: true
+            bol.sugar_cane: true
+        description: Allows all bol permissions
+    bol.powered_rail:
+        default: op
+        description: Allows the item powered_rail
+    bol.detector_rail:
+        default: op
+        description: Allows the item detector_rail
+    bol.torch:
+        default: op
+        description: Allows the item torch
+    bol.ladder:
+        default: op
+        description: Allows the item ladder
+    bol.rails:
+        default: op
+        description: Allows the item rails
+    bol.lever:
+        default: op
+        description: Allows the item lever
+    bol.stone_plate:
+        default: op
+        description: Allows the item stone_plate
+    bol.wood_plate:
+        default: op
+        description: Allows the item wood_plate
+    bol.redstone_torch_on:
+        default: op
+        description: Allows the item redstone_torch_on
+    bol.stone_button:
+        default: op
+        description: Allows the item stone_button
+    bol.wood_door:
+        default: op
+        description: Allows the item wood_door
+    bol.iron_door:
+        default: op
+        description: Allows the item iron_door
+    bol.redstone:
+        default: op
+        description: Allows the item redstone
+    bol.bed:
+        default: op
+        description: Allows the item bed
+    bol.diode:
+        default: op
+        description: Allows the item diode
+    bol.red_rose:
+        default: op
+        description: Allows the item red_rose
+    bol.yellow_flower:
+        default: op
+        description: Allows the item yellow_flower
+    bol.dead_bush:
+        default: op
+        description: Allows the item dead_bush
+    bol.red_mushroom:
+        default: op
+        description: Allows the item red_mushroom
+    bol.brown_mushroom:
+        default: op
+        description: Allows the item brown_mushroom
+    bol.sapling:
+        default: op
+        description: Allows the item sapling
+    bol.cactus:
+        default: op
+        description: Allows the item cactus
+    bol.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
+    bonf.*:
+        children:
+            bonf.powered_rail: true
+            bonf.detector_rail: true
+            bonf.torch: true
+            bonf.ladder: true
+            bonf.rails: true
+            bonf.lever: true
+            bonf.stone_plate: true
+            bonf.wood_plate: true
+            bonf.redstone_torch_on: true
+            bonf.stone_button: true
+            bonf.wood_door: true
+            bonf.iron_door: true
+            bonf.redstone: true
+            bonf.bed: true
+            bonf.diode: true
+            bonf.red_rose: true
+            bonf.yellow_flower: true
+            bonf.dead_bush: true
+            bonf.red_mushroom: true
+            bonf.brown_mushroom: true
+            bonf.sapling: true
+            bonf.cactus: true
+            bonf.sugar_cane: true
+        description: Allows all bonf permissions
+    bonf.powered_rail:
+        default: op
+        description: Allows the item powered_rail
+    bonf.detector_rail:
+        default: op
+        description: Allows the item detector_rail
+    bonf.torch:
+        default: op
+        description: Allows the item torch
+    bonf.ladder:
+        default: op
+        description: Allows the item ladder
+    bonf.rails:
+        default: op
+        description: Allows the item rails
+    bonf.lever:
+        default: op
+        description: Allows the item lever
+    bonf.stone_plate:
+        default: op
+        description: Allows the item stone_plate
+    bonf.wood_plate:
+        default: op
+        description: Allows the item wood_plate
+    bonf.redstone_torch_on:
+        default: op
+        description: Allows the item redstone_torch_on
+    bonf.stone_button:
+        default: op
+        description: Allows the item stone_button
+    bonf.wood_door:
+        default: op
+        description: Allows the item wood_door
+    bonf.iron_door:
+        default: op
+        description: Allows the item iron_door
+    bonf.redstone:
+        default: op
+        description: Allows the item redstone
+    bonf.bed:
+        default: op
+        description: Allows the item bed
+    bonf.diode:
+        default: op
+        description: Allows the item diode
+    bonf.red_rose:
+        default: op
+        description: Allows the item red_rose
+    bonf.yellow_flower:
+        default: op
+        description: Allows the item yellow_flower
+    bonf.dead_bush:
+        default: op
+        description: Allows the item dead_bush
+    bonf.red_mushroom:
+        default: op
+        description: Allows the item red_mushroom
+    bonf.brown_mushroom:
+        default: op
+        description: Allows the item brown_mushroom
+    bonf.sapling:
+        default: op
+        description: Allows the item sapling
+    bonf.cactus:
+        default: op
+        description: Allows the item cactus
+    bonf.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
