@@ -64,6 +64,7 @@ public class bogPlugin extends JavaPlugin {
 		config = this.getConfig();
 		config.addDefault("botanical", false);
 		config.addDefault("fencefix", true);
+		config.addDefault("permissions", true);
 		config.options().copyDefaults(true);
 		saveConfig();
 		
@@ -87,7 +88,7 @@ public class bogPlugin extends JavaPlugin {
 			Field field = Material.SHATTERABLE.getClass().getDeclaredField("G");
 			field.setAccessible(true);
 			field.setBoolean(Material.SHATTERABLE, false);
-			System.out.println("Glass field:" +field);
+			//System.out.println("Glass field:" +field);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -103,7 +104,7 @@ public class bogPlugin extends JavaPlugin {
 			Field field = Material.ICE.getClass().getDeclaredField("G");
 			field.setAccessible(true);
 			field.setBoolean(Material.ICE, true);
-			System.out.println(field);
+			//System.out.println(field);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
