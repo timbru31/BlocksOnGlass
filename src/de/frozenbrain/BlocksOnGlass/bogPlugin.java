@@ -16,6 +16,7 @@ import org.bukkit.configuration.file.*;
 
 import de.frozenbrain.BlocksOnGlass.blocks.bogBlockFence;
 import de.frozenbrain.BlocksOnGlass.blocks.bogBlockGlass;
+import de.frozenbrain.BlocksOnGlass.blocks.bogBlockGlowstone;
 import de.frozenbrain.BlocksOnGlass.blocks.bogBlockIce;
 import de.frozenbrain.BlocksOnGlass.blocks.bogBlockLeaves;
 import de.frozenbrain.BlocksOnGlass.listeners.bogBlockListener;
@@ -129,6 +130,12 @@ public class bogPlugin extends JavaPlugin {
 		Block.byId[Block.NETHER_FENCE.id] = null;
 		Block.byId[Block.NETHER_FENCE.id] = new bogBlockFence(Block.NETHER_FENCE.id, 4).setHardness(0.3F).setResistance(5F).setSound(Block.e).a("netherFence");
 		Block.q[Block.NETHER_FENCE.id] = 0;
+		
+		// Glowstone
+		// New class! (LightStone = Glowstone)
+		
+		Block.byId[Block.GLOWSTONE.id] = null;
+		Block.byId[Block.GLOWSTONE.id] = new bogBlockGlowstone(Block.GLOWSTONE.id, 89, Material.EARTH).setHardness(0.3F).a("glowstone");
 	}
 	
 	private void restoreBlocks() {

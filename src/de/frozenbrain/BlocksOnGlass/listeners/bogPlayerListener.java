@@ -72,7 +72,7 @@ public class bogPlayerListener extends PlayerListener {
 				}
 			}
 			// I added glowstone, too! Because Notch changed it back to glass (before it was like stone...)
-			// New permission is bogl.*  -> Block On Glowstone = bogl
+			// New permission is bogl.*  -> Blocks On Glowstone = bogl
 			else if(blockMaterial == Material.GLOWSTONE) {
 				if (bogPlugin.config.getBoolean("permissions") == true) {
 					if(plugin.blocks.contains(itemMaterial)) {

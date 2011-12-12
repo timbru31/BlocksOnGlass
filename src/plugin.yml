@@ -477,3 +477,98 @@ permissions:
     bonf.sugar_cane:
         default: op
         description: Allows the item sugar_cane
+    bogl.*:
+        children:
+            bogl.powered_rail: true
+            bogl.detector_rail: true
+            bogl.torch: true
+            bogl.ladder: true
+            bogl.rails: true
+            bogl.lever: true
+            bogl.stone_plate: true
+            bogl.wood_plate: true
+            bogl.redstone_torch_on: true
+            bogl.stone_button: true
+            bogl.wood_door: true
+            bogl.iron_door: true
+            bogl.redstone: true
+            bogl.bed: true
+            bogl.diode: true
+            bogl.red_rose: true
+            bogl.yellow_flower: true
+            bogl.dead_bush: true
+            bogl.red_mushroom: true
+            bogl.brown_mushroom: true
+            bogl.sapling: true
+            bogl.cactus: true
+            bogl.sugar_cane: true
+        description: Allows all bogl permissions
+    bogl.powered_rail:
+        default: op
+        description: Allows the item powered_rail
+    bogl.detector_rail:
+        default: op
+        description: Allows the item detector_rail
+    bogl.torch:
+        default: op
+        description: Allows the item torch
+    bogl.ladder:
+        default: op
+        description: Allows the item ladder
+    bogl.rails:
+        default: op
+        description: Allows the item rails
+    bogl.lever:
+        default: op
+        description: Allows the item lever
+    bogl.stone_plate:
+        default: op
+        description: Allows the item stone_plate
+    bogl.wood_plate:
+        default: op
+        description: Allows the item wood_plate
+    bogl.redstone_torch_on:
+        default: op
+        description: Allows the item redstone_torch_on
+    bogl.stone_button:
+        default: op
+        description: Allows the item stone_button
+    bogl.wood_door:
+        default: op
+        description: Allows the item wood_door
+    bogl.iron_door:
+        default: op
+        description: Allows the item iron_door
+    bogl.redstone:
+        default: op
+        description: Allows the item redstone
+    bogl.bed:
+        default: op
+        description: Allows the item bed
+    bogl.diode:
+        default: op
+        description: Allows the item diode
+    bogl.red_rose:
+        default: op
+        description: Allows the item red_rose
+    bogl.yellow_flower:
+        default: op
+        description: Allows the item yellow_flower
+    bogl.dead_bush:
+        default: op
+        description: Allows the item dead_bush
+    bogl.red_mushroom:
+        default: op
+        description: Allows the item red_mushroom
+    bogl.brown_mushroom:
+        default: op
+        description: Allows the item brown_mushroom
+    bogl.sapling:
+        default: op
+        description: Allows the item sapling
+    bogl.cactus:
+        default: op
+        description: Allows the item cactus
+    bogl.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane

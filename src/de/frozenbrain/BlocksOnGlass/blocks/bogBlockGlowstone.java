@@ -1,0 +1,27 @@
+package de.frozenbrain.BlocksOnGlass.blocks;
+
+import net.minecraft.server.BlockLightStone;
+import net.minecraft.server.Material;
+
+public class bogBlockGlowstone extends BlockLightStone{
+
+
+	public bogBlockGlowstone(int i, int j, Material material) {
+		super(j, j, material);
+	}
+
+    public bogBlockGlowstone setHardness(float f) {
+        this.strength = f;
+        if (this.durability < f * 5.0F) {
+            this.durability = f * 5.0F;
+        }
+
+        return this;
+    }
+   
+    
+    public bogBlockGlowstone setResistance(float f) {
+    	this.durability = f * 3.0F;
+        return this;
+    }
+}
