@@ -10,7 +10,6 @@ import de.frozenbrain.BlocksOnGlass.bogPlugin;
 
 public class bogEntityListener extends EntityListener {
 
-	@SuppressWarnings("unused")
 	private final bogPlugin plugin;
 	public bogEntityListener(final bogPlugin plugin) {
 		this.plugin = plugin;
@@ -29,7 +28,10 @@ public class bogEntityListener extends EntityListener {
 					|| event.getEntity().getLocation().getBlock().getRelative(BlockFace.SELF).getType() == Material.NETHER_FENCE
 					|| event.getEntity().getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.FENCE
 					|| event.getEntity().getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.NETHER_FENCE
-					|| event.getEntity().getLocation().getBlock().getRelative(BlockFace.SELF).getType() == Material.AIR) {
+					|| event.getEntity().getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.AIR
+					|| event.getEntity().getLocation().getBlock().getRelative(BlockFace.SELF).getType() == Material.AIR
+					|| plugin.blocks.contains(event.getEntity().getLocation().getBlock().getRelative(BlockFace.SELF).getType())
+					|| event.getEntity().getLocation().getBlock().getRelative(BlockFace.SELF).getType() == Material.REDSTONE_WIRE) {
 				// cancel it!
 				event.setCancelled(true);
 			}

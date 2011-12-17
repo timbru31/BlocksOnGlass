@@ -19,6 +19,8 @@ import de.frozenbrain.BlocksOnGlass.blocks.bogBlockGlass;
 import de.frozenbrain.BlocksOnGlass.blocks.bogBlockGlowstone;
 import de.frozenbrain.BlocksOnGlass.blocks.bogBlockIce;
 import de.frozenbrain.BlocksOnGlass.blocks.bogBlockLeaves;
+import de.frozenbrain.BlocksOnGlass.blocks.bogBlockStair;
+import de.frozenbrain.BlocksOnGlass.blocks.bogBlockTNT;
 import de.frozenbrain.BlocksOnGlass.listeners.bogBlockListener;
 import de.frozenbrain.BlocksOnGlass.listeners.bogEntityListener;
 import de.frozenbrain.BlocksOnGlass.listeners.bogPlayerListener;
@@ -58,7 +60,7 @@ public class bogPlugin extends JavaPlugin {
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvent(Event.Type.PLAYER_INTERACT, playerListener, Priority.Normal, this);
 		pm.registerEvent(Event.Type.BLOCK_FORM, blockListener, Priority.Normal, this);
-		// Added new event for cancelling the damage under fences...
+		// Added new event for canceling the damage under fences...
 		pm.registerEvent(Event.Type.ENTITY_DAMAGE, entityListener, Event.Priority.Normal, this);
         
 		// Config (updated to new API!)
@@ -84,7 +86,7 @@ public class bogPlugin extends JavaPlugin {
 	
 	private void modifyBlocks() {
 		Block.byId[Block.GLASS.id] = null;
-		Block.byId[Block.GLASS.id] = new bogBlockGlass(Block.GLASS.id, 49, Material.EARTH, true).setHardness(0.3F).setSound(Block.j).a("glass");
+		Block.byId[Block.GLASS.id] = new bogBlockGlass(Block.GLASS.id, 49, Material.EARTH, true).setHardness(0.3F).a("glass");
 		try {
 			Field field = Material.SHATTERABLE.getClass().getDeclaredField("G");
 			field.setAccessible(true);
@@ -96,23 +98,23 @@ public class bogPlugin extends JavaPlugin {
 		Block.q[Block.GLASS.id] = 0;
 		
 		Block.byId[Block.FENCE.id] = null;
-		Block.byId[Block.FENCE.id] = new bogBlockFence(Block.FENCE.id, 4).setHardness(0.3F).setResistance(5F).setSound(Block.e).a("fence");
+		Block.byId[Block.FENCE.id] = new bogBlockFence(Block.FENCE.id, 4).setHardness(0.3F).setResistance(5F).a("fence");
 		Block.q[Block.FENCE.id] = 0;
 		
 		Block.byId[Block.ICE.id] = null;
-		Block.byId[Block.ICE.id] = new bogBlockIce(Block.ICE.id, 67).setHardness(0.5F).setSound(Block.j).a("ice");
+		Block.byId[Block.ICE.id] = new bogBlockIce(Block.ICE.id, 67).setHardness(0.5F).a("ice");
 		try {
 			Field field = Material.ICE.getClass().getDeclaredField("G");
+			//System.out.println(field);
 			field.setAccessible(true);
 			field.setBoolean(Material.ICE, true);
-			//System.out.println(field);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		Block.q[Block.ICE.id] = 3;
 		
 		Block.byId[Block.LEAVES.id] = null;
-		Block.byId[Block.LEAVES.id] = new bogBlockLeaves(Block.LEAVES.id, 52).setHardness(0.2F).setSound(Block.g).a("leaves");
+		Block.byId[Block.LEAVES.id] = new bogBlockLeaves(Block.LEAVES.id, 52).setHardness(0.2F).a("leaves");
 		try {
 			Field field = Material.LEAVES.getClass().getDeclaredField("G");
 			field.setAccessible(true);
@@ -128,7 +130,7 @@ public class bogPlugin extends JavaPlugin {
 		// Because it's the same class (both are extending BlockFence) I use the old fence class, too!
 		
 		Block.byId[Block.NETHER_FENCE.id] = null;
-		Block.byId[Block.NETHER_FENCE.id] = new bogBlockFence(Block.NETHER_FENCE.id, 4).setHardness(0.3F).setResistance(5F).setSound(Block.e).a("netherFence");
+		Block.byId[Block.NETHER_FENCE.id] = new bogBlockFence(Block.NETHER_FENCE.id, 4).setHardness(0.3F).setResistance(5F).a("netherFence");
 		Block.q[Block.NETHER_FENCE.id] = 0;
 		
 		// Glowstone
@@ -136,6 +138,12 @@ public class bogPlugin extends JavaPlugin {
 		
 		Block.byId[Block.GLOWSTONE.id] = null;
 		Block.byId[Block.GLOWSTONE.id] = new bogBlockGlowstone(Block.GLOWSTONE.id, 89, Material.EARTH).setHardness(0.3F).a("glowstone");
+		
+		Block.byId[Block.BRICK_STAIRS.id] = null;
+		Block.byId[Block.BRICK_STAIRS.id] = new bogBlockStair(Block.BRICK_STAIRS.id, Block.BRICK_STAIRS).setHardness(0.3F);
+		
+		Block.byId[Block.TNT.id] = null;
+		Block.byId[Block.TNT.id] = new bogBlockTNT(Block.TNT.id, 46).setHardness(0.0F);
 	}
 	
 	private void restoreBlocks() {
