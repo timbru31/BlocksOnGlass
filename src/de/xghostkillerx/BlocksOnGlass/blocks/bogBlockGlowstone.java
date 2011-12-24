@@ -1,7 +1,9 @@
 package de.xghostkillerx.BlocksOnGlass.blocks;
 
+import net.minecraft.server.Block;
 import net.minecraft.server.BlockLightStone;
 import net.minecraft.server.Material;
+import net.minecraft.server.StepSound;
 
 public class bogBlockGlowstone extends BlockLightStone {
 
@@ -15,4 +17,9 @@ public class bogBlockGlowstone extends BlockLightStone {
 		}
 		return this;
 	}
+	
+    public Block setSound(StepSound stepsound) {
+        this.stepSound = stepsound;
+        return this;
+    }
 }

@@ -1,5 +1,9 @@
 name: BlocksOnGlass
 main: de.xghostkillerx.BlocksOnGlass.bogPlugin
+author: xGhOsTkiLLeRx
+authors: [FrozenBrain]
+website: http://bit.ly/bogbukkitdev
+website: http://bit.ly/bogbukkit
 version: 0.50
 permissions:
     bog.*:

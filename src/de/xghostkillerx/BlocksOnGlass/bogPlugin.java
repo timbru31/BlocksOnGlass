@@ -8,49 +8,40 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-
 import net.minecraft.server.Block;
 import net.minecraft.server.Material;
-
 import org.bukkit.event.Event;
 import org.bukkit.event.Event.Priority;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.configuration.file.*;
-
 import de.xghostkillerx.BlocksOnGlass.blocks.bogBlockFence;
 import de.xghostkillerx.BlocksOnGlass.blocks.bogBlockGlass;
 import de.xghostkillerx.BlocksOnGlass.blocks.bogBlockGlowstone;
 import de.xghostkillerx.BlocksOnGlass.blocks.bogBlockIce;
 import de.xghostkillerx.BlocksOnGlass.blocks.bogBlockLeaves;
-import de.xghostkillerx.BlocksOnGlass.blocks.bogBlockStair;
+//import de.xghostkillerx.BlocksOnGlass.blocks.bogBlockStair;
 import de.xghostkillerx.BlocksOnGlass.blocks.bogBlockTNT;
 import de.xghostkillerx.BlocksOnGlass.listeners.bogBlockListener;
 import de.xghostkillerx.BlocksOnGlass.listeners.bogEntityListener;
 import de.xghostkillerx.BlocksOnGlass.listeners.bogPlayerListener;
+// Stats
+import com.randomappdev.pluginstats.Ping;
 
 /**
+ * BlocksOnGlass for CraftBukkit/Bukkit
+ * Handles some general stuff.
+ * Restores and modifies the blocks
  * 
- * Hi,
- * I made some changes! I hope it's okay, I'll make a pull request so you can easily add them!
- * 
- * First:
- * I removed the old Permision 3.XX stuff (Or was it even 2.XX?)
- * Because nobody uses this anymore. (bPermisions and PermissionsEX are the future)
- * 
- * I added some new items (flowers etc.)
- * 
- * I updated the config to the new API
- * 
- * I added support for Nether fences! (Permission: bonf.* -> Block On Nether Fences!)
- * I added support for glowstone, too! (Because it's again like glass....) (Permission: bogl.* -> Block On Glowstone!)
- * 
- * Fixed some bugs ;)
- * 
- * Small things like,
- * Version info at onDisable
+ * Refer to the forum thread:
+ * http://bit.ly/bogbukkit
+ * Refer to the dev.bukkit.org page:
+ * http://bit.ly/bogbukkitdev
  *
+ * @author xGhOsTkiLLeRx
+ * @thanks to FrozenBrain for the original ColorMe plugin!!
+ * 
  */
 
 public class bogPlugin extends JavaPlugin {
@@ -61,12 +52,20 @@ public class bogPlugin extends JavaPlugin {
 	public List<org.bukkit.Material> blocks = new ArrayList<org.bukkit.Material>();
 	public static FileConfiguration config;
 	public File configFile;
+	
+	// Shutdown
+	public void onDisable() {
+		restoreBlocks();
+		PluginDescriptionFile pdfFile = this.getDescription();
+		log.info(pdfFile.getName() + " " + pdfFile.getVersion() + " is disabled!");
+	}
 
+	// Start
 	public void onEnable() {
+		// Events
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvent(Event.Type.PLAYER_INTERACT, playerListener, Priority.Normal, this);
 		pm.registerEvent(Event.Type.BLOCK_FORM, blockListener, Priority.Normal, this);
-		// Added new event for canceling the damage under fences...
 		pm.registerEvent(Event.Type.ENTITY_DAMAGE, entityListener, Event.Priority.Normal, this);
 
 		// Config (updated to new API!)
@@ -79,24 +78,23 @@ public class bogPlugin extends JavaPlugin {
 		config = this.getConfig();
 		loadConfig();
 
+		// Blocks modification
 		modifyBlocks();
 		setupBlockLists();
 
+		// Message
 		PluginDescriptionFile pdfFile = this.getDescription();
-		log.info(pdfFile.getName() + " version " + pdfFile.getVersion() + " is enabled!");
-	}
-
-	public void onDisable() {
-		restoreBlocks();
-		PluginDescriptionFile pdfFile = this.getDescription();
-		log.info(pdfFile.getName() + " version " + pdfFile.getVersion() + " is disabled!");
+		log.info(pdfFile.getName() + " " + pdfFile.getVersion() + " is enabled!");
+		
+		// Stats
+		Ping.init(this);
 	}
 
 	private void modifyBlocks() {
 		// Glass
 		if (config.getBoolean("blocks.glass") == true) {
 			Block.byId[Block.GLASS.id] = null;
-			Block.byId[Block.GLASS.id] = new bogBlockGlass(Block.GLASS.id, 49, Material.SHATTERABLE, true).setHardness(0.3F).a("glass");
+			Block.byId[Block.GLASS.id] = new bogBlockGlass(Block.GLASS.id, 49, Material.SHATTERABLE, true).setHardness(0.3F).setSound(Block.j).a("glass");
 			try {
 				Field field = Material.SHATTERABLE.getClass().getDeclaredField("H");
 				field.setAccessible(true);
@@ -110,12 +108,12 @@ public class bogPlugin extends JavaPlugin {
 		// Fences
 		if (config.getBoolean("blocks.fence") == true) {
 			Block.byId[Block.FENCE.id] = null;
-			Block.byId[Block.FENCE.id] = new bogBlockFence(Block.FENCE.id, 4).setHardness(0.3F).setResistance(5F).a("fence");
+			Block.byId[Block.FENCE.id] = new bogBlockFence(Block.FENCE.id, 4).setHardness(0.3F).setResistance(5F).setSound(Block.e).a("fence");
 		}
 		// Ice
 		if (config.getBoolean("blocks.ice") == true) {
 			Block.byId[Block.ICE.id] = null;
-			Block.byId[Block.ICE.id] = new bogBlockIce(Block.ICE.id, 67).setHardness(0.5F).a("ice");
+			Block.byId[Block.ICE.id] = new bogBlockIce(Block.ICE.id, 67).setHardness(0.5F).setSound(Block.j).a("ice");
 			try {
 				Field field = Material.ICE.getClass().getDeclaredField("H");
 				field.setAccessible(true);
@@ -129,7 +127,7 @@ public class bogPlugin extends JavaPlugin {
 		// Leaves
 		if (config.getBoolean("blocks.leaves") == true) {
 			Block.byId[Block.LEAVES.id] = null;
-			Block.byId[Block.LEAVES.id] = new bogBlockLeaves(Block.LEAVES.id, 52).setHardness(0.2F).a("leaves");
+			Block.byId[Block.LEAVES.id] = new bogBlockLeaves(Block.LEAVES.id, 52).setHardness(0.2F).setSound(Block.g).a("leaves");
 			try {
 				Field field = Material.LEAVES.getClass().getDeclaredField("H");
 				field.setAccessible(true);
@@ -141,25 +139,25 @@ public class bogPlugin extends JavaPlugin {
 			}
 		}
 		// NetherFences
-		// Because it's the same class (both are extending BlockFence) I use the old fence class, too!
+		// Iit's the same class like the old fence class
 		if (config.getBoolean("blocks.netherfence") == true) {
 			Block.byId[Block.NETHER_FENCE.id] = null;
-			Block.byId[Block.NETHER_FENCE.id] = new bogBlockFence(Block.NETHER_FENCE.id, 4).setHardness(0.3F).setResistance(5F).a("netherFence");
+			Block.byId[Block.NETHER_FENCE.id] = new bogBlockFence(Block.NETHER_FENCE.id, 4).setHardness(0.3F).setResistance(5F).setSound(Block.h).a("netherFence");
 		}
 		// Glowstone
 		// New class! (LightStone = Glowstone)
 		if (config.getBoolean("blocks.glowstone") == true) {
 			Block.byId[Block.GLOWSTONE.id] = null;
-			Block.byId[Block.GLOWSTONE.id] = new bogBlockGlowstone(Block.GLOWSTONE.id, 89, Material.SHATTERABLE).setHardness(0.3F).a("glowstone");
+			Block.byId[Block.GLOWSTONE.id] = new bogBlockGlowstone(Block.GLOWSTONE.id, 89, Material.SHATTERABLE).setHardness(0.3F).setSound(Block.j).a("lightstone");
 		}
 
-		Block.byId[Block.BRICK_STAIRS.id] = null;
-		Block.byId[Block.BRICK_STAIRS.id] = new bogBlockStair(Block.BRICK_STAIRS.id, Block.BRICK).setHardness(0.3F);
+//		Block.byId[Block.BRICK_STAIRS.id] = null;
+//		Block.byId[Block.BRICK_STAIRS.id] = new bogBlockStair(Block.BRICK_STAIRS.id, Block.BRICK).setHardness(0.3F).a("stairsBrick");
 
 		// TNT
 		if (config.getBoolean("blocks.tnt") == true) {
 			Block.byId[Block.TNT.id] = null;
-			Block.byId[Block.TNT.id] = new bogBlockTNT(Block.TNT.id, 46).setHardness(0.0F);
+			Block.byId[Block.TNT.id] = ((bogBlockTNT) new bogBlockTNT(Block.TNT.id, 46).setHardness(0.0F)).setSound(Block.g).a("tnt");
 			try {
 				Field field = Material.TNT.getClass().getDeclaredField("H");
 				field.setAccessible(true);
@@ -247,6 +245,7 @@ public class bogPlugin extends JavaPlugin {
 	}
 
 	private void loadConfig() {
+		config.options().header("For help and support visit please: http://bit.ly/bogbukkitdev or http://bit.ly/bogbukkit");
 		config.addDefault("tweaks.fencefix", true);
 		config.addDefault("permissions", true);
 		config.addDefault("blocks.glass", true);

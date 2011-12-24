@@ -2,6 +2,7 @@ package de.xghostkillerx.BlocksOnGlass.blocks;
 
 import net.minecraft.server.Block;
 import net.minecraft.server.BlockTNT;
+import net.minecraft.server.StepSound;
 
 public class bogBlockTNT extends BlockTNT{
 
@@ -14,4 +15,8 @@ public class bogBlockTNT extends BlockTNT{
 		return this;
 	}
 
+    public Block setSound(StepSound stepsound) {
+        this.stepSound = stepsound;
+        return this;
+    }
 }
