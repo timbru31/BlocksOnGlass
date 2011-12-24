@@ -1,11 +1,11 @@
-package de.frozenbrain.BlocksOnGlass.listeners;
+package de.xghostkillerx.BlocksOnGlass.listeners;
 
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
 import org.bukkit.event.block.BlockFormEvent;
 import org.bukkit.event.block.BlockListener;
 
-import de.frozenbrain.BlocksOnGlass.bogPlugin;
+import de.xghostkillerx.BlocksOnGlass.bogPlugin;
 
 public class bogBlockListener extends BlockListener {
 

@@ -1,6 +1,6 @@
 name: BlocksOnGlass
-main: de.frozenbrain.BlocksOnGlass.bogPlugin
-version: 0.45
+main: de.xghostkillerx.BlocksOnGlass.bogPlugin
+version: 0.50
 permissions:
     bog.*:
         children:
@@ -19,14 +19,8 @@ permissions:
             bog.redstone: true
             bog.bed: true
             bog.diode: true
-            bog.red_rose: true
-            bog.yellow_flower: true
-            bog.dead_bush: true
             bog.red_mushroom: true
             bog.brown_mushroom: true
-            bog.sapling: true
-            bog.cactus: true
-            bog.sugar_cane: true
         description: Allows all bog permissions
     bog.powered_rail:
         default: op
@@ -73,30 +67,12 @@ permissions:
     bog.diode:
         default: op
         description: Allows the item diode
-    bog.red_rose:
-        default: op
-        description: Allows the item red_rose
-    bog.yellow_flower:
-        default: op
-        description: Allows the item yellow_flower
-    bog.dead_bush:
-        default: op
-        description: Allows the item dead_bush
     bog.red_mushroom:
         default: op
         description: Allows the item red_mushroom
     bog.brown_mushroom:
         default: op
         description: Allows the item brown_mushroom
-    bog.sapling:
-        default: op
-        description: Allows the item sapling
-    bog.cactus:
-        default: op
-        description: Allows the item cactus
-    bog.sugar_cane:
-        default: op
-        description: Allows the item sugar_cane
     boi.*:
         children:
             boi.powered_rail: true
@@ -114,14 +90,8 @@ permissions:
             boi.redstone: true
             boi.bed: true
             boi.diode: true
-            boi.red_rose: true
-            boi.yellow_flower: true
-            boi.dead_bush: true
             boi.red_mushroom: true
             boi.brown_mushroom: true
-            boi.sapling: true
-            boi.cactus: true
-            boi.sugar_cane: true
         description: Allows all boi permissions
     boi.powered_rail:
         default: op
@@ -168,30 +138,12 @@ permissions:
     boi.diode:
         default: op
         description: Allows the item diode
-    boi.red_rose:
-        default: op
-        description: Allows the item red_rose
-    boi.yellow_flower:
-        default: op
-        description: Allows the item yellow_flower
-    boi.dead_bush:
-        default: op
-        description: Allows the item dead_bush
     boi.red_mushroom:
         default: op
         description: Allows the item red_mushroom
     boi.brown_mushroom:
         default: op
         description: Allows the item brown_mushroom
-    boi.sapling:
-        default: op
-        description: Allows the item sapling
-    boi.cactus:
-        default: op
-        description: Allows the item cactus
-    boi.sugar_cane:
-        default: op
-        description: Allows the item sugar_cane
     bof.*:
         children:
             bof.powered_rail: true
@@ -209,14 +161,8 @@ permissions:
             bof.redstone: true
             bof.bed: true
             bof.diode: true
-            bof.red_rose: true
-            bof.yellow_flower: true
-            bof.dead_bush: true
             bof.red_mushroom: true
             bof.brown_mushroom: true
-            bof.sapling: true
-            bof.cactus: true
-            bof.sugar_cane: true
         description: Allows all bof permissions
     bof.powered_rail:
         default: op
@@ -263,30 +209,12 @@ permissions:
     bof.diode:
         default: op
         description: Allows the item diode
-    bof.red_rose:
-        default: op
-        description: Allows the item red_rose
-    bof.yellow_flower:
-        default: op
-        description: Allows the item yellow_flower
-    bof.dead_bush:
-        default: op
-        description: Allows the item dead_bush
     bof.red_mushroom:
         default: op
         description: Allows the item red_mushroom
     bof.brown_mushroom:
         default: op
         description: Allows the item brown_mushroom
-    bof.sapling:
-        default: op
-        description: Allows the item sapling
-    bof.cactus:
-        default: op
-        description: Allows the item cactus
-    bof.sugar_cane:
-        default: op
-        description: Allows the item sugar_cane
     bol.*:
         children:
             bol.powered_rail: true
@@ -304,14 +232,8 @@ permissions:
             bol.redstone: true
             bol.bed: true
             bol.diode: true
-            bol.red_rose: true
-            bol.yellow_flower: true
-            bol.dead_bush: true
             bol.red_mushroom: true
             bol.brown_mushroom: true
-            bol.sapling: true
-            bol.cactus: true
-            bol.sugar_cane: true
         description: Allows all bol permissions
     bol.powered_rail:
         default: op
@@ -358,30 +280,12 @@ permissions:
     bol.diode:
         default: op
         description: Allows the item diode
-    bol.red_rose:
-        default: op
-        description: Allows the item red_rose
-    bol.yellow_flower:
-        default: op
-        description: Allows the item yellow_flower
-    bol.dead_bush:
-        default: op
-        description: Allows the item dead_bush
     bol.red_mushroom:
         default: op
         description: Allows the item red_mushroom
     bol.brown_mushroom:
         default: op
         description: Allows the item brown_mushroom
-    bol.sapling:
-        default: op
-        description: Allows the item sapling
-    bol.cactus:
-        default: op
-        description: Allows the item cactus
-    bol.sugar_cane:
-        default: op
-        description: Allows the item sugar_cane
     bonf.*:
         children:
             bonf.powered_rail: true
@@ -399,14 +303,8 @@ permissions:
             bonf.redstone: true
             bonf.bed: true
             bonf.diode: true
-            bonf.red_rose: true
-            bonf.yellow_flower: true
-            bonf.dead_bush: true
             bonf.red_mushroom: true
             bonf.brown_mushroom: true
-            bonf.sapling: true
-            bonf.cactus: true
-            bonf.sugar_cane: true
         description: Allows all bonf permissions
     bonf.powered_rail:
         default: op
@@ -453,30 +351,12 @@ permissions:
     bonf.diode:
         default: op
         description: Allows the item diode
-    bonf.red_rose:
-        default: op
-        description: Allows the item red_rose
-    bonf.yellow_flower:
-        default: op
-        description: Allows the item yellow_flower
-    bonf.dead_bush:
-        default: op
-        description: Allows the item dead_bush
     bonf.red_mushroom:
         default: op
         description: Allows the item red_mushroom
     bonf.brown_mushroom:
         default: op
         description: Allows the item brown_mushroom
-    bonf.sapling:
-        default: op
-        description: Allows the item sapling
-    bonf.cactus:
-        default: op
-        description: Allows the item cactus
-    bonf.sugar_cane:
-        default: op
-        description: Allows the item sugar_cane
     bogl.*:
         children:
             bogl.powered_rail: true
@@ -494,14 +374,8 @@ permissions:
             bogl.redstone: true
             bogl.bed: true
             bogl.diode: true
-            bogl.red_rose: true
-            bogl.yellow_flower: true
-            bogl.dead_bush: true
             bogl.red_mushroom: true
             bogl.brown_mushroom: true
-            bogl.sapling: true
-            bogl.cactus: true
-            bogl.sugar_cane: true
         description: Allows all bogl permissions
     bogl.powered_rail:
         default: op
@@ -548,27 +422,80 @@ permissions:
     bogl.diode:
         default: op
         description: Allows the item diode
-    bogl.red_rose:
-        default: op
-        description: Allows the item red_rose
-    bogl.yellow_flower:
-        default: op
-        description: Allows the item yellow_flower
-    bogl.dead_bush:
-        default: op
-        description: Allows the item dead_bush
     bogl.red_mushroom:
         default: op
         description: Allows the item red_mushroom
     bogl.brown_mushroom:
         default: op
         description: Allows the item brown_mushroom
-    bogl.sapling:
+    bot.*:
+        children:
+            bot.powered_rail: true
+            bot.detector_rail: true
+            bot.torch: true
+            bot.ladder: true
+            bot.rails: true
+            bot.lever: true
+            bot.stone_plate: true
+            bot.wood_plate: true
+            bot.redstone_torch_on: true
+            bot.stone_button: true
+            bot.wood_door: true
+            bot.iron_door: true
+            bot.redstone: true
+            bot.bed: true
+            bot.diode: true
+            bot.red_mushroom: true
+            bot.brown_mushroom: true
+        description: Allows all bot permissions
+    bot.powered_rail:
         default: op
-        description: Allows the item sapling
-    bogl.cactus:
+        description: Allows the item powered_rail
+    bot.detector_rail:
         default: op
-        description: Allows the item cactus
-    bogl.sugar_cane:
+        description: Allows the item detector_rail
+    bot.torch:
         default: op
-        description: Allows the item sugar_cane
+        description: Allows the item torch
+    bot.ladder:
+        default: op
+        description: Allows the item ladder
+    bot.rails:
+        default: op
+        description: Allows the item rails
+    bot.lever:
+        default: op
+        description: Allows the item lever
+    bot.stone_plate:
+        default: op
+        description: Allows the item stone_plate
+    bot.wood_plate:
+        default: op
+        description: Allows the item wood_plate
+    bot.redstone_torch_on:
+        default: op
+        description: Allows the item redstone_torch_on
+    bot.stone_button:
+        default: op
+        description: Allows the item stone_button
+    bot.wood_door:
+        default: op
+        description: Allows the item wood_door
+    bot.iron_door:
+        default: op
+        description: Allows the item iron_door
+    bot.redstone:
+        default: op
+        description: Allows the item redstone
+    bot.bed:
+        default: op
+        description: Allows the item bed
+    bot.diode:
+        default: op
+        description: Allows the item diode
+    bot.red_mushroom:
+        default: op
+        description: Allows the item red_mushroom
+    bot.brown_mushroom:
+        default: op
+        description: Allows the item brown_mushroom

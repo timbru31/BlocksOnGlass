@@ -1,4 +1,4 @@
-package de.frozenbrain.BlocksOnGlass.listeners;
+package de.xghostkillerx.BlocksOnGlass.listeners;
 
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
@@ -6,10 +6,11 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityListener;
 
-import de.frozenbrain.BlocksOnGlass.bogPlugin;
+import de.xghostkillerx.BlocksOnGlass.bogPlugin;
 
 public class bogEntityListener extends EntityListener {
 
+	@SuppressWarnings("unused")
 	private final bogPlugin plugin;
 	public bogEntityListener(final bogPlugin plugin) {
 		this.plugin = plugin;
@@ -30,8 +31,8 @@ public class bogEntityListener extends EntityListener {
 					|| event.getEntity().getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.NETHER_FENCE
 					|| event.getEntity().getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.AIR
 					|| event.getEntity().getLocation().getBlock().getRelative(BlockFace.SELF).getType() == Material.AIR
-					|| plugin.blocks.contains(event.getEntity().getLocation().getBlock().getRelative(BlockFace.SELF).getType())
-					|| event.getEntity().getLocation().getBlock().getRelative(BlockFace.SELF).getType() == Material.REDSTONE_WIRE) {
+					|| event.getEntity().getLocation().getBlock().getRelative(BlockFace.SELF).getType() != Material.NETHER_FENCE
+					|| event.getEntity().getLocation().getBlock().getRelative(BlockFace.SELF).getType() != Material.FENCE) {
 				// cancel it!
 				event.setCancelled(true);
 			}

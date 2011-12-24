@@ -1,0 +1,11 @@
+tweaks:
+  fencefix: true
+permissions: true
+blocks:
+  glass: true
+  ice: true
+  leaves: true
+  fence: true
+  netherfence: true
+  glowstone: true
+  tnt: false

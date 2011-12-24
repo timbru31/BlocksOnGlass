@@ -1,4 +1,4 @@
-package de.frozenbrain.BlocksOnGlass.blocks;
+package de.xghostkillerx.BlocksOnGlass.blocks;
 
 import net.minecraft.server.BlockLightStone;
 import net.minecraft.server.Material;

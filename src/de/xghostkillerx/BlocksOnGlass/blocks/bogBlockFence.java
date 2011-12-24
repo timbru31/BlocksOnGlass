@@ -1,4 +1,4 @@
-package de.frozenbrain.BlocksOnGlass.blocks;
+package de.xghostkillerx.BlocksOnGlass.blocks;
 
 import net.minecraft.server.Block;
 import net.minecraft.server.BlockFence;
@@ -11,7 +11,6 @@ public class bogBlockFence extends BlockFence {
         super(i, j);
     }
 
-    @Override
     public boolean a() {
         return true;
     }
@@ -23,7 +22,7 @@ public class bogBlockFence extends BlockFence {
     
     @Override
     public boolean canPlace(World world, int i, int j, int k) {
-     if (de.frozenbrain.BlocksOnGlass.bogPlugin.config.getBoolean("fencefix") == true) {
+     if (de.xghostkillerx.BlocksOnGlass.bogPlugin.config.getBoolean("fencefix") == true) {
      return true;
      }
         return world.getTypeId(i, j - 1, k) == this.id ? true : (!world.getMaterial(i, j - 1, k).isBuildable() ? false : super.canPlace(world, i, j, k));
