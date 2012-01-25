@@ -11,8 +11,6 @@ This plugin is released under the Creative Commons Attribution-NonCommercial-Sha
 Standard config:
 
 # For help and support visit please: http://bit.ly/bogbukkitdev or http://bit.ly/bogbukkit
-tweaks:
-  fencefix: true
 permissions: true
 blocks:
   glass: true

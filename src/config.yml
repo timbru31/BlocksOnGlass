@@ -1,7 +1,6 @@
 # For help and support visit please: http://bit.ly/bogbukkitdev or http://bit.ly/bogbukkit
-tweaks:
-  fencefix: true
 permissions: true
+botanical: true
 blocks:
   glass: true
   ice: true
@@ -10,3 +9,13 @@ blocks:
   netherfence: true
   glowstone: true
   tnt: false
+  stairs:
+    wood: true
+    stone: true
+    cobblestone: true
+    brick: true
+    netherbrick: true
+  cactus: false
+  steps: true
+  ironfence: true
+  thinglass: true

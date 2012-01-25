@@ -1,27 +1,20 @@
-package de.xghostkillerx.BlocksOnGlass.blocks;
+package de.xghostkillerx.blocksonglass.blocks;
 
 import net.minecraft.server.Block;
-import net.minecraft.server.BlockLeaves;
+import net.minecraft.server.BlockIce;
 import net.minecraft.server.StepSound;
 
-public class bogBlockLeaves extends BlockLeaves {
-	
-	public bogBlockLeaves(int i, int j) {
+public class CustomIce extends BlockIce {
+
+	public CustomIce(int i, int j) {
         super(i, j);
-        this.b = true; // n()
     }
-	
-	@Override
-	public boolean a() {
-		return true;
-	}
-	
-	public bogBlockLeaves setHardness(float f) {
+    
+    public CustomIce setHardness(float f) {
         this.strength = f;
         if (this.durability < f * 5.0F) {
             this.durability = f * 5.0F;
         }
-
         return this;
     }
     
@@ -29,4 +22,5 @@ public class bogBlockLeaves extends BlockLeaves {
         this.stepSound = stepsound;
         return this;
     }
+
 }

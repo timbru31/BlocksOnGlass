@@ -1,22 +1,21 @@
-package de.xghostkillerx.BlocksOnGlass.listeners;
+package de.xghostkillerx.blocksonglass;
 
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
-import org.bukkit.event.entity.EntityListener;
 
-import de.xghostkillerx.BlocksOnGlass.bogPlugin;
+public class BlocksOnGlassEntityListener implements Listener {
 
-public class bogEntityListener extends EntityListener {
-
-	@SuppressWarnings("unused")
-	private final bogPlugin plugin;
-	public bogEntityListener(final bogPlugin plugin) {
-		this.plugin = plugin;
+	public BlocksOnGlass plugin;
+	public BlocksOnGlassEntityListener(BlocksOnGlass instance) {
+		plugin = instance;
 	}
 
 	// Damage event
+	@EventHandler
 	public void onEntityDamage(EntityDamageEvent event) {
 		// Only if the player gets damage
 		event.getEntity();
