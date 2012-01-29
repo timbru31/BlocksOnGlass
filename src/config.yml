@@ -19,3 +19,5 @@ blocks:
   steps: true
   ironfence: true
   thinglass: true
+tweaks:
+  noMelt: true

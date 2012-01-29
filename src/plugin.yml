@@ -4,7 +4,7 @@ author: xGhOsTkiLLeRx
 authors: [FrozenBrain]
 website: http://bit.ly/bogbukkitdev
 website: http://bit.ly/bogbukkit
-version: 0.6 dev 4
+version: 0.6
 permissions:
     boa:
         children:

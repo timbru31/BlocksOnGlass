@@ -2,6 +2,7 @@ package de.xghostkillerx.blocksonglass;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
@@ -39,8 +40,8 @@ import de.xghostkillerx.blocksonglass.blocks.CustomThinFence;
  * http://bit.ly/bogbukkitdev
  *
  * @author xGhOsTkiLLeRx
- * @thanks to FrozenBrain for the original ColorMe plugin!!
- * TODO add moo
+ * @thanks to FrozenBrain for the original BlocksOnGlass plugin!
+ * @thanks to mooman219 for help with bug fixing and NMS code!
  * 
  */
 
@@ -50,14 +51,13 @@ import de.xghostkillerx.blocksonglass.blocks.CustomThinFence;
  * Stuck when trying to go from Ice/Leaves/etc. to fences
  * No way to go through gap with fence/netherfence
  * spawning mobs on glass?
- * flowers on water other blocks spawning
- * remove torch fence?!
  * redstone texture is missing (looking up under glass)
  * disable/enable redstone (onBlockPowered!?)
+ * Topics: add new blocks!
  */
 
 public class BlocksOnGlass extends JavaPlugin {
-	public static final Logger log = Logger.getLogger("Minecraft");
+	public final Logger log = Logger.getLogger("Minecraft");
 	private final BlocksOnGlassPlayerListener playerListener = new BlocksOnGlassPlayerListener(this);
 	private final BlocksOnGlassBlockListener blockListener = new BlocksOnGlassBlockListener(this);
 	private final BlocksOnGlassEntityListener entityListener = new BlocksOnGlassEntityListener(this);
@@ -97,12 +97,12 @@ public class BlocksOnGlass extends JavaPlugin {
 		PluginDescriptionFile pdfFile = this.getDescription();
 		log.info(pdfFile.getName() + " " + pdfFile.getVersion() + " is enabled!");
 
-//		// Stats
-//		try {
-//			Metrics metrics = new Metrics();
-//			metrics.beginMeasuringPlugin(this);
-//		}
-//		catch (IOException e) {}
+		// Stats
+		try {
+			Metrics metrics = new Metrics();
+			metrics.beginMeasuringPlugin(this);
+		}
+		catch (IOException e) {}
 	}
 
 	private void modifyBlocks() {
@@ -149,7 +149,7 @@ public class BlocksOnGlass extends JavaPlugin {
 
 		// Leaves
 		if (config.getBoolean("blocks.leaves") == true) {
-			//BlockLeaves LEAVES = (BlockLeaves) (new BlockLeaves(18, 52)).c(0.2F).g(1).a(g).a("leaves").i();
+			// BlockLeaves LEAVES = (BlockLeaves) (new BlockLeaves(18, 52)).c(0.2F).g(1).a(g).a("leaves").i();
 			Block.byId[Block.LEAVES.id] = null;
 			Block.byId[Block.LEAVES.id] = new CustomLeaves(Block.LEAVES.id, 52).setHardness(0.2F).setSound(Block.g).a("leaves");
 			try {
@@ -174,7 +174,7 @@ public class BlocksOnGlass extends JavaPlugin {
 
 		// Glowstone
 		if (config.getBoolean("blocks.glowstone") == true) {
-			//Block GLOWSTONE = (new BlockLightStone(89, 105, Material.SHATTERABLE)).c(0.3F).a(j).a(1.0F).a("lightgem");
+			// Block GLOWSTONE = (new BlockLightStone(89, 105, Material.SHATTERABLE)).c(0.3F).a(j).a(1.0F).a("lightgem");
 			Block.byId[Block.GLOWSTONE.id] = null;
 			Block.byId[Block.GLOWSTONE.id] = new CustomGlowstone(Block.GLOWSTONE.id, 105, Material.SHATTERABLE).setHardness(0.3F).setLightValue(1.0F).setSound(Block.j).a("lightgem");
 			try {
@@ -188,31 +188,31 @@ public class BlocksOnGlass extends JavaPlugin {
 		}
 
 		// Different STAIRS (All extending BlockStairs)
-		if (config.getBoolean("blocks.stairs.brick") == true) { 
+		if (config.getBoolean("blocks.stairs.brick") == true) {
 			// Block BRICK_STAIRS = (new BlockStairs(108, BRICK)).a("stairsBrick").i();
 			Block.byId[Block.BRICK_STAIRS.id] = null;
 			Block.byId[Block.BRICK_STAIRS.id] = new CustomStairs(Block.BRICK_STAIRS.id, Block.BRICK).a("stairsBrick");
 			Block.t[Block.BRICK_STAIRS.id] = true;
 		}
-		if (config.getBoolean("blocks.stairs.wood") == true) { 
+		if (config.getBoolean("blocks.stairs.wood") == true) {
 			// Block WOOD_STAIRS = (new BlockStairs(53, WOOD)).a("stairsWood").i();
 			Block.byId[Block.WOOD_STAIRS.id] = null;
 			Block.byId[Block.WOOD_STAIRS.id] = new CustomStairs(Block.WOOD_STAIRS.id, Block.WOOD).a("stairsWood");
 			Block.t[Block.WOOD_STAIRS.id] = true;
 		}
-		if (config.getBoolean("blocks.stairs.cobblestone") == true) { 
+		if (config.getBoolean("blocks.stairs.cobblestone") == true) {
 			// Block COBBLESTONE_STAIRS = (new BlockStairs(67, COBBLESTONE)).a("stairsStone").i();
 			Block.byId[Block.COBBLESTONE_STAIRS.id] = null;
 			Block.byId[Block.COBBLESTONE_STAIRS.id] = new CustomStairs(Block.COBBLESTONE_STAIRS.id, Block.COBBLESTONE).a("stairsStone");
 			Block.t[Block.COBBLESTONE_STAIRS.id] = true;
 		}
-		if (config.getBoolean("blocks.stairs.stone") == true) { 
+		if (config.getBoolean("blocks.stairs.stone") == true) {
 			// Block STONE_STAIRS = (new BlockStairs(109, SMOOTH_BRICK)).a("stairsStoneBrickSmooth").i();
 			Block.byId[Block.STONE_STAIRS.id] = null;
 			Block.byId[Block.STONE_STAIRS.id] = new CustomStairs(Block.STONE_STAIRS.id, Block.SMOOTH_BRICK).a("stairsStoneBrickSmooth");
 			Block.t[Block.STONE_STAIRS.id] = true;
 		}
-		if (config.getBoolean("blocks.stairs.netherbrick") == true) { 
+		if (config.getBoolean("blocks.stairs.netherbrick") == true) {
 			// Block NETHER_BRICK_STAIRS = (new BlockStairs(114, NETHER_BRICK)).a("stairsNetherBrick").i();
 			Block.byId[Block.NETHER_BRICK_STAIRS.id] = null;
 			Block.byId[Block.NETHER_BRICK_STAIRS.id] = new CustomStairs(Block.NETHER_BRICK_STAIRS.id, Block.NETHER_BRICK).a("stairsNetherBrick");
@@ -277,7 +277,7 @@ public class BlocksOnGlass extends JavaPlugin {
 			Block.byId[Block.YELLOW_FLOWER.id] = null;
 			Block.byId[Block.YELLOW_FLOWER.id] = new CustomFlowers(Block.YELLOW_FLOWER.id, 13).setHardness(0.0F).setSound(Block.g).a("flower");
 
-			//BlockFlower RED_ROSE = (BlockFlower) (new BlockFlower(38, 12)).c(0.0F).a(g).a("rose");
+			// BlockFlower RED_ROSE = (BlockFlower) (new BlockFlower(38, 12)).c(0.0F).a(g).a("rose");
 			Block.byId[Block.RED_ROSE.id] = null;
 			Block.byId[Block.RED_ROSE.id] = new CustomFlowers(Block.RED_ROSE.id, 12).setHardness(0.0F).setSound(Block.g).a("rose");
 		}

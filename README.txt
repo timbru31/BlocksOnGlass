@@ -2,9 +2,10 @@ This is the README of BlocksOnGlass!
 For support visit the old forum thread: http://bit.ly/bogbukkit
 or the new dev.bukkit.org page: http://bit.ly/bogbukkitdev
 Thanks to FrozenBrain for the original plugin!
+Thanks to mooman219 for help with bug fixing and NMS code!
 Thanks for using!
 
-This plugin sends usage statistics! If you wish to disable the usage stats, look at plugins/PluginStats/config.yml!
+This plugin sends usage statistics! If you wish to disable the usage stats, look at plugins/PluginMetrics/config.yml!
 This plugin is released under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) license.
 
 
@@ -12,6 +13,7 @@ Standard config:
 
 # For help and support visit please: http://bit.ly/bogbukkitdev or http://bit.ly/bogbukkit
 permissions: true
+botanical: true
 blocks:
   glass: true
   ice: true
@@ -20,11 +22,24 @@ blocks:
   netherfence: true
   glowstone: true
   tnt: false
-
-The value "fencefix" is to place fences next to another one even if there's no fence below the new one.
+  stairs:
+    wood: true
+    stone: true
+    cobblestone: true
+    brick: true
+    netherbrick: true
+  cactus: false
+  steps: true
+  ironfence: true
+  thinglass: true
+tweaks:
+  noMelt: true
 
 Permissions (if no permissions system is detected, only OPs are able to use the the plugin!)
 Only bukkit's permissions system is supported!
+
+Node: boa
+Description: Used to get access to all permissions below!
 
 Node: bog.item
 Description: Used to place blocks on glass!
@@ -67,3 +82,5 @@ DIODE
 TRAP_DOOR
 RED_MUSHROOM
 BROWN_MUSHROOM
+YELLOW_FLOWER
+RED_ROSE

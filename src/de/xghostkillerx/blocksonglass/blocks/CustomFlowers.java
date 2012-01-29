@@ -28,10 +28,15 @@ public class CustomFlowers extends BlockFlower {
 		return (world.getTypeId(i, j, k) == 0) && (world.getTypeId(i, j - 1, k) != 0);
 	}
 
-//	protected boolean d(int i) {
-//		return i == Block.GRASS.id || i == Block.DIRT.id || i == Block.SOIL.id || 
-//				i == Block.GLOWSTONE.id || i == Block.GLASS.id || i == Block.LEAVES.id;
-//	}
+	protected boolean d(int i) {
+		return i == Block.GRASS.id || i == Block.DIRT.id || i == Block.SOIL.id || 
+				i == Block.GLOWSTONE.id || i == Block.GLASS.id || i == Block.LEAVES.id ||
+				i == Block.FENCE.id || i == Block.NETHER_FENCE.id || i == Block.TNT.id ||
+				i == Block.THIN_GLASS.id || i == Block.IRON_FENCE.id || i == Block.STEP.id ||
+				i == Block.ICE.id || i == Block.CACTUS.id || i == Block.BRICK_STAIRS.id ||
+				i == Block.WOOD_STAIRS.id || i == Block.NETHER_BRICK_STAIRS.id || i == Block.BRICK_STAIRS.id ||
+				i == Block.COBBLESTONE_STAIRS.id;
+	}
 
 
 

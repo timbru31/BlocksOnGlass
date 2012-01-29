@@ -43,6 +43,14 @@ public class BlocksOnGlassPlayerListener implements Listener {
 			}
 			// Fence: bof.* -> Blocks On Fence = bof
 			else if (blockMaterial == Material.FENCE && plugin.config.getBoolean("blocks.fence") == true) {
+				// Vanilla like -> possible!!
+				if ((itemMaterial == Material.TORCH)
+						|| (itemMaterial == Material.REDSTONE_TORCH_ON)
+						|| (itemMaterial == Material.WOOD_PLATE)
+						|| (itemMaterial == Material.STONE_PLATE)
+						|| (itemMaterial == Material.REDSTONE_TORCH_OFF)) {
+					event.setCancelled(false);
+				}
 				if (cancel("bof.", itemMaterial, player) == true) {
 					event.setCancelled(true);
 				}
@@ -121,8 +129,9 @@ public class BlocksOnGlassPlayerListener implements Listener {
 			}
 		}
 	}
-
-	public boolean cancel (String permission, Material itemMaterial, Player player) {
+	
+	// Check to see if the player has got the permission
+	private boolean cancel (String permission, Material itemMaterial, Player player) {
 		if (plugin.config.getBoolean("permissions") == true) {
 			if (plugin.blocks.contains(itemMaterial)) {
 				if (!player.hasPermission(permission + itemMaterial.name().toLowerCase())) {
