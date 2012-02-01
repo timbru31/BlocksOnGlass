@@ -23,6 +23,9 @@ import de.xghostkillerx.blocksonglass.blocks.CustomGlass;
 import de.xghostkillerx.blocksonglass.blocks.CustomGlowstone;
 import de.xghostkillerx.blocksonglass.blocks.CustomIce;
 import de.xghostkillerx.blocksonglass.blocks.CustomLeaves;
+import de.xghostkillerx.blocksonglass.blocks.CustomPiston;
+import de.xghostkillerx.blocksonglass.blocks.CustomPistonExtension;
+import de.xghostkillerx.blocksonglass.blocks.CustomPistonMoving;
 import de.xghostkillerx.blocksonglass.blocks.CustomStairs;
 import de.xghostkillerx.blocksonglass.blocks.CustomSteps;
 import de.xghostkillerx.blocksonglass.blocks.CustomTNT;
@@ -271,6 +274,56 @@ public class BlocksOnGlass extends JavaPlugin {
 			Block.byId[Block.IRON_FENCE.id] = null;
 			Block.byId[Block.IRON_FENCE.id] = new CustomThinFence(Block.IRON_FENCE.id, 85, 85, Material.ORE, true).setHardness(5.0F).setResistance(10.0F).setSound(Block.i).a("fenceIron");
 		}
+		
+		// Pistons!
+		if (config.getBoolean("blocks.pistons.normal") == true) {
+			// Block PISTON = (new BlockPiston(33, 107, false)).a("pistonBase").i();
+			Block.byId[Block.PISTON.id] = null;
+			Block.byId[Block.PISTON.id] = new CustomPiston(Block.PISTON.id, 107, false).a("pistonBase");
+			try {
+				Field field = Material.PISTON.getClass().getDeclaredField("H");
+				field.setAccessible(true);
+				field.setBoolean(Material.PISTON, false);
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+				log.warning("BlocksOnGlass couldn't modify the piston block!");
+			}
+			Block.t[Block.PISTON.id] = true;
+			
+			// BlockPistonExtension PISTON_EXTENSION = (BlockPistonExtension) (new BlockPistonExtension(34, 107)).i();
+			Block.byId[Block.PISTON_EXTENSION.id] = null;
+			Block.byId[Block.PISTON_EXTENSION.id] = new CustomPistonExtension(Block.PISTON_EXTENSION.id, 107);
+			Block.t[Block.PISTON_EXTENSION.id] = true;
+			
+			// BlockPistonMoving PISTON_MOVING = new BlockPistonMoving(36);
+			Block.byId[Block.PISTON_MOVING.id] = null;
+			Block.byId[Block.PISTON_MOVING.id] = new CustomPistonMoving(36);
+		}
+		if (config.getBoolean("blocks.pistons.sticky") == true) {
+			// Block PISTON_STICKY = (new BlockPiston(29, 106, true)).a("pistonStickyBase").i();
+			Block.byId[Block.PISTON_STICKY.id] = null;
+			Block.byId[Block.PISTON_STICKY.id] = new CustomPiston(Block.PISTON_STICKY.id, 106, true).a("pistonStickyBase");
+			try {
+				Field field = Material.PISTON.getClass().getDeclaredField("H");
+				field.setAccessible(true);
+				field.setBoolean(Material.PISTON, false);
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+				log.warning("BlocksOnGlass couldn't modify the piston block!");
+			}
+			Block.t[Block.PISTON_STICKY.id] = true;
+			
+			// BlockPistonExtension PISTON_EXTENSION = (BlockPistonExtension) (new BlockPistonExtension(34, 107)).i();
+			Block.byId[Block.PISTON_EXTENSION.id] = null;
+			Block.byId[Block.PISTON_EXTENSION.id] = new CustomPistonExtension(Block.PISTON_EXTENSION.id, 107);
+			Block.t[Block.PISTON_EXTENSION.id] = true;
+			
+			// BlockPistonMoving PISTON_MOVING = new BlockPistonMoving(36);
+			Block.byId[Block.PISTON_MOVING.id] = null;
+			Block.byId[Block.PISTON_MOVING.id] = new CustomPistonMoving(36);
+		}
 
 		if (config.getBoolean("botanical") == true) {
 			// BlockFlower YELLOW_FLOWER = (BlockFlower) (new BlockFlower(37, 13)).c(0.0F).a(g).a("flower");
@@ -359,7 +412,7 @@ public class BlocksOnGlass extends JavaPlugin {
 			log.warning("BlocksOnGlass couldn't restore the TNT block!");
 		}
 
-		//Cactus
+		// Cactus
 		Block.byId[Block.CACTUS.id] = Block.CACTUS;
 		try {
 			Field field = Material.CACTUS.getClass().getDeclaredField("H");
@@ -376,6 +429,12 @@ public class BlocksOnGlass extends JavaPlugin {
 
 		// IronFence
 		Block.byId[Block.IRON_FENCE.id] = Block.IRON_FENCE;
+		
+		// Pistons
+		Block.byId[Block.PISTON.id] = Block.PISTON;
+		Block.byId[Block.PISTON_STICKY.id] = Block.PISTON_STICKY;
+		Block.byId[Block.PISTON_EXTENSION.id] = Block.PISTON_EXTENSION;
+		Block.byId[Block.PISTON_MOVING.id] = Block.PISTON_MOVING;
 
 		// Flowers
 		Block.byId[Block.YELLOW_FLOWER.id] = Block.YELLOW_FLOWER;
@@ -440,6 +499,8 @@ public class BlocksOnGlass extends JavaPlugin {
 		config.addDefault("blocks.stairs.netherbrick", true);
 		config.addDefault("blocks.ironfence", true);
 		config.addDefault("blocks.thinglass", true);
+		config.addDefault("blocks.pistons.normal", true);
+		config.addDefault("blocks.pistons.sticky", true);
 		config.options().copyDefaults(true);
 		saveConfig();
 	}
