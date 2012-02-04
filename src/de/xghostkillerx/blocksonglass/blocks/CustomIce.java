@@ -23,4 +23,9 @@ public class CustomIce extends BlockIce {
         return this;
     }
 
+    
+    // Render as a full block
+    public boolean b() {
+        return true;
+    }
 }

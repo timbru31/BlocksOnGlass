@@ -6,11 +6,11 @@ website: http://bit.ly/bogbukkitdev
 website: http://bit.ly/bogbukkit
 version: 0.7
 permissions:
-    boa:
+    boa.*:
         children:
             bog.*: true
             bol.*: true
-            bogl*: true
+            bogl.*: true
             bof.*: true
             bonf.*: true
             bot.*: true
@@ -20,6 +20,8 @@ permissions:
             bosteps.*: true
             boif.*: true
             botg.*: true
+            bop.*: true
+            bosp.*: true
     bog.*:
         children:
             bog.powered_rail: true
@@ -1590,5 +1592,267 @@ permissions:
         default: op
         description: Allows the item dead_bush
     botg.water_lilly:
+        default: op
+        description: Allows the item water_lilly
+    bop.*:
+        children:
+            bop.powered_rail: true
+            bop.detector_rail: true
+            bop.torch: true
+            bop.ladder: true
+            bop.rails: true
+            bop.lever: true
+            bop.stone_plate: true
+            bop.wood_plate: true
+            bop.redstone_torch_on: true
+            bop.redstone_torch_off: true
+            bop.redstone_wire: true
+            bop.stone_button: true
+            bop.wooden_door: true
+            bop.wood_door: true
+            bop.iron_door_block: true
+            bop.iron_door: true
+            bop.redstone: true
+            bop.bed: true
+            bop.diode: true
+            bop.diode_block_off: true
+            bop.diode_block_on: true
+            bop.trap_door: true
+            bop.snow: true
+            bop.iron_fence: true
+            bop.thing_glass: true
+            bop.red_mushroom: true
+            bop.brown_mushroom: true
+            bop.yellow_flower: true
+            bop.red_rose: true
+            bop.cactus: true
+            bop.water_lily: true
+            bop.dead_bush: true
+        description: Allows all bop permissions
+    bop.powered_rail:
+        default: op
+        description: Allows the item powered_rail
+    bop.detector_rail:
+        default: op
+        description: Allows the item detector_rail
+    bop.torch:
+        default: op
+        description: Allows the item torch
+    bop.ladder:
+        default: op
+        description: Allows the item ladder
+    bop.rails:
+        default: op
+        description: Allows the item rails
+    bop.lever:
+        default: op
+        description: Allows the item lever
+    bop.stone_plate:
+        default: op
+        description: Allows the item stone_plate
+    bop.wood_plate:
+        default: op
+        description: Allows the item wood_plate
+    bop.redstone_torch_on:
+        default: op
+        description: Allows the item redstone_torch_on
+    bop.redstone_torch_off:
+        default: op
+        description: Allows the item redstone_torch_off
+    bop.redstone_wire:
+        default: op
+        description: Allows the item redstone_wire
+    bop.stone_button:
+        default: op
+        description: Allows the item stone_button
+    bop.wood_door:
+        default: op
+        description: Allows the item wood_door
+    bop.wooden_door:
+        default: op
+        description: Allows the item wooden_door
+    bop.iron_door:
+        default: op
+        description: Allows the item iron_door
+    bop.iron_door_block:
+        default: op
+        description: Allows the item iron_door_block
+    bop.redstone:
+        default: op
+        description: Allows the item redstone
+    bop.bed:
+        default: op
+        description: Allows the item bed
+    bop.diode:
+        default: op
+        description: Allows the item diode
+    bop.diode_block_off:
+        default: op
+        description: Allows the item diode_block_off
+    bop.diode_block_on:
+        default: op
+        description: Allows the item diode_block_on
+    bop.trap_door:
+        default: op
+        description: Allows the item trap_door
+    bop.snow:
+        default: op
+        description: Allows the item snow
+    bop.thin_glass:
+        default: op
+        description: Allows the item thin_glass
+    bop.iron_fence:
+        default: op
+        description: Allows the item iron_fence
+    bop.red_mushroom:
+        default: op
+        description: Allows the item red_mushroom
+    bop.brown_mushroom:
+        default: op
+        description: Allows the item brown_mushroom
+    bop.red_rose:
+        default: op
+        description: Allows the item red_rose
+    bop.cactus:
+        default: op
+        description: Allows the item cactus
+    bop.diode_yellow_flower:
+        default: op
+        description: Allows the item yellow_flower
+    bop.dead_bush:
+        default: op
+        description: Allows the item dead_bush
+    bop.water_lilly:
+        default: op
+        description: Allows the item water_lilly
+    bosp.*:
+        children:
+            bosp.powered_rail: true
+            bosp.detector_rail: true
+            bosp.torch: true
+            bosp.ladder: true
+            bosp.rails: true
+            bosp.lever: true
+            bosp.stone_plate: true
+            bosp.wood_plate: true
+            bosp.redstone_torch_on: true
+            bosp.redstone_torch_off: true
+            bosp.redstone_wire: true
+            bosp.stone_button: true
+            bosp.wooden_door: true
+            bosp.wood_door: true
+            bosp.iron_door_block: true
+            bosp.iron_door: true
+            bosp.redstone: true
+            bosp.bed: true
+            bosp.diode: true
+            bosp.diode_block_off: true
+            bosp.diode_block_on: true
+            bosp.trap_door: true
+            bosp.snow: true
+            bosp.iron_fence: true
+            bosp.thing_glass: true
+            bosp.red_mushroom: true
+            bosp.brown_mushroom: true
+            bosp.yellow_flower: true
+            bosp.red_rose: true
+            bosp.cactus: true
+            bosp.water_lily: true
+            bosp.dead_bush: true
+        description: Allows all bosp permissions
+    bosp.powered_rail:
+        default: op
+        description: Allows the item powered_rail
+    bosp.detector_rail:
+        default: op
+        description: Allows the item detector_rail
+    bosp.torch:
+        default: op
+        description: Allows the item torch
+    bosp.ladder:
+        default: op
+        description: Allows the item ladder
+    bosp.rails:
+        default: op
+        description: Allows the item rails
+    bosp.lever:
+        default: op
+        description: Allows the item lever
+    bosp.stone_plate:
+        default: op
+        description: Allows the item stone_plate
+    bosp.wood_plate:
+        default: op
+        description: Allows the item wood_plate
+    bosp.redstone_torch_on:
+        default: op
+        description: Allows the item redstone_torch_on
+    bosp.redstone_torch_off:
+        default: op
+        description: Allows the item redstone_torch_off
+    bosp.redstone_wire:
+        default: op
+        description: Allows the item redstone_wire
+    bosp.stone_button:
+        default: op
+        description: Allows the item stone_button
+    bosp.wood_door:
+        default: op
+        description: Allows the item wood_door
+    bosp.wooden_door:
+        default: op
+        description: Allows the item wooden_door
+    bosp.iron_door:
+        default: op
+        description: Allows the item iron_door
+    bosp.iron_door_block:
+        default: op
+        description: Allows the item iron_door_block
+    bosp.redstone:
+        default: op
+        description: Allows the item redstone
+    bosp.bed:
+        default: op
+        description: Allows the item bed
+    bosp.diode:
+        default: op
+        description: Allows the item diode
+    bosp.diode_block_off:
+        default: op
+        description: Allows the item diode_block_off
+    bosp.diode_block_on:
+        default: op
+        description: Allows the item diode_block_on
+    bosp.trap_door:
+        default: op
+        description: Allows the item trap_door
+    bosp.snow:
+        default: op
+        description: Allows the item snow
+    bosp.thin_glass:
+        default: op
+        description: Allows the item thin_glass
+    bosp.iron_fence:
+        default: op
+        description: Allows the item iron_fence
+    bosp.red_mushroom:
+        default: op
+        description: Allows the item red_mushroom
+    bosp.brown_mushroom:
+        default: op
+        description: Allows the item brown_mushroom
+    bosp.red_rose:
+        default: op
+        description: Allows the item red_rose
+    bosp.cactus:
+        default: op
+        description: Allows the item cactus
+    bosp.diode_yellow_flower:
+        default: op
+        description: Allows the item yellow_flower
+    bosp.dead_bush:
+        default: op
+        description: Allows the item dead_bush
+    bosp.water_lilly:
         default: op
         description: Allows the item water_lilly

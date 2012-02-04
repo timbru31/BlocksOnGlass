@@ -7,6 +7,20 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
+/**
+ * BlocksOnGlass for CraftBukkit/Bukkit
+ * Handles the permission check for each block/item
+ * 
+ * Refer to the forum thread:
+ * http://bit.ly/bogbukkit
+ * Refer to the dev.bukkit.org page:
+ * http://bit.ly/bogbukkitdev
+ *
+ * @author xGhOsTkiLLeRx
+ * @thanks to FrozenBrain for the original BlocksOnGlass plugin!
+ * @thanks to mooman219 for help with bug fixing and NMS code!
+ * 
+ */
 
 public class BlocksOnGlassPlayerListener implements Listener {
 
@@ -14,6 +28,9 @@ public class BlocksOnGlassPlayerListener implements Listener {
 	public BlocksOnGlassPlayerListener(BlocksOnGlass instance) {
 		plugin = instance;
 	}
+	private Material[] stairs = {Material.WOOD_STAIRS, Material.COBBLESTONE_STAIRS, Material.BRICK_STAIRS, Material.NETHER_BRICK_STAIRS, Material.SMOOTH_STAIRS};
+	private String[] configStairs = {"blocks.stairs.wood", "blocks.stairs.cobblestone", "blocks.stairs.brick", "blocks.stairs.netherbrick", "blocks.stairs.stone"};
+
 
 	@EventHandler
 	public void onPlayerInteract(final PlayerInteractEvent event) {
@@ -22,7 +39,7 @@ public class BlocksOnGlassPlayerListener implements Listener {
 		// Check for the blocks first and item
 		if (event.hasBlock() && event.hasItem() && (event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
 			Material blockMaterial = event.getClickedBlock().getType();
-			Material itemMaterial = event.getItem().getType();
+			Material itemMaterial = event.getItem().getType();		
 			// Glass: bog.* -> Blocks On Glass = bog
 			if (blockMaterial == Material.GLASS && plugin.config.getBoolean("blocks.glass") == true) {
 				if (cancel("bog.", itemMaterial, player) == true) {
@@ -87,44 +104,42 @@ public class BlocksOnGlassPlayerListener implements Listener {
 			}
 			// IronFence: boif.* -> Blocks On Iron Fence = boif
 			else if (blockMaterial == Material.IRON_FENCE && plugin.config.getBoolean("blocks.ironfence") == true) {
+				if ((itemMaterial == Material.IRON_FENCE)
+						|| itemMaterial == Material.THIN_GLASS)  {
+					event.setCancelled(false);
+				}
 				if (cancel("boif.", itemMaterial, player) == true) {
 					event.setCancelled(true);
 				}
 			}
 			// ThinGlass: botg.* -> Blocks On Thin Glass = botg
 			else if (blockMaterial == Material.THIN_GLASS && plugin.config.getBoolean("blocks.thinglass") == true) {
+				if ((itemMaterial == Material.IRON_FENCE)
+						|| itemMaterial == Material.THIN_GLASS)  {
+					event.setCancelled(false);
+				}
 				if (cancel("botg.", itemMaterial, player) == true) {
 					event.setCancelled(true);
 				}
 			}
-			// Stairs bostairs.* -> Blocks On Stairs = bostairs
-			else if (blockMaterial == Material.WOOD_STAIRS && plugin.config.getBoolean("blocks.stairs.wood") == true) {
-				if (cancel("bostairs.", itemMaterial, player) == true) {
+			// Piston: bop.* -> Blocks On Piston = bop
+			else if ((blockMaterial == Material.PISTON_BASE || blockMaterial == Material.PISTON_EXTENSION || blockMaterial == Material.PISTON_MOVING_PIECE) && plugin.config.getBoolean("blocks.pistons.normal") == true) {
+				if (cancel("bop.", itemMaterial, player) == true) {
 					event.setCancelled(true);
 				}
 			}
-			// Stairs bostairs.* -> Blocks On Stairs = bostairs
-			else if (blockMaterial == Material.COBBLESTONE_STAIRS && plugin.config.getBoolean("blocks.stairs.cobblestone") == true) {
-				if (cancel("bostairs.", itemMaterial, player) == true) {
+			// Sticky Piston: bosp.* -> Blocks On Sticky Piston = bosp
+			else if ((blockMaterial == Material.PISTON_STICKY_BASE || blockMaterial == Material.PISTON_EXTENSION || blockMaterial == Material.PISTON_MOVING_PIECE) && plugin.config.getBoolean("blocks.pistons.sticky") == true) {
+				if (cancel("bosp.", itemMaterial, player) == true) {
 					event.setCancelled(true);
 				}
 			}
-			// Stairs bostairs.* -> Blocks On Stairs = bostairs
-			else if (blockMaterial == Material.BRICK_STAIRS && plugin.config.getBoolean("blocks.stairs.brick") == true) {
-				if (cancel("bostairs.", itemMaterial, player) == true) {
-					event.setCancelled(true);
-				}
-			}
-			// Stairs bostairs.* -> Blocks On Stairs = bostairs
-			else if (blockMaterial == Material.NETHER_BRICK_STAIRS && plugin.config.getBoolean("blocks.stairs.netherbrick") == true) {
-				if (cancel("bostairs.", itemMaterial, player) == true) {
-					event.setCancelled(true);
-				}
-			}
-			// Stairs bostairs.* -> Blocks On Stairs = bostairs
-			else if (blockMaterial == Material.SMOOTH_STAIRS && plugin.config.getBoolean("blocks.stairs.stone") == true) {
-				if (cancel("bostairs.", itemMaterial, player) == true) {
-					event.setCancelled(true);
+			// Check all stairs
+			for (int i = 0; i < stairs.length; i++) {
+				if (blockMaterial == stairs[i] && plugin.config.getBoolean(configStairs[i]) == true) {
+					if (cancel("bostairs.", itemMaterial, player) == true) {
+						event.setCancelled(true);
+					}
 				}
 			}
 		}

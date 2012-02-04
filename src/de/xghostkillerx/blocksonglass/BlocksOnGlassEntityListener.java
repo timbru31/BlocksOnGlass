@@ -7,6 +7,21 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
+/**
+ * BlocksOnGlass for CraftBukkit/Bukkit
+ * Handles the damage events
+ * 
+ * Refer to the forum thread:
+ * http://bit.ly/bogbukkit
+ * Refer to the dev.bukkit.org page:
+ * http://bit.ly/bogbukkitdev
+ *
+ * @author xGhOsTkiLLeRx
+ * @thanks to FrozenBrain for the original BlocksOnGlass plugin!
+ * @thanks to mooman219 for help with bug fixing and NMS code!
+ * 
+ */
+
 public class BlocksOnGlassEntityListener implements Listener {
 
 	public BlocksOnGlass plugin;
@@ -17,8 +32,6 @@ public class BlocksOnGlassEntityListener implements Listener {
 	// Damage event
 	@EventHandler
 	public void onEntityDamage(EntityDamageEvent event) {
-		// Only if the player gets damage
-		event.getEntity();
 		// If it's suffocation
 		if (event.getCause() == DamageCause.SUFFOCATION) {
 			// And caused by air or or the fences

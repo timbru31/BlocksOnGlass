@@ -32,13 +32,16 @@ blocks:
   steps: true
   ironfence: true
   thinglass: true
+  pistons:
+    normal: true
+    sticky: true
 tweaks:
   noMelt: true
 
 Permissions (if no permissions system is detected, only OPs are able to use the the plugin!)
 Only bukkit's permissions system is supported!
 
-Node: boa
+Node: boa.*
 Description: Used to get access to all permissions below!
 
 Node: bog.item
@@ -62,6 +65,27 @@ Description: Used to place blocks on glowstone!
 Node: bot.item
 Description: Used to place blocks on TNT!
 
+Node: botg.item
+Description: Used to place blocks on thin glass!
+
+Node: boif.item
+Description: Used to place blocks on iron_fence!
+
+Node: boc.item
+Description: Used to place blocks on cacti!
+
+Node: bostairs.item
+Description: Used to place blocks on stairs!
+
+Node: bosteps.item
+Description: Used to place blocks on steps!
+
+Node: bop.item
+Description: Used to place blocks on pistons!
+
+Node: bosp.item
+Description: Used to place blocks on sticky pistons!
+
 Item list:
 
 POWERED_RAIL
@@ -73,14 +97,26 @@ LEVER
 STONE_PLATE
 WOOD_PLATE
 REDSTONE_TORCH_ON
+REDSTONE_TORCH_OFF
+REDSTONE_WIRE
 STONE_BUTTON
+WOODEN_DOOR
 WOOD_DOOR
+IRON_DOOR_BLOCK
 IRON_DOOR
 REDSTONE
 BED
 DIODE
+DIODE_BLOCK_OFF
+DIODE_BLOCK_ON
 TRAP_DOOR
+SNOW
+THIN_GLASS
+IRON_FENCE
 RED_MUSHROOM
 BROWN_MUSHROOM
 YELLOW_FLOWER
 RED_ROSE
+CACTUS
+WATER_LILY
+DEAD_BUSH

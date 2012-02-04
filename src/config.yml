@@ -19,5 +19,8 @@ blocks:
   steps: true
   ironfence: true
   thinglass: true
+  pistons:
+    normal: true
+    sticky: true
 tweaks:
   noMelt: true
