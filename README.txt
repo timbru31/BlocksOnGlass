@@ -57,7 +57,7 @@ Node: bol.item
 Description: Used to place blocks on leaves!
 
 Node: bonf.item
-DDescription: Used to place blocks on nether fences!
+Description: Used to place blocks on nether fences!
 
 Node: bogl.item
 Description: Used to place blocks on glowstone!
