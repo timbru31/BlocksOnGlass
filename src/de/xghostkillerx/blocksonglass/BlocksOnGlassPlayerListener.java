@@ -2,6 +2,7 @@ package de.xghostkillerx.blocksonglass;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -39,24 +40,20 @@ public class BlocksOnGlassPlayerListener implements Listener {
 		// Check for the blocks first and item
 		if (event.hasBlock() && event.hasItem() && (event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
 			Material blockMaterial = event.getClickedBlock().getType();
-			Material itemMaterial = event.getItem().getType();		
+			Material itemMaterial = event.getItem().getType();	
 			// Glass: bog.* -> Blocks On Glass = bog
 			if (blockMaterial == Material.GLASS && plugin.config.getBoolean("blocks.glass") == true) {
-				if (cancel("bog.", itemMaterial, player) == true) {
-					event.setCancelled(true);
-				}
+				event.setUseItemInHand(Event.Result.ALLOW);
+				cancel("bog.", itemMaterial, player, event);
 			}
 			// Ice: boi.* -> Blocks On Ice = boi
 			else if (blockMaterial == Material.ICE && plugin.config.getBoolean("blocks.ice") == true) {
-				if (cancel("boi.", itemMaterial, player) == true) {
-					event.setCancelled(true);
-				}
+				event.setUseItemInHand(Event.Result.ALLOW);
+				cancel("boi.", itemMaterial, player, event);
 			}
 			// Leaves: bol.* -> Blocks On Leaves = bol
 			else if (blockMaterial == Material.LEAVES && plugin.config.getBoolean("blocks.leaves") == true) {
-				if (cancel("bol.", itemMaterial, player) == true) {
-					event.setCancelled(true);
-				}
+				cancel("bol.", itemMaterial, player, event);
 			}
 			// Fence: bof.* -> Blocks On Fence = bof
 			else if (blockMaterial == Material.FENCE && plugin.config.getBoolean("blocks.fence") == true) {
@@ -66,94 +63,72 @@ public class BlocksOnGlassPlayerListener implements Listener {
 						|| (itemMaterial == Material.WOOD_PLATE)
 						|| (itemMaterial == Material.STONE_PLATE)
 						|| (itemMaterial == Material.REDSTONE_TORCH_OFF)) {
-					event.setCancelled(false);
+					return;
 				}
-				if (cancel("bof.", itemMaterial, player) == true) {
-					event.setCancelled(true);
-				}
+				cancel("bof.", itemMaterial, player, event);
 			}
 			// NetherFence: bonf.*  -> Blocks On Nether Fence = bonf
 			else if (blockMaterial == Material.NETHER_FENCE && plugin.config.getBoolean("blocks.netherfence") == true) {
-				if (cancel("bonf.", itemMaterial, player) == true) {
-					event.setCancelled(true);
-				}
+				cancel("bonf.", itemMaterial, player, event);
 			}
 			// Glowstone: bogl.*  -> Blocks On Glowstone = bogl
 			else if (blockMaterial == Material.GLOWSTONE && plugin.config.getBoolean("blocks.glowstone") == true) {
-				if (cancel("bogl.", itemMaterial, player) == true) {
-					event.setCancelled(true);
-				}
+				cancel("bogl.", itemMaterial, player, event);
 			}
 			// TNT: bot.* -> Blocks On TNT = bot
 			else if (blockMaterial == Material.TNT && plugin.config.getBoolean("blocks.tnt") == true) {
-				if (cancel("bot.", itemMaterial, player) == true) {
-					event.setCancelled(true);
-				}
+				cancel("bot.", itemMaterial, player, event);
 			}
 			// Cactus: boc.* -> Blocks On Cactus = boc
 			else if (blockMaterial == Material.CACTUS && plugin.config.getBoolean("blocks.cactus") == true) {
-				if (cancel("boc.", itemMaterial, player) == true) {
-					event.setCancelled(true);
-				}
+				cancel("boc.", itemMaterial, player, event);
 			}
 			// Steps: bosteps.* -> Blocks On Steps = bosteps
 			else if (blockMaterial == Material.STEP && plugin.config.getBoolean("blocks.steps") == true) {
-				if (cancel("bosteps.", itemMaterial, player) == true) {
-					event.setCancelled(true);
-				}
+				cancel("bosteps.", itemMaterial, player, event);
 			}
 			// IronFence: boif.* -> Blocks On Iron Fence = boif
 			else if (blockMaterial == Material.IRON_FENCE && plugin.config.getBoolean("blocks.ironfence") == true) {
 				if ((itemMaterial == Material.IRON_FENCE)
 						|| itemMaterial == Material.THIN_GLASS)  {
-					event.setCancelled(false);
+					return;
 				}
-				if (cancel("boif.", itemMaterial, player) == true) {
-					event.setCancelled(true);
-				}
+				cancel("boif.", itemMaterial, player, event);
 			}
 			// ThinGlass: botg.* -> Blocks On Thin Glass = botg
 			else if (blockMaterial == Material.THIN_GLASS && plugin.config.getBoolean("blocks.thinglass") == true) {
 				if ((itemMaterial == Material.IRON_FENCE)
 						|| itemMaterial == Material.THIN_GLASS)  {
-					event.setCancelled(false);
+					return;
 				}
-				if (cancel("botg.", itemMaterial, player) == true) {
-					event.setCancelled(true);
-				}
+				cancel("botg.", itemMaterial, player, event);
 			}
 			// Piston: bop.* -> Blocks On Piston = bop
 			else if ((blockMaterial == Material.PISTON_BASE || blockMaterial == Material.PISTON_EXTENSION || blockMaterial == Material.PISTON_MOVING_PIECE) && plugin.config.getBoolean("blocks.pistons.normal") == true) {
-				if (cancel("bop.", itemMaterial, player) == true) {
-					event.setCancelled(true);
-				}
+				cancel("bop.", itemMaterial, player, event);
 			}
 			// Sticky Piston: bosp.* -> Blocks On Sticky Piston = bosp
 			else if ((blockMaterial == Material.PISTON_STICKY_BASE || blockMaterial == Material.PISTON_EXTENSION || blockMaterial == Material.PISTON_MOVING_PIECE) && plugin.config.getBoolean("blocks.pistons.sticky") == true) {
-				if (cancel("bosp.", itemMaterial, player) == true) {
-					event.setCancelled(true);
-				}
+				cancel("bosp.", itemMaterial, player, event);
 			}
 			// Check all stairs
 			for (int i = 0; i < stairs.length; i++) {
 				if (blockMaterial == stairs[i] && plugin.config.getBoolean(configStairs[i]) == true) {
-					if (cancel("bostairs.", itemMaterial, player) == true) {
-						event.setCancelled(true);
-					}
+					cancel("bostairs.", itemMaterial, player, event);
 				}
 			}
 		}
 	}
-	
+
 	// Check to see if the player has got the permission
-	private boolean cancel (String permission, Material itemMaterial, Player player) {
+	private void cancel (String permission, Material itemMaterial, Player player, PlayerInteractEvent event) {
 		if (plugin.config.getBoolean("permissions") == true) {
 			if (plugin.blocks.contains(itemMaterial)) {
 				if (!player.hasPermission(permission + itemMaterial.name().toLowerCase())) {
-					return true;
+					event.setCancelled(true);
 				}
 			}
 		}
-		return false;
+		return;
 	}
 }

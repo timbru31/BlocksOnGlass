@@ -2,7 +2,6 @@ package de.xghostkillerx.blocksonglass.blocks;
 
 import net.minecraft.server.Block;
 import net.minecraft.server.BlockWaterLily;
-import net.minecraft.server.Material;
 import net.minecraft.server.StepSound;
 import net.minecraft.server.World;
 
@@ -37,7 +36,7 @@ public class CustomWaterLily extends BlockWaterLily {
     }
     
     public boolean f(World world, int i, int j, int k) {
-    	if (j >= 0 && j < world.height) {
+    	if (j >= 0 && j < 256) {
     		return world.getData(i, j - 1, k) == 0;
     	}
     	else return false;

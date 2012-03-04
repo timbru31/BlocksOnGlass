@@ -27,4 +27,9 @@ public class CustomGlowstone extends BlockLightStone {
 		lightEmission[this.id] = (int)(15.0F * f);
 		return this;
 	}
+	
+    // Render as a full block
+    public boolean b() {
+        return true;
+    } 
 }

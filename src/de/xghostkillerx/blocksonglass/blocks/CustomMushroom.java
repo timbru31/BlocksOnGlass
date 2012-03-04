@@ -30,7 +30,7 @@ public class CustomMushroom extends BlockMushroom {
 	}
 	
     protected boolean d(int i) {
-        return Block.o[i] ||
+        return Block.n[i] ||
         		i == Block.GLOWSTONE.id || i == Block.GLASS.id || i == Block.LEAVES.id ||
         		i == Block.FENCE.id || i == Block.NETHER_FENCE.id || i == Block.TNT.id ||
         		i == Block.THIN_GLASS.id || i == Block.IRON_FENCE.id || i == Block.STEP.id ||
@@ -41,10 +41,10 @@ public class CustomMushroom extends BlockMushroom {
     }
     
     public boolean f(World world, int i, int j, int k) {
-        if (j >= 0 && j < world.height) {
+        if (j >= 0 && j < 256) {
             int l = world.getTypeId(i, j - 1, k);
 
-            return l == Block.MYCEL.id || world.k(i, j, k) < 13 && this.d(l) ||
+            return l == Block.MYCEL.id || world.m(i, j, k) < 13 && this.d(l) ||
             		l == Block.GLOWSTONE.id || l == Block.GLASS.id || l == Block.LEAVES.id ||
     				l == Block.FENCE.id || l == Block.NETHER_FENCE.id || l == Block.TNT.id ||
     				l == Block.THIN_GLASS.id || l == Block.IRON_FENCE.id || l == Block.STEP.id ||

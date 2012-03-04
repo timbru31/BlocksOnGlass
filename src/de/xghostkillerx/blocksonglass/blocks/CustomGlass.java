@@ -23,4 +23,9 @@ public class CustomGlass extends BlockGlass {
         this.stepSound = stepsound;
         return this;
     }
+    
+    // Render as a full block
+    public boolean b() {
+        return true;
+    }
 }
