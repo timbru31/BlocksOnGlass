@@ -48,7 +48,7 @@ permissions:
             bog.trap_door: true
             bog.snow: true
             bog.iron_fence: true
-            bog.thing_glass: true
+            bog.thin_glass: true
             bog.red_mushroom: true
             bog.brown_mushroom: true
             bog.yellow_flower: true
@@ -179,7 +179,7 @@ permissions:
             bol.trap_door: true
             bol.snow: true
             bol.iron_fence: true
-            bol.thing_glass: true
+            bol.thin_glass: true
             bol.red_mushroom: true
             bol.brown_mushroom: true
             bol.yellow_flower: true
@@ -310,7 +310,7 @@ permissions:
             bogl.trap_door: true
             bogl.snow: true
             bogl.iron_fence: true
-            bogl.thing_glass: true
+            bogl.thin_glass: true
             bogl.red_mushroom: true
             bogl.brown_mushroom: true
             bogl.yellow_flower: true
@@ -441,7 +441,7 @@ permissions:
             bof.trap_door: true
             bof.snow: true
             bof.iron_fence: true
-            bof.thing_glass: true
+            bof.thin_glass: true
             bof.red_mushroom: true
             bof.brown_mushroom: true
             bof.yellow_flower: true
@@ -572,7 +572,7 @@ permissions:
             bonf.trap_door: true
             bonf.snow: true
             bonf.iron_fence: true
-            bonf.thing_glass: true
+            bonf.thin_glass: true
             bonf.red_mushroom: true
             bonf.brown_mushroom: true
             bonf.yellow_flower: true
@@ -703,7 +703,7 @@ permissions:
             bot.trap_door: true
             bot.snow: true
             bot.iron_fence: true
-            bot.thing_glass: true
+            bot.thin_glass: true
             bot.red_mushroom: true
             bot.brown_mushroom: true
             bot.yellow_flower: true
@@ -834,7 +834,7 @@ permissions:
             boi.trap_door: true
             boi.snow: true
             boi.iron_fence: true
-            boi.thing_glass: true
+            boi.thin_glass: true
             boi.red_mushroom: true
             boi.brown_mushroom: true
             boi.yellow_flower: true
@@ -965,7 +965,7 @@ permissions:
             boc.trap_door: true
             boc.snow: true
             boc.iron_fence: true
-            boc.thing_glass: true
+            boc.thin_glass: true
             boc.red_mushroom: true
             boc.brown_mushroom: true
             boc.yellow_flower: true
@@ -1096,7 +1096,7 @@ permissions:
             bostairs.trap_door: true
             bostairs.snow: true
             bostairs.iron_fence: true
-            bostairs.thing_glass: true
+            bostairs.thin_glass: true
             bostairs.red_mushroom: true
             bostairs.brown_mushroom: true
             bostairs.yellow_flower: true
@@ -1227,7 +1227,7 @@ permissions:
             bosteps.trap_door: true
             bosteps.snow: true
             bosteps.iron_fence: true
-            bosteps.thing_glass: true
+            bosteps.thin_glass: true
             bosteps.red_mushroom: true
             bosteps.brown_mushroom: true
             bosteps.yellow_flower: true
@@ -1358,7 +1358,7 @@ permissions:
             boif.trap_door: true
             boif.snow: true
             boif.iron_fence: true
-            boif.thing_glass: true
+            boif.thin_glass: true
             boif.red_mushroom: true
             boif.brown_mushroom: true
             boif.yellow_flower: true
@@ -1489,7 +1489,7 @@ permissions:
             botg.trap_door: true
             botg.snow: true
             botg.iron_fence: true
-            botg.thing_glass: true
+            botg.thin_glass: true
             botg.red_mushroom: true
             botg.brown_mushroom: true
             botg.yellow_flower: true
@@ -1620,7 +1620,7 @@ permissions:
             bop.trap_door: true
             bop.snow: true
             bop.iron_fence: true
-            bop.thing_glass: true
+            bop.thin_glass: true
             bop.red_mushroom: true
             bop.brown_mushroom: true
             bop.yellow_flower: true
@@ -1751,7 +1751,7 @@ permissions:
             bosp.trap_door: true
             bosp.snow: true
             bosp.iron_fence: true
-            bosp.thing_glass: true
+            bosp.thin_glass: true
             bosp.red_mushroom: true
             bosp.brown_mushroom: true
             bosp.yellow_flower: true
