@@ -46,12 +46,6 @@ public class CustomCactus extends BlockCactus {
 			}
 		}
 
-		return	l == Block.GLOWSTONE.id || l == Block.GLASS.id || l == Block.LEAVES.id ||
-				l == Block.FENCE.id || l == Block.NETHER_FENCE.id || l == Block.TNT.id ||
-				l == Block.THIN_GLASS.id || l == Block.IRON_FENCE.id || l == Block.STEP.id ||
-				l == Block.ICE.id || l == Block.CACTUS.id || l == Block.BRICK_STAIRS.id ||
-				l == Block.WOOD_STAIRS.id || l == Block.NETHER_BRICK_STAIRS.id || l == Block.BRICK_STAIRS.id ||
-				l == Block.COBBLESTONE_STAIRS.id || l == Block.PISTON.id || l == Block.PISTON_STICKY.id ||
-				l == Block.PISTON_EXTENSION.id || l == Block.PISTON_MOVING.id;
+		return true;
 	}
 }

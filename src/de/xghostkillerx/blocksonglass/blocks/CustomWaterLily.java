@@ -23,16 +23,10 @@ public class CustomWaterLily extends BlockWaterLily {
 		this.stepSound = stepsound;
 		return this;
 	}
-	
-    protected boolean d(int i) {
-        return	i == Block.STATIONARY_WATER.id ||
-				i == Block.GLOWSTONE.id || i == Block.GLASS.id || i == Block.LEAVES.id ||
-				i == Block.FENCE.id || i == Block.NETHER_FENCE.id || i == Block.TNT.id ||
-				i == Block.THIN_GLASS.id || i == Block.IRON_FENCE.id || i == Block.STEP.id ||
-				i == Block.ICE.id || i == Block.CACTUS.id || i == Block.BRICK_STAIRS.id ||
-				i == Block.WOOD_STAIRS.id || i == Block.NETHER_BRICK_STAIRS.id || i == Block.BRICK_STAIRS.id ||
-				i == Block.COBBLESTONE_STAIRS.id || i == Block.PISTON.id || i == Block.PISTON_STICKY.id ||
-				i == Block.PISTON_EXTENSION.id || i == Block.PISTON_MOVING.id;
+        
+    public boolean canPlace(World world, int i, int j, int k) {
+    	if (world.getTypeId(i, j - 1, k) == org.bukkit.Material.AIR.getId()) return false;
+        return true;
     }
     
     public boolean f(World world, int i, int j, int k) {

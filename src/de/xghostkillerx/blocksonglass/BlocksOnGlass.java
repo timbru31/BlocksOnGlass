@@ -28,6 +28,7 @@ import de.xghostkillerx.blocksonglass.blocks.CustomMushroom;
 import de.xghostkillerx.blocksonglass.blocks.CustomPiston;
 import de.xghostkillerx.blocksonglass.blocks.CustomPistonExtension;
 import de.xghostkillerx.blocksonglass.blocks.CustomPistonMoving;
+import de.xghostkillerx.blocksonglass.blocks.CustomReed;
 import de.xghostkillerx.blocksonglass.blocks.CustomStairs;
 import de.xghostkillerx.blocksonglass.blocks.CustomSteps;
 import de.xghostkillerx.blocksonglass.blocks.CustomTNT;
@@ -172,7 +173,7 @@ public class BlocksOnGlass extends JavaPlugin {
 
 		// Leaves
 		if (config.getBoolean("blocks.leaves") == true) {
-			// BlockLeaves LEAVES = (BlockLeaves) (new BlockLeaves(18, 52)).c(0.2F).g(1).a(g).a("leaves").i();
+			// BlockLeaves LEAVES = (BlockLeaves) (new BlockLeaves(18, 52)).c(0.2F).f(1).a(g).a("leaves").j();
 			Block.byId[Block.LEAVES.id] = null;
 			Block.byId[Block.LEAVES.id] = new CustomLeaves(Block.LEAVES.id, 52).setHardness(0.2F).setSound(Block.g).a("leaves");
 			try {
@@ -216,35 +217,35 @@ public class BlocksOnGlass extends JavaPlugin {
 
 		// Different STAIRS (All extending BlockStairs)
 		if (config.getBoolean("blocks.stairs.brick") == true) {
-			// Block BRICK_STAIRS = (new BlockStairs(108, BRICK)).a("stairsBrick").i();
+			// Block BRICK_STAIRS = (new BlockStairs(108, BRICK)).a("stairsBrick").j();
 			Block.byId[Block.BRICK_STAIRS.id] = null;
 			Block.byId[Block.BRICK_STAIRS.id] = new CustomStairs(Block.BRICK_STAIRS.id, Block.BRICK).a("stairsBrick");
 			Block.r[Block.BRICK_STAIRS.id] = true;
 			stats.add("BrickStairs");
 		}
 		if (config.getBoolean("blocks.stairs.wood") == true) {
-			// Block WOOD_STAIRS = (new BlockStairs(53, WOOD)).a("stairsWood").i();
+			// Block WOOD_STAIRS = (new BlockStairs(53, WOOD)).a("stairsWood").j();
 			Block.byId[Block.WOOD_STAIRS.id] = null;
 			Block.byId[Block.WOOD_STAIRS.id] = new CustomStairs(Block.WOOD_STAIRS.id, Block.WOOD).a("stairsWood");
 			Block.r[Block.WOOD_STAIRS.id] = true;
 			stats.add("WoodStairs");
 		}
 		if (config.getBoolean("blocks.stairs.cobblestone") == true) {
-			// Block COBBLESTONE_STAIRS = (new BlockStairs(67, COBBLESTONE)).a("stairsStone").i();
+			// Block COBBLESTONE_STAIRS = (new BlockStairs(67, COBBLESTONE)).a("stairsStone").j();
 			Block.byId[Block.COBBLESTONE_STAIRS.id] = null;
 			Block.byId[Block.COBBLESTONE_STAIRS.id] = new CustomStairs(Block.COBBLESTONE_STAIRS.id, Block.COBBLESTONE).a("stairsStone");
 			Block.r[Block.COBBLESTONE_STAIRS.id] = true;
 			stats.add("CobblestoneStairs");
 		}
 		if (config.getBoolean("blocks.stairs.stone") == true) {
-			// Block STONE_STAIRS = (new BlockStairs(109, SMOOTH_BRICK)).a("stairsStoneBrickSmooth").i();
+			// Block STONE_STAIRS = (new BlockStairs(109, SMOOTH_BRICK)).a("stairsStoneBrickSmooth").j();
 			Block.byId[Block.STONE_STAIRS.id] = null;
 			Block.byId[Block.STONE_STAIRS.id] = new CustomStairs(Block.STONE_STAIRS.id, Block.SMOOTH_BRICK).a("stairsStoneBrickSmooth");
 			Block.r[Block.STONE_STAIRS.id] = true;
 			stats.add("StoneStairs");
 		}
 		if (config.getBoolean("blocks.stairs.netherbrick") == true) {
-			// Block NETHER_BRICK_STAIRS = (new BlockStairs(114, NETHER_BRICK)).a("stairsNetherBrick").i();
+			// Block NETHER_BRICK_STAIRS = (new BlockStairs(114, NETHER_BRICK)).a("stairsNetherBrick").j();
 			Block.byId[Block.NETHER_BRICK_STAIRS.id] = null;
 			Block.byId[Block.NETHER_BRICK_STAIRS.id] = new CustomStairs(Block.NETHER_BRICK_STAIRS.id, Block.NETHER_BRICK).a("stairsNetherBrick");
 			Block.r[Block.NETHER_BRICK_STAIRS.id] = true;
@@ -310,7 +311,7 @@ public class BlocksOnGlass extends JavaPlugin {
 		
 		// Pistons!
 		if (config.getBoolean("blocks.pistons.normal") == true) {
-			// Block PISTON = (new BlockPiston(33, 107, false)).a("pistonBase").i();
+			// Block PISTON = (new BlockPiston(33, 107, false)).a("pistonBase").j();
 			Block.byId[Block.PISTON.id] = null;
 			Block.byId[Block.PISTON.id] = new CustomPiston(Block.PISTON.id, 107, false).a("pistonBase");
 			try {
@@ -324,7 +325,7 @@ public class BlocksOnGlass extends JavaPlugin {
 			}
 			Block.r[Block.PISTON.id] = true;
 			
-			// BlockPistonExtension PISTON_EXTENSION = (BlockPistonExtension) (new BlockPistonExtension(34, 107)).i();
+			// BlockPistonExtension PISTON_EXTENSION = (BlockPistonExtension) (new BlockPistonExtension(34, 107)).j(); 
 			Block.byId[Block.PISTON_EXTENSION.id] = null;
 			Block.byId[Block.PISTON_EXTENSION.id] = new CustomPistonExtension(Block.PISTON_EXTENSION.id, 107);
 			Block.r[Block.PISTON_EXTENSION.id] = true;
@@ -335,7 +336,7 @@ public class BlocksOnGlass extends JavaPlugin {
 			stats.add("Piston");
 		}
 		if (config.getBoolean("blocks.pistons.sticky") == true) {
-			// Block PISTON_STICKY = (new BlockPiston(29, 106, true)).a("pistonStickyBase").i();
+			// Block PISTON_STICKY = (new BlockPiston(29, 106, true)).a("pistonStickyBase").j();
 			Block.byId[Block.PISTON_STICKY.id] = null;
 			Block.byId[Block.PISTON_STICKY.id] = new CustomPiston(Block.PISTON_STICKY.id, 106, true).a("pistonStickyBase");
 			try {
@@ -349,7 +350,7 @@ public class BlocksOnGlass extends JavaPlugin {
 			}
 			Block.r[Block.PISTON_STICKY.id] = true;
 			
-			// BlockPistonExtension PISTON_EXTENSION = (BlockPistonExtension) (new BlockPistonExtension(34, 107)).i();
+			// BlockPistonExtension PISTON_EXTENSION = (BlockPistonExtension) (new BlockPistonExtension(34, 107)).j();
 			Block.byId[Block.PISTON_EXTENSION.id] = null;
 			Block.byId[Block.PISTON_EXTENSION.id] = new CustomPistonExtension(Block.PISTON_EXTENSION.id, 107);
 			Block.r[Block.PISTON_EXTENSION.id] = true;
@@ -384,6 +385,12 @@ public class BlocksOnGlass extends JavaPlugin {
 		    // BlockFlower RED_MUSHROOM = (BlockFlower) (new BlockMushroom(40, 28)).c(0.0F).a(g).a("mushroom");
 			Block.byId[Block.RED_MUSHROOM.id] = null;
 			Block.byId[Block.RED_MUSHROOM.id] = new CustomMushroom(Block.RED_MUSHROOM.id, 28).setHardness(0.0F).setSound(Block.g).a("mushroom");
+			
+			// Block SUGAR_CANE_BLOCK = (new BlockReed(83, 73)).c(0.0F).a(g).a("reeds").s();
+			Block.byId[Block.SUGAR_CANE_BLOCK.id] = null;
+			Block.byId[Block.SUGAR_CANE_BLOCK.id] = new CustomReed(Block.SUGAR_CANE_BLOCK.id, 73).setHardness(0.0F).setSound(Block.g).a("reeds");
+			Block.s[Block.SUGAR_CANE_BLOCK.id] = false;
+			
 			stats.add("Botanical");
 		}
 		

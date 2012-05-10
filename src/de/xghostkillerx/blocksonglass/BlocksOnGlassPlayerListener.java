@@ -2,7 +2,6 @@ package de.xghostkillerx.blocksonglass;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -34,7 +33,7 @@ public class BlocksOnGlassPlayerListener implements Listener {
 
 
 	@EventHandler
-	public void onPlayerInteract(final PlayerInteractEvent event) {
+	public void onPlayerInteract(PlayerInteractEvent event) {
 		Player player = event.getPlayer();
 		if (event.isCancelled()) return;
 		// Check for the blocks first and item
@@ -43,12 +42,10 @@ public class BlocksOnGlassPlayerListener implements Listener {
 			Material itemMaterial = event.getItem().getType();	
 			// Glass: bog.* -> Blocks On Glass = bog
 			if (blockMaterial == Material.GLASS && plugin.config.getBoolean("blocks.glass") == true) {
-				event.setUseItemInHand(Event.Result.ALLOW);
 				cancel("bog.", itemMaterial, player, event);
 			}
 			// Ice: boi.* -> Blocks On Ice = boi
 			else if (blockMaterial == Material.ICE && plugin.config.getBoolean("blocks.ice") == true) {
-				event.setUseItemInHand(Event.Result.ALLOW);
 				cancel("boi.", itemMaterial, player, event);
 			}
 			// Leaves: bol.* -> Blocks On Leaves = bol

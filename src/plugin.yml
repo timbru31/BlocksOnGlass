@@ -56,6 +56,7 @@ permissions:
             bog.cactus: true
             bog.water_lily: true
             bog.dead_bush: true
+            bog.sugar_cane: true
         description: Allows all bog permissions
     bog.powered_rail:
         default: op
@@ -153,6 +154,9 @@ permissions:
     bog.water_lilly:
         default: op
         description: Allows the item water_lilly
+    bog.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
     bol.*:
         children:
             bol.powered_rail: true
@@ -187,6 +191,7 @@ permissions:
             bol.cactus: true
             bol.water_lily: true
             bol.dead_bush: true
+            bol.sugar_cane: true
         description: Allows all bol permissions
     bol.powered_rail:
         default: op
@@ -284,6 +289,9 @@ permissions:
     bol.water_lilly:
         default: op
         description: Allows the item water_lilly
+    bol.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
     bogl.*:
         children:
             bogl.powered_rail: true
@@ -318,6 +326,7 @@ permissions:
             bogl.cactus: true
             bogl.water_lily: true
             bogl.dead_bush: true
+            bogl.sugar_cane: true
         description: Allows all bogl permissions
     bogl.powered_rail:
         default: op
@@ -415,6 +424,9 @@ permissions:
     bogl.water_lilly:
         default: op
         description: Allows the item water_lilly
+    bogl.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
     bof.*:
         children:
             bof.powered_rail: true
@@ -449,6 +461,7 @@ permissions:
             bof.cactus: true
             bof.water_lily: true
             bof.dead_bush: true
+            bof.sugar_cane: true
         description: Allows all bof permissions
     bof.powered_rail:
         default: op
@@ -546,6 +559,9 @@ permissions:
     bof.water_lilly:
         default: op
         description: Allows the item water_lilly
+    bof.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
     bonf.*:
         children:
             bonf.powered_rail: true
@@ -580,6 +596,7 @@ permissions:
             bonf.cactus: true
             bonf.water_lily: true
             bonf.dead_bush: true
+            bonf.sugar_cane: true
         description: Allows all bonf permissions
     bonf.powered_rail:
         default: op
@@ -677,6 +694,9 @@ permissions:
     bonf.water_lilly:
         default: op
         description: Allows the item water_lilly
+    bonf.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
     bot.*:
         children:
             bot.powered_rail: true
@@ -711,6 +731,7 @@ permissions:
             bot.cactus: true
             bot.water_lily: true
             bot.dead_bush: true
+            bot.sugar_cane: true
         description: Allows all bot permissions
     bot.powered_rail:
         default: op
@@ -808,6 +829,9 @@ permissions:
     bot.water_lilly:
         default: op
         description: Allows the item water_lilly
+    bot.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
     boi.*:
         children:
             boi.powered_rail: true
@@ -842,6 +866,7 @@ permissions:
             boi.cactus: true
             boi.water_lily: true
             boi.dead_bush: true
+            boi.sugar_cane: true
         description: Allows all boi permissions
     boi.powered_rail:
         default: op
@@ -939,6 +964,9 @@ permissions:
     boi.water_lilly:
         default: op
         description: Allows the item water_lilly
+    bot.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
     boc.*:
         children:
             boc.powered_rail: true
@@ -973,6 +1001,7 @@ permissions:
             boc.cactus: true
             boc.water_lily: true
             boc.dead_bush: true
+            boc.sugar_cane: true
         description: Allows all boc permissions
     boc.powered_rail:
         default: op
@@ -1070,6 +1099,9 @@ permissions:
     boc.water_lilly:
         default: op
         description: Allows the item water_lilly
+    boc.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
     bostairs.*:
         children:
             bostairs.powered_rail: true
@@ -1104,6 +1136,7 @@ permissions:
             bostairs.cactus: true
             bostairs.water_lily: true
             bostairs.dead_bush: true
+            bostairs.sugar_cane: true
         description: Allows all bostairs permissions
     bostairs.powered_rail:
         default: op
@@ -1201,6 +1234,9 @@ permissions:
     bostairs.water_lilly:
         default: op
         description: Allows the item water_lilly
+    bostairs.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
     bosteps.*:
         children:
             bosteps.powered_rail: true
@@ -1235,6 +1271,7 @@ permissions:
             bosteps.cactus: true
             bosteps.water_lily: true
             bosteps.dead_bush: true
+            bosteps.sugar_cane: true
         description: Allows all bosteps permissions
     bosteps.powered_rail:
         default: op
@@ -1332,6 +1369,9 @@ permissions:
     bosteps.water_lilly:
         default: op
         description: Allows the item water_lilly
+    bosteps.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
     boif.*:
         children:
             boif.powered_rail: true
@@ -1366,6 +1406,7 @@ permissions:
             boif.cactus: true
             boif.water_lily: true
             boif.dead_bush: true
+            boif.sugar_cane
         description: Allows all boif permissions
     boif.powered_rail:
         default: op
@@ -1463,6 +1504,9 @@ permissions:
     boif.water_lilly:
         default: op
         description: Allows the item water_lilly
+    boif.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
     botg.*:
         children:
             botg.powered_rail: true
@@ -1497,6 +1541,7 @@ permissions:
             botg.cactus: true
             botg.water_lily: true
             botg.dead_bush: true
+            botg.sugar_cane: true
         description: Allows all botg permissions
     botg.powered_rail:
         default: op
@@ -1594,6 +1639,9 @@ permissions:
     botg.water_lilly:
         default: op
         description: Allows the item water_lilly
+    botg.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
     bop.*:
         children:
             bop.powered_rail: true
@@ -1628,6 +1676,7 @@ permissions:
             bop.cactus: true
             bop.water_lily: true
             bop.dead_bush: true
+            bop.sugar_cane: true
         description: Allows all bop permissions
     bop.powered_rail:
         default: op
@@ -1725,6 +1774,9 @@ permissions:
     bop.water_lilly:
         default: op
         description: Allows the item water_lilly
+    bop.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane
     bosp.*:
         children:
             bosp.powered_rail: true
@@ -1759,6 +1811,7 @@ permissions:
             bosp.cactus: true
             bosp.water_lily: true
             bosp.dead_bush: true
+            bosp.sugar_cane: true
         description: Allows all bosp permissions
     bosp.powered_rail:
         default: op
@@ -1856,3 +1909,6 @@ permissions:
     bosp.water_lilly:
         default: op
         description: Allows the item water_lilly
+    bosp.sugar_cane:
+        default: op
+        description: Allows the item sugar_cane

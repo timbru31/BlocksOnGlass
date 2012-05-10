@@ -29,7 +29,7 @@ public class BlocksOnGlassBlockListener implements Listener {
 	}
 
 	@EventHandler
-	public void onBlockFade(final BlockFadeEvent event) {
+	public void onBlockFade(BlockFadeEvent event) {
 		Block block = event.getBlock();
 		if (block.getType() == Material.ICE || block.getType() == Material.SNOW || block.getType() == Material.SNOW_BLOCK) {
 			if (plugin.config.getBoolean("tweaks.noMelt") == true)
