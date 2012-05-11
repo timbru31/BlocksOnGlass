@@ -1406,7 +1406,7 @@ permissions:
             boif.cactus: true
             boif.water_lily: true
             boif.dead_bush: true
-            boif.sugar_cane
+            boif.sugar_cane: true
         description: Allows all boif permissions
     boif.powered_rail:
         default: op

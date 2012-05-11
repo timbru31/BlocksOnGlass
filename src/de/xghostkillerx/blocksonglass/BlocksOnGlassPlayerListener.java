@@ -2,6 +2,7 @@ package de.xghostkillerx.blocksonglass;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -30,8 +31,7 @@ public class BlocksOnGlassPlayerListener implements Listener {
 	}
 	private Material[] stairs = {Material.WOOD_STAIRS, Material.COBBLESTONE_STAIRS, Material.BRICK_STAIRS, Material.NETHER_BRICK_STAIRS, Material.SMOOTH_STAIRS};
 	private String[] configStairs = {"blocks.stairs.wood", "blocks.stairs.cobblestone", "blocks.stairs.brick", "blocks.stairs.netherbrick", "blocks.stairs.stone"};
-
-
+	
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		Player player = event.getPlayer();
@@ -39,7 +39,37 @@ public class BlocksOnGlassPlayerListener implements Listener {
 		// Check for the blocks first and item
 		if (event.hasBlock() && event.hasItem() && (event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
 			Material blockMaterial = event.getClickedBlock().getType();
-			Material itemMaterial = event.getItem().getType();	
+			Material itemMaterial = event.getItem().getType();
+			// Workbench
+			if (blockMaterial == Material.WORKBENCH && plugin.config.getBoolean("blocks.workbench") == true) {
+				event.setUseInteractedBlock(Event.Result.DENY);
+				event.setUseItemInHand(Event.Result.ALLOW);
+			}
+			// Chest
+			if (blockMaterial == Material.CHEST && plugin.config.getBoolean("blocks.chest") == true) {
+				event.setUseInteractedBlock(Event.Result.DENY);
+				event.setUseItemInHand(Event.Result.ALLOW);
+			}
+			// Furnace
+			if ((blockMaterial == Material.FURNACE || blockMaterial == Material.BURNING_FURNACE) && plugin.config.getBoolean("blocks.furnace") == true) {
+				event.setUseInteractedBlock(Event.Result.DENY);
+				event.setUseItemInHand(Event.Result.ALLOW);
+			}
+			// Cauldron
+			if (blockMaterial == Material.CAULDRON && plugin.config.getBoolean("blocks.cauldron") == true) {
+				event.setUseInteractedBlock(Event.Result.DENY);
+				event.setUseItemInHand(Event.Result.ALLOW);
+			}
+			// Dispenser
+			if (blockMaterial == Material.DISPENSER && plugin.config.getBoolean("blocks.dispenser") == true) {
+				event.setUseInteractedBlock(Event.Result.DENY);
+				event.setUseItemInHand(Event.Result.ALLOW);
+			}
+			// Brewing stand
+			if (blockMaterial == Material.BREWING_STAND && plugin.config.getBoolean("blocks.brewing_stand") == true) {
+				event.setUseInteractedBlock(Event.Result.DENY);
+				event.setUseItemInHand(Event.Result.ALLOW);
+			}
 			// Glass: bog.* -> Blocks On Glass = bog
 			if (blockMaterial == Material.GLASS && plugin.config.getBoolean("blocks.glass") == true) {
 				cancel("bog.", itemMaterial, player, event);

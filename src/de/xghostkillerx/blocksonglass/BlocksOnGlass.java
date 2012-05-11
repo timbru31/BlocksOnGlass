@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.logging.Logger;
 import net.minecraft.server.Block;
 import net.minecraft.server.Material;
+
+import org.bukkit.Location;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -68,6 +70,7 @@ public class BlocksOnGlass extends JavaPlugin {
 	private final BlocksOnGlassBlockListener blockListener = new BlocksOnGlassBlockListener(this);
 	private final BlocksOnGlassEntityListener entityListener = new BlocksOnGlassEntityListener(this);
 	public List<org.bukkit.Material> blocks = new ArrayList<org.bukkit.Material>();
+	public List<Location> locations = new ArrayList<Location>();
 	public FileConfiguration config;
 	public File configFile;
 	private List<String> stats = new ArrayList<String>();
@@ -106,11 +109,11 @@ public class BlocksOnGlass extends JavaPlugin {
 
 		// Stats
 		try {
-			Metrics metrics = new Metrics();
+			Metrics metrics = new Metrics(this);
 			// Custom plotter for each item
 			for (int i = 0; i < stats.size(); i++) {
 				final String name = stats.get(i);
-				metrics.addCustomData(this, new Metrics.Plotter() {
+				metrics.addCustomData(new Metrics.Plotter() {
 					@Override
 					public String getColumnName() {
 						return name;
@@ -122,7 +125,7 @@ public class BlocksOnGlass extends JavaPlugin {
 					}
 				});
 			}
-			metrics.beginMeasuringPlugin(this);
+			metrics.start();
 		}
 		catch (IOException e) {}
 	}
@@ -408,6 +411,21 @@ public class BlocksOnGlass extends JavaPlugin {
 		if (config.getBoolean("blocks.furnace") == true) {
 			stats.add("Furnace");
 		}
+		
+		// Brewing Stand
+		if (config.getBoolean("blocks.brewing_stand") == true) {
+			stats.add("Brewing Stand");
+		}
+		
+		// Dispenser
+		if (config.getBoolean("blocks.dispenser") == true) {
+			stats.add("Dispenser");
+		}
+		
+		// Cauldron
+		if (config.getBoolean("blocks.cauldron") == true) {
+			stats.add("Cauldron");
+		}
 	}
 
 	private void restoreBlocks() {
@@ -594,6 +612,12 @@ public class BlocksOnGlass extends JavaPlugin {
 		config.addDefault("blocks.thinglass", true);
 		config.addDefault("blocks.pistons.normal", true);
 		config.addDefault("blocks.pistons.sticky", true);
+		config.addDefault("blocks.chest", false);
+		config.addDefault("blocks.workbench", false);
+		config.addDefault("blocks.furnace", false);
+		config.addDefault("blocks.brewing_stand", false);
+		config.addDefault("blocks.cauldron", false);
+		config.addDefault("blocks.dispenser", false);
 		config.options().copyDefaults(true);
 		saveConfig();
 	}

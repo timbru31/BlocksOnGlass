@@ -35,6 +35,12 @@ blocks:
   pistons:
     normal: true
     sticky: true
+  chest: false
+  workbench: false
+  furnace: false
+  brewing_stand: false
+  cauldron: false
+  dispenser: false
 tweaks:
   noMelt: true
 
@@ -120,3 +126,4 @@ RED_ROSE
 CACTUS
 WATER_LILY
 DEAD_BUSH
+SUGAR_CANE
