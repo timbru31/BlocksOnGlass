@@ -31,21 +31,26 @@ public class CustomCactus extends BlockCactus {
 
 	public boolean f(World world, int i, int j, int k) {
 		int l = world.getTypeId(i, j - 1, k);
-		if (l == Block.CACTUS.id || l == Block.SAND.id) {
-			if (world.getMaterial(i - 1, j, k).isBuildable()) {
+		if ((l == Block.CACTUS.id) || (l == Block.SAND.id)) {
+			if (world.getMaterial(i - 1, j, k).isBuildable())
 				return false;
-			} else if (world.getMaterial(i + 1, j, k).isBuildable()) {
+			if (world.getMaterial(i + 1, j, k).isBuildable())
 				return false;
-			} else if (world.getMaterial(i, j, k - 1).isBuildable()) {
+			if (world.getMaterial(i, j, k - 1).isBuildable())
 				return false;
-			} else if (world.getMaterial(i, j, k + 1).isBuildable()) {
+			if (world.getMaterial(i, j, k + 1).isBuildable()) {
 				return false;
 			}
-			else {
-				return l == Block.CACTUS.id || l == Block.SAND.id;
-			}
+
+			return (l == Block.CACTUS.id) || (l == Block.SAND.id);
 		}
 
-		return true;
+		return (l == Block.GLOWSTONE.id) || (l == Block.GLASS.id) || (l == Block.LEAVES.id) || 
+				(l == Block.FENCE.id) || (l == Block.NETHER_FENCE.id) || (l == Block.TNT.id) || 
+				(l == Block.THIN_GLASS.id) || (l == Block.IRON_FENCE.id) || (l == Block.STEP.id) || 
+				(l == Block.ICE.id) || (l == Block.CACTUS.id) || (l == Block.BRICK_STAIRS.id) || 
+				(l == Block.WOOD_STAIRS.id) || (l == Block.NETHER_BRICK_STAIRS.id) || (l == Block.BRICK_STAIRS.id) || 
+				(l == Block.COBBLESTONE_STAIRS.id) || (l == Block.PISTON.id) || (l == Block.PISTON_STICKY.id) || 
+				(l == Block.PISTON_EXTENSION.id) || (l == Block.PISTON_MOVING.id);
 	}
 }

@@ -3,7 +3,6 @@ package de.xghostkillerx.blocksonglass.blocks;
 import net.minecraft.server.Block;
 import net.minecraft.server.BlockReed;
 import net.minecraft.server.StepSound;
-import net.minecraft.server.World;
 
 public class CustomReed extends BlockReed {
 
@@ -23,13 +22,4 @@ public class CustomReed extends BlockReed {
 		this.stepSound = stepsound;
 		return this;
 	}
-
-	public boolean canPlace(World world, int i, int j, int k) {
-    	if (world.getTypeId(i, j - 1, k) == org.bukkit.Material.AIR.getId()) return false;
-        return true;
-    }
-    
-    public boolean f(World world, int i, int j, int k) {
-        return true;
-    }
 }

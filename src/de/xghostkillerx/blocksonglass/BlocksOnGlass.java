@@ -592,7 +592,7 @@ public class BlocksOnGlass extends JavaPlugin {
 	public void loadConfig() {
 		config.options().header("For help and support visit please: http://bit.ly/bogbukkitdev or http://bit.ly/bogbukkit");
 		config.addDefault("permissions", true);
-		config.addDefault("botanical", true);
+		config.addDefault("botanical", false);
 		config.addDefault("tweaks.noMelt", true);
 		config.addDefault("blocks.glass", true);
 		config.addDefault("blocks.ice", true);

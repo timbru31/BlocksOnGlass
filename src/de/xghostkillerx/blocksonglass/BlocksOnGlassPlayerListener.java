@@ -49,6 +49,10 @@ public class BlocksOnGlassPlayerListener implements Listener {
 			if (blockMaterial == Material.CHEST && plugin.config.getBoolean("blocks.chest") == true) {
 				event.setUseInteractedBlock(Event.Result.DENY);
 				event.setUseItemInHand(Event.Result.ALLOW);
+//				if (itemMaterial == Material.SIGN) {
+//					player.sendMessage("HI");
+//					Inventory inv = (Inventory) itemMaterial.getData();
+//				}
 			}
 			// Furnace
 			if ((blockMaterial == Material.FURNACE || blockMaterial == Material.BURNING_FURNACE) && plugin.config.getBoolean("blocks.furnace") == true) {
