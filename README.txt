@@ -13,7 +13,7 @@ Standard config:
 
 # For help and support visit please: http://bit.ly/bogbukkitdev or http://bit.ly/bogbukkit
 permissions: true
-botanical: true
+botanical: false
 blocks:
   glass: true
   ice: true

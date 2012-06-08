@@ -1,4 +1,4 @@
-package de.xghostkillerx.blocksonglass;
+package de.dustplanet.blocksonglass;
 
 /*
  * Copyright 2011 Tyler Blair. All rights reserved.

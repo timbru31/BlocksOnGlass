@@ -1,4 +1,4 @@
-package de.xghostkillerx.blocksonglass.blocks;
+package de.dustplanet.blocksonglass.blocks;
 
 import net.minecraft.server.Block;
 import net.minecraft.server.BlockCactus;

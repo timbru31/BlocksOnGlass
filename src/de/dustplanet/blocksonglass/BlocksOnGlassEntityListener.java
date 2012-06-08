@@ -1,4 +1,4 @@
-package de.xghostkillerx.blocksonglass;
+package de.dustplanet.blocksonglass;
 
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;

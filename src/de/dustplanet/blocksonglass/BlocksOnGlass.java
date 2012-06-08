@@ -1,4 +1,4 @@
-package de.xghostkillerx.blocksonglass;
+package de.dustplanet.blocksonglass;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -18,24 +18,24 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.configuration.file.*;
 
-import de.xghostkillerx.blocksonglass.blocks.CustomCactus;
-import de.xghostkillerx.blocksonglass.blocks.CustomDeadBush;
-import de.xghostkillerx.blocksonglass.blocks.CustomFences;
-import de.xghostkillerx.blocksonglass.blocks.CustomFlowers;
-import de.xghostkillerx.blocksonglass.blocks.CustomGlass;
-import de.xghostkillerx.blocksonglass.blocks.CustomGlowstone;
-import de.xghostkillerx.blocksonglass.blocks.CustomIce;
-import de.xghostkillerx.blocksonglass.blocks.CustomLeaves;
-import de.xghostkillerx.blocksonglass.blocks.CustomMushroom;
-import de.xghostkillerx.blocksonglass.blocks.CustomPiston;
-import de.xghostkillerx.blocksonglass.blocks.CustomPistonExtension;
-import de.xghostkillerx.blocksonglass.blocks.CustomPistonMoving;
-import de.xghostkillerx.blocksonglass.blocks.CustomReed;
-import de.xghostkillerx.blocksonglass.blocks.CustomStairs;
-import de.xghostkillerx.blocksonglass.blocks.CustomSteps;
-import de.xghostkillerx.blocksonglass.blocks.CustomTNT;
-import de.xghostkillerx.blocksonglass.blocks.CustomThinFence;
-import de.xghostkillerx.blocksonglass.blocks.CustomWaterLily;
+import de.dustplanet.blocksonglass.blocks.CustomCactus;
+import de.dustplanet.blocksonglass.blocks.CustomDeadBush;
+import de.dustplanet.blocksonglass.blocks.CustomFences;
+import de.dustplanet.blocksonglass.blocks.CustomFlowers;
+import de.dustplanet.blocksonglass.blocks.CustomGlass;
+import de.dustplanet.blocksonglass.blocks.CustomGlowstone;
+import de.dustplanet.blocksonglass.blocks.CustomIce;
+import de.dustplanet.blocksonglass.blocks.CustomLeaves;
+import de.dustplanet.blocksonglass.blocks.CustomMushroom;
+import de.dustplanet.blocksonglass.blocks.CustomPiston;
+import de.dustplanet.blocksonglass.blocks.CustomPistonExtension;
+import de.dustplanet.blocksonglass.blocks.CustomPistonMoving;
+import de.dustplanet.blocksonglass.blocks.CustomReed;
+import de.dustplanet.blocksonglass.blocks.CustomStairs;
+import de.dustplanet.blocksonglass.blocks.CustomSteps;
+import de.dustplanet.blocksonglass.blocks.CustomTNT;
+import de.dustplanet.blocksonglass.blocks.CustomThinFence;
+import de.dustplanet.blocksonglass.blocks.CustomWaterLily;
 
 /**
  * BlocksOnGlass for CraftBukkit/Bukkit
