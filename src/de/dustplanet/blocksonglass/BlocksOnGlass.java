@@ -11,13 +11,10 @@ import java.util.List;
 import java.util.logging.Logger;
 import net.minecraft.server.Block;
 import net.minecraft.server.Material;
-
-import org.bukkit.Location;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.configuration.file.*;
-
 import de.dustplanet.blocksonglass.blocks.CustomCactus;
 import de.dustplanet.blocksonglass.blocks.CustomDeadBush;
 import de.dustplanet.blocksonglass.blocks.CustomFences;
@@ -70,16 +67,17 @@ public class BlocksOnGlass extends JavaPlugin {
 	private final BlocksOnGlassBlockListener blockListener = new BlocksOnGlassBlockListener(this);
 	private final BlocksOnGlassEntityListener entityListener = new BlocksOnGlassEntityListener(this);
 	public List<org.bukkit.Material> blocks = new ArrayList<org.bukkit.Material>();
-	public List<Location> locations = new ArrayList<Location>();
+	private List<String> stats = new ArrayList<String>();
 	public FileConfiguration config;
 	public File configFile;
-	private List<String> stats = new ArrayList<String>();
 
 	// Shutdown
 	public void onDisable() {
 		restoreBlocks();
 		PluginDescriptionFile pdfFile = this.getDescription();
 		log.info(pdfFile.getName() + " " + pdfFile.getVersion() + " is disabled!");
+		stats.clear();
+		blocks.clear();
 	}
 
 	// Start
@@ -132,7 +130,7 @@ public class BlocksOnGlass extends JavaPlugin {
 
 	private void modifyBlocks() {
 		// Glass
-		if (config.getBoolean("blocks.glass") == true) {
+		if (config.getBoolean("blocks.glass")) {
 			// Block GLASS = (new BlockGlass(20, 49, Material.SHATTERABLE, false)).c(0.3F).a(j).a("glass");
 			Block.byId[Block.GLASS.id] = null;
 			Block.byId[Block.GLASS.id] = new CustomGlass(Block.GLASS.id, 49, Material.SHATTERABLE, false).setHardness(0.3F).setSound(Block.j).a("glass");
@@ -149,7 +147,7 @@ public class BlocksOnGlass extends JavaPlugin {
 		}
 
 		// Fences
-		if (config.getBoolean("blocks.fence") == true) {
+		if (config.getBoolean("blocks.fence")) {
 			// Block FENCE = (new BlockFence(85, 4)).c(2.0F).b(5.0F).a(e).a("fence");
 			Block.byId[Block.FENCE.id] = null;
 			Block.byId[Block.FENCE.id] = new CustomFences(Block.FENCE.id, 4).setHardness(2.0F).setResistance(5.0F).setSound(Block.e).a("fence");
@@ -157,7 +155,7 @@ public class BlocksOnGlass extends JavaPlugin {
 		}
 
 		// Ice
-		if (config.getBoolean("blocks.ice") == true) {
+		if (config.getBoolean("blocks.ice")) {
 			// Block ICE = (new BlockIce(79, 67)).c(0.5F).g(3).a(j).a("ice");
 			Block.byId[Block.ICE.id] = null;
 			Block.byId[Block.ICE.id] = new CustomIce(Block.ICE.id, 67).setHardness(0.5F).setSound(Block.j).a("ice");
@@ -175,7 +173,7 @@ public class BlocksOnGlass extends JavaPlugin {
 		}
 
 		// Leaves
-		if (config.getBoolean("blocks.leaves") == true) {
+		if (config.getBoolean("blocks.leaves")) {
 			// BlockLeaves LEAVES = (BlockLeaves) (new BlockLeaves(18, 52)).c(0.2F).f(1).a(g).a("leaves").j();
 			Block.byId[Block.LEAVES.id] = null;
 			Block.byId[Block.LEAVES.id] = new CustomLeaves(Block.LEAVES.id, 52).setHardness(0.2F).setSound(Block.g).a("leaves");
@@ -194,7 +192,7 @@ public class BlocksOnGlass extends JavaPlugin {
 		}
 
 		// NetherFences
-		if (config.getBoolean("blocks.netherfence") == true) {
+		if (config.getBoolean("blocks.netherfence")) {
 			// Block NETHER_FENCE = (new BlockFence(113, 224, Material.STONE)).c(2.0F).b(10.0F).a(h).a("netherFence");
 			Block.byId[Block.NETHER_FENCE.id] = null;
 			Block.byId[Block.NETHER_FENCE.id] = new CustomFences(Block.NETHER_FENCE.id, 224, Material.STONE).setHardness(2.0F).setResistance(10.0F).setSound(Block.h).a("netherFence");
@@ -202,7 +200,7 @@ public class BlocksOnGlass extends JavaPlugin {
 		}
 
 		// Glowstone
-		if (config.getBoolean("blocks.glowstone") == true) {
+		if (config.getBoolean("blocks.glowstone")) {
 			// Block GLOWSTONE = (new BlockLightStone(89, 105, Material.SHATTERABLE)).c(0.3F).a(j).a(1.0F).a("lightgem");
 			Block.byId[Block.GLOWSTONE.id] = null;
 			Block.byId[Block.GLOWSTONE.id] = new CustomGlowstone(Block.GLOWSTONE.id, 105, Material.SHATTERABLE).setHardness(0.3F).setLightValue(1.0F).setSound(Block.j).a("lightgem");
@@ -219,35 +217,35 @@ public class BlocksOnGlass extends JavaPlugin {
 		}
 
 		// Different STAIRS (All extending BlockStairs)
-		if (config.getBoolean("blocks.stairs.brick") == true) {
+		if (config.getBoolean("blocks.stairs.brick")) {
 			// Block BRICK_STAIRS = (new BlockStairs(108, BRICK)).a("stairsBrick").j();
 			Block.byId[Block.BRICK_STAIRS.id] = null;
 			Block.byId[Block.BRICK_STAIRS.id] = new CustomStairs(Block.BRICK_STAIRS.id, Block.BRICK).a("stairsBrick");
 			Block.r[Block.BRICK_STAIRS.id] = true;
 			stats.add("BrickStairs");
 		}
-		if (config.getBoolean("blocks.stairs.wood") == true) {
+		if (config.getBoolean("blocks.stairs.wood")) {
 			// Block WOOD_STAIRS = (new BlockStairs(53, WOOD)).a("stairsWood").j();
 			Block.byId[Block.WOOD_STAIRS.id] = null;
 			Block.byId[Block.WOOD_STAIRS.id] = new CustomStairs(Block.WOOD_STAIRS.id, Block.WOOD).a("stairsWood");
 			Block.r[Block.WOOD_STAIRS.id] = true;
 			stats.add("WoodStairs");
 		}
-		if (config.getBoolean("blocks.stairs.cobblestone") == true) {
+		if (config.getBoolean("blocks.stairs.cobblestone")) {
 			// Block COBBLESTONE_STAIRS = (new BlockStairs(67, COBBLESTONE)).a("stairsStone").j();
 			Block.byId[Block.COBBLESTONE_STAIRS.id] = null;
 			Block.byId[Block.COBBLESTONE_STAIRS.id] = new CustomStairs(Block.COBBLESTONE_STAIRS.id, Block.COBBLESTONE).a("stairsStone");
 			Block.r[Block.COBBLESTONE_STAIRS.id] = true;
 			stats.add("CobblestoneStairs");
 		}
-		if (config.getBoolean("blocks.stairs.stone") == true) {
+		if (config.getBoolean("blocks.stairs.stone")) {
 			// Block STONE_STAIRS = (new BlockStairs(109, SMOOTH_BRICK)).a("stairsStoneBrickSmooth").j();
 			Block.byId[Block.STONE_STAIRS.id] = null;
 			Block.byId[Block.STONE_STAIRS.id] = new CustomStairs(Block.STONE_STAIRS.id, Block.SMOOTH_BRICK).a("stairsStoneBrickSmooth");
 			Block.r[Block.STONE_STAIRS.id] = true;
 			stats.add("StoneStairs");
 		}
-		if (config.getBoolean("blocks.stairs.netherbrick") == true) {
+		if (config.getBoolean("blocks.stairs.netherbrick")) {
 			// Block NETHER_BRICK_STAIRS = (new BlockStairs(114, NETHER_BRICK)).a("stairsNetherBrick").j();
 			Block.byId[Block.NETHER_BRICK_STAIRS.id] = null;
 			Block.byId[Block.NETHER_BRICK_STAIRS.id] = new CustomStairs(Block.NETHER_BRICK_STAIRS.id, Block.NETHER_BRICK).a("stairsNetherBrick");
@@ -256,14 +254,14 @@ public class BlocksOnGlass extends JavaPlugin {
 		}
 
 		// Steps
-		if (config.getBoolean("blocks.steps") == true) {
+		if (config.getBoolean("blocks.steps")) {
 			// Block STEP = (new BlockStep(44, false)).c(2.0F).b(10.0F).a(h).a("stoneSlab");
 			Block.byId[Block.STEP.id] = null;
 			Block.byId[Block.STEP.id] = new CustomSteps(Block.STEP.id, false).setHardness(2.0F).setResistance(10.0F).setSound(Block.h).a("stoneSlab");
 			stats.add("Steps");
 		}
 		// TNT
-		if (config.getBoolean("blocks.tnt") == true) {
+		if (config.getBoolean("blocks.tnt")) {
 			// Block TNT = (new BlockTNT(46, 8)).c(0.0F).a(g).a("tnt");
 			Block.byId[Block.TNT.id] = null;
 			Block.byId[Block.TNT.id] = new CustomTNT(Block.TNT.id, 8).setHardness(0.0F).setSound(Block.g).a("tnt");
@@ -280,7 +278,7 @@ public class BlocksOnGlass extends JavaPlugin {
 		}
 
 		// Cactus
-		if (config.getBoolean("blocks.cactus") == true) {
+		if (config.getBoolean("blocks.cactus")) {
 			// Block CACTUS = (new BlockCactus(81, 70)).c(0.4F).a(k).a("cactus");
 			Block.byId[Block.CACTUS.id] = null;
 			Block.byId[Block.CACTUS.id] = new CustomCactus(Block.CACTUS.id, 70).setHardness(0.4F).setSound(Block.k).a("cactus");
@@ -297,7 +295,7 @@ public class BlocksOnGlass extends JavaPlugin {
 		}
 
 		// ThinGlass
-		if (config.getBoolean("blocks.thinglass") == true) {
+		if (config.getBoolean("blocks.thinglass")) {
 			// Block THIN_GLASS = (new BlockThinFence(102, 49, 148, Material.SHATTERABLE, false)).c(0.3F).a(j).a("thinGlass");
 			Block.byId[Block.THIN_GLASS.id] = null;
 			Block.byId[Block.THIN_GLASS.id] = new CustomThinFence(Block.THIN_GLASS.id, 49, 148, Material.SHATTERABLE, false).setHardness(0.3F).setSound(Block.j).a("thinGlass");
@@ -305,7 +303,7 @@ public class BlocksOnGlass extends JavaPlugin {
 		}
 
 		// IronFence
-		if (config.getBoolean("blocks.ironfence") == true) {
+		if (config.getBoolean("blocks.ironfence")) {
 			// Block IRON_FENCE = (new BlockThinFence(101, 85, 85, Material.ORE, true)).c(5.0F).b(10.0F).a(i).a("fenceIron");
 			Block.byId[Block.IRON_FENCE.id] = null;
 			Block.byId[Block.IRON_FENCE.id] = new CustomThinFence(Block.IRON_FENCE.id, 85, 85, Material.ORE, true).setHardness(5.0F).setResistance(10.0F).setSound(Block.i).a("fenceIron");
@@ -313,7 +311,7 @@ public class BlocksOnGlass extends JavaPlugin {
 		}
 		
 		// Pistons!
-		if (config.getBoolean("blocks.pistons.normal") == true) {
+		if (config.getBoolean("blocks.pistons.normal")) {
 			// Block PISTON = (new BlockPiston(33, 107, false)).a("pistonBase").j();
 			Block.byId[Block.PISTON.id] = null;
 			Block.byId[Block.PISTON.id] = new CustomPiston(Block.PISTON.id, 107, false).a("pistonBase");
@@ -338,7 +336,7 @@ public class BlocksOnGlass extends JavaPlugin {
 			Block.byId[Block.PISTON_MOVING.id] = new CustomPistonMoving(36);
 			stats.add("Piston");
 		}
-		if (config.getBoolean("blocks.pistons.sticky") == true) {
+		if (config.getBoolean("blocks.pistons.sticky")) {
 			// Block PISTON_STICKY = (new BlockPiston(29, 106, true)).a("pistonStickyBase").j();
 			Block.byId[Block.PISTON_STICKY.id] = null;
 			Block.byId[Block.PISTON_STICKY.id] = new CustomPiston(Block.PISTON_STICKY.id, 106, true).a("pistonStickyBase");
@@ -364,7 +362,7 @@ public class BlocksOnGlass extends JavaPlugin {
 			stats.add("StickyPiston");
 		}
 
-		if (config.getBoolean("botanical") == true) {
+		if (config.getBoolean("botanical")) {
 			// BlockFlower YELLOW_FLOWER = (BlockFlower) (new BlockFlower(37, 13)).c(0.0F).a(g).a("flower");
 			Block.byId[Block.YELLOW_FLOWER.id] = null;
 			Block.byId[Block.YELLOW_FLOWER.id] = new CustomFlowers(Block.YELLOW_FLOWER.id, 13).setHardness(0.0F).setSound(Block.g).a("flower");
@@ -398,34 +396,22 @@ public class BlocksOnGlass extends JavaPlugin {
 		}
 		
 		// Chests
-		if (config.getBoolean("blocks.chest") == true) {
-			stats.add("Chest");
-		}
+		if (config.getBoolean("blocks.chest")) stats.add("Chest");
 		
 		// Workbench
-		if (config.getBoolean("blocks.workbench") == true) {
-			stats.add("Chest");
-		}
+		if (config.getBoolean("blocks.workbench")) stats.add("Chest");
 		
 		// Furnace
-		if (config.getBoolean("blocks.furnace") == true) {
-			stats.add("Furnace");
-		}
+		if (config.getBoolean("blocks.furnace")) stats.add("Furnace");
 		
 		// Brewing Stand
-		if (config.getBoolean("blocks.brewing_stand") == true) {
-			stats.add("Brewing Stand");
-		}
+		if (config.getBoolean("blocks.brewing_stand")) stats.add("Brewing Stand");
 		
 		// Dispenser
-		if (config.getBoolean("blocks.dispenser") == true) {
-			stats.add("Dispenser");
-		}
+		if (config.getBoolean("blocks.dispenser")) stats.add("Dispenser");
 		
 		// Cauldron
-		if (config.getBoolean("blocks.cauldron") == true) {
-			stats.add("Cauldron");
-		}
+		if (config.getBoolean("blocks.cauldron")) stats.add("Cauldron");
 	}
 
 	private void restoreBlocks() {
@@ -578,7 +564,7 @@ public class BlocksOnGlass extends JavaPlugin {
 		blocks.add(org.bukkit.Material.SNOW);
 		blocks.add(org.bukkit.Material.THIN_GLASS);
 		blocks.add(org.bukkit.Material.IRON_FENCE);
-		if (config.getBoolean("botanical") == true) {
+		if (config.getBoolean("botanical")) {
 			blocks.add(org.bukkit.Material.RED_MUSHROOM);
 			blocks.add(org.bukkit.Material.BROWN_MUSHROOM);
 			blocks.add(org.bukkit.Material.YELLOW_FLOWER);

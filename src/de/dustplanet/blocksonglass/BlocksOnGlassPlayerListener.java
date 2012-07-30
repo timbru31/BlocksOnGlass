@@ -41,53 +41,49 @@ public class BlocksOnGlassPlayerListener implements Listener {
 			Material blockMaterial = event.getClickedBlock().getType();
 			Material itemMaterial = event.getItem().getType();
 			// Workbench
-			if (blockMaterial == Material.WORKBENCH && plugin.config.getBoolean("blocks.workbench") == true) {
+			if (blockMaterial == Material.WORKBENCH && plugin.config.getBoolean("blocks.workbench")) {
 				event.setUseInteractedBlock(Event.Result.DENY);
 				event.setUseItemInHand(Event.Result.ALLOW);
 			}
 			// Chest
-			if (blockMaterial == Material.CHEST && plugin.config.getBoolean("blocks.chest") == true) {
+			if (blockMaterial == Material.CHEST && plugin.config.getBoolean("blocks.chest")) {
 				event.setUseInteractedBlock(Event.Result.DENY);
 				event.setUseItemInHand(Event.Result.ALLOW);
-//				if (itemMaterial == Material.SIGN) {
-//					player.sendMessage("HI");
-//					Inventory inv = (Inventory) itemMaterial.getData();
-//				}
 			}
 			// Furnace
-			if ((blockMaterial == Material.FURNACE || blockMaterial == Material.BURNING_FURNACE) && plugin.config.getBoolean("blocks.furnace") == true) {
+			if ((blockMaterial == Material.FURNACE || blockMaterial == Material.BURNING_FURNACE) && plugin.config.getBoolean("blocks.furnace")) {
 				event.setUseInteractedBlock(Event.Result.DENY);
 				event.setUseItemInHand(Event.Result.ALLOW);
 			}
 			// Cauldron
-			if (blockMaterial == Material.CAULDRON && plugin.config.getBoolean("blocks.cauldron") == true) {
+			if (blockMaterial == Material.CAULDRON && plugin.config.getBoolean("blocks.cauldron")) {
 				event.setUseInteractedBlock(Event.Result.DENY);
 				event.setUseItemInHand(Event.Result.ALLOW);
 			}
 			// Dispenser
-			if (blockMaterial == Material.DISPENSER && plugin.config.getBoolean("blocks.dispenser") == true) {
+			if (blockMaterial == Material.DISPENSER && plugin.config.getBoolean("blocks.dispenser")) {
 				event.setUseInteractedBlock(Event.Result.DENY);
 				event.setUseItemInHand(Event.Result.ALLOW);
 			}
 			// Brewing stand
-			if (blockMaterial == Material.BREWING_STAND && plugin.config.getBoolean("blocks.brewing_stand") == true) {
+			if (blockMaterial == Material.BREWING_STAND && plugin.config.getBoolean("blocks.brewing_stand")) {
 				event.setUseInteractedBlock(Event.Result.DENY);
 				event.setUseItemInHand(Event.Result.ALLOW);
 			}
 			// Glass: bog.* -> Blocks On Glass = bog
-			if (blockMaterial == Material.GLASS && plugin.config.getBoolean("blocks.glass") == true) {
+			if (blockMaterial == Material.GLASS && plugin.config.getBoolean("blocks.glass")) {
 				cancel("bog.", itemMaterial, player, event);
 			}
 			// Ice: boi.* -> Blocks On Ice = boi
-			else if (blockMaterial == Material.ICE && plugin.config.getBoolean("blocks.ice") == true) {
+			else if (blockMaterial == Material.ICE && plugin.config.getBoolean("blocks.ice")) {
 				cancel("boi.", itemMaterial, player, event);
 			}
 			// Leaves: bol.* -> Blocks On Leaves = bol
-			else if (blockMaterial == Material.LEAVES && plugin.config.getBoolean("blocks.leaves") == true) {
+			else if (blockMaterial == Material.LEAVES && plugin.config.getBoolean("blocks.leaves")) {
 				cancel("bol.", itemMaterial, player, event);
 			}
 			// Fence: bof.* -> Blocks On Fence = bof
-			else if (blockMaterial == Material.FENCE && plugin.config.getBoolean("blocks.fence") == true) {
+			else if (blockMaterial == Material.FENCE && plugin.config.getBoolean("blocks.fence")) {
 				// Vanilla like -> possible!!
 				if ((itemMaterial == Material.TORCH)
 						|| (itemMaterial == Material.REDSTONE_TORCH_ON)
@@ -99,52 +95,46 @@ public class BlocksOnGlassPlayerListener implements Listener {
 				cancel("bof.", itemMaterial, player, event);
 			}
 			// NetherFence: bonf.*  -> Blocks On Nether Fence = bonf
-			else if (blockMaterial == Material.NETHER_FENCE && plugin.config.getBoolean("blocks.netherfence") == true) {
+			else if (blockMaterial == Material.NETHER_FENCE && plugin.config.getBoolean("blocks.netherfence")) {
 				cancel("bonf.", itemMaterial, player, event);
 			}
 			// Glowstone: bogl.*  -> Blocks On Glowstone = bogl
-			else if (blockMaterial == Material.GLOWSTONE && plugin.config.getBoolean("blocks.glowstone") == true) {
+			else if (blockMaterial == Material.GLOWSTONE && plugin.config.getBoolean("blocks.glowstone")) {
 				cancel("bogl.", itemMaterial, player, event);
 			}
 			// TNT: bot.* -> Blocks On TNT = bot
-			else if (blockMaterial == Material.TNT && plugin.config.getBoolean("blocks.tnt") == true) {
+			else if (blockMaterial == Material.TNT && plugin.config.getBoolean("blocks.tnt")) {
 				cancel("bot.", itemMaterial, player, event);
 			}
 			// Cactus: boc.* -> Blocks On Cactus = boc
-			else if (blockMaterial == Material.CACTUS && plugin.config.getBoolean("blocks.cactus") == true) {
+			else if (blockMaterial == Material.CACTUS && plugin.config.getBoolean("blocks.cactus")) {
 				cancel("boc.", itemMaterial, player, event);
 			}
 			// Steps: bosteps.* -> Blocks On Steps = bosteps
-			else if (blockMaterial == Material.STEP && plugin.config.getBoolean("blocks.steps") == true) {
+			else if (blockMaterial == Material.STEP && plugin.config.getBoolean("blocks.steps")) {
 				cancel("bosteps.", itemMaterial, player, event);
 			}
 			// IronFence: boif.* -> Blocks On Iron Fence = boif
-			else if (blockMaterial == Material.IRON_FENCE && plugin.config.getBoolean("blocks.ironfence") == true) {
-				if ((itemMaterial == Material.IRON_FENCE)
-						|| itemMaterial == Material.THIN_GLASS)  {
-					return;
-				}
+			else if (blockMaterial == Material.IRON_FENCE && plugin.config.getBoolean("blocks.ironfence")) {
+				if (itemMaterial == Material.IRON_FENCE || itemMaterial == Material.THIN_GLASS) return;
 				cancel("boif.", itemMaterial, player, event);
 			}
 			// ThinGlass: botg.* -> Blocks On Thin Glass = botg
-			else if (blockMaterial == Material.THIN_GLASS && plugin.config.getBoolean("blocks.thinglass") == true) {
-				if ((itemMaterial == Material.IRON_FENCE)
-						|| itemMaterial == Material.THIN_GLASS)  {
-					return;
-				}
+			else if (blockMaterial == Material.THIN_GLASS && plugin.config.getBoolean("blocks.thinglass")) {
+				if (itemMaterial == Material.IRON_FENCE  || itemMaterial == Material.THIN_GLASS) return;
 				cancel("botg.", itemMaterial, player, event);
 			}
 			// Piston: bop.* -> Blocks On Piston = bop
-			else if ((blockMaterial == Material.PISTON_BASE || blockMaterial == Material.PISTON_EXTENSION || blockMaterial == Material.PISTON_MOVING_PIECE) && plugin.config.getBoolean("blocks.pistons.normal") == true) {
+			else if ((blockMaterial == Material.PISTON_BASE || blockMaterial == Material.PISTON_EXTENSION || blockMaterial == Material.PISTON_MOVING_PIECE) && plugin.config.getBoolean("blocks.pistons.normal")) {
 				cancel("bop.", itemMaterial, player, event);
 			}
 			// Sticky Piston: bosp.* -> Blocks On Sticky Piston = bosp
-			else if ((blockMaterial == Material.PISTON_STICKY_BASE || blockMaterial == Material.PISTON_EXTENSION || blockMaterial == Material.PISTON_MOVING_PIECE) && plugin.config.getBoolean("blocks.pistons.sticky") == true) {
+			else if ((blockMaterial == Material.PISTON_STICKY_BASE || blockMaterial == Material.PISTON_EXTENSION || blockMaterial == Material.PISTON_MOVING_PIECE) && plugin.config.getBoolean("blocks.pistons.sticky")) {
 				cancel("bosp.", itemMaterial, player, event);
 			}
 			// Check all stairs
 			for (int i = 0; i < stairs.length; i++) {
-				if (blockMaterial == stairs[i] && plugin.config.getBoolean(configStairs[i]) == true) {
+				if (blockMaterial == stairs[i] && plugin.config.getBoolean(configStairs[i])) {
 					cancel("bostairs.", itemMaterial, player, event);
 				}
 			}
@@ -153,7 +143,7 @@ public class BlocksOnGlassPlayerListener implements Listener {
 
 	// Check to see if the player has got the permission
 	private void cancel (String permission, Material itemMaterial, Player player, PlayerInteractEvent event) {
-		if (plugin.config.getBoolean("permissions") == true) {
+		if (plugin.config.getBoolean("permissions")) {
 			if (plugin.blocks.contains(itemMaterial)) {
 				if (!player.hasPermission(permission + itemMaterial.name().toLowerCase())) {
 					event.setCancelled(true);
