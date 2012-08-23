@@ -2,12 +2,16 @@ package de.dustplanet.blocksonglass.blocks;
 
 import net.minecraft.server.Block;
 import net.minecraft.server.BlockIce;
+import net.minecraft.server.CreativeModeTab;
 import net.minecraft.server.StepSound;
 
 public class CustomIce extends BlockIce {
 
 	public CustomIce(int i, int j) {
         super(i, j);
+        this.frictionFactor = 0.98F;
+        this.b(true);
+        this.a(CreativeModeTab.b);
     }
     
     public CustomIce setHardness(float f) {
@@ -22,10 +26,9 @@ public class CustomIce extends BlockIce {
         this.stepSound = stepsound;
         return this;
     }
-
     
     // Render as a full block
-    public boolean b() {
+    public boolean c() {
         return true;
     }
 }

@@ -35,7 +35,7 @@ public class CustomWaterLily extends BlockWaterLily {
 				(i == Block.PISTON_EXTENSION.id) || (i == Block.PISTON_MOVING.id);
 	}
 
-	public boolean f(World world, int i, int j, int k) {
+	public boolean a(World world, int i, int j, int k) {
 		if (j >= 0 && j < 256) {
 			return world.getData(i, j - 1, k) == 0;
 		}

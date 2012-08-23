@@ -9,7 +9,7 @@ public class CustomPistonExtension extends BlockPistonExtension {
 	}
 
     // Render as a full block
-    public boolean b() {
+    public boolean c() {
         return true;
     }
 }

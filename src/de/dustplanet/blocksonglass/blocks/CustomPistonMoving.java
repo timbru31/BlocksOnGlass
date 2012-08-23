@@ -9,7 +9,7 @@ public class CustomPistonMoving extends BlockPistonMoving{
 	}
 
     // Render as a full block
-    public boolean b() {
+    public boolean c() {
         return true;
     }
 }

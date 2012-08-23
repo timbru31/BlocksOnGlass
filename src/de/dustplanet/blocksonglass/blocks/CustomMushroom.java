@@ -40,19 +40,19 @@ public class CustomMushroom extends BlockMushroom {
 				(i == Block.PISTON_EXTENSION.id) || (i == Block.PISTON_MOVING.id);
 	}
 
-	public boolean f(World world, int i, int j, int k) {
-		if ((j >= 0) && (j < 256)) {
-			int l = world.getTypeId(i, j - 1, k);
-
-			return (l == Block.MYCEL.id) || ((world.m(i, j, k) < 13) && (d(l))) || 
-					(l == Block.GLOWSTONE.id) || (l == Block.GLASS.id) || (l == Block.LEAVES.id) || 
-					(l == Block.FENCE.id) || (l == Block.NETHER_FENCE.id) || (l == Block.TNT.id) || 
-					(l == Block.THIN_GLASS.id) || (l == Block.IRON_FENCE.id) || (l == Block.STEP.id) || 
-					(l == Block.ICE.id) || (l == Block.CACTUS.id) || (l == Block.BRICK_STAIRS.id) || 
-					(l == Block.WOOD_STAIRS.id) || (l == Block.NETHER_BRICK_STAIRS.id) || (l == Block.BRICK_STAIRS.id) || 
-					(l == Block.COBBLESTONE_STAIRS.id) || (l == Block.PISTON.id) || (l == Block.PISTON_STICKY.id) || 
-					(l == Block.PISTON_EXTENSION.id) || (l == Block.PISTON_MOVING.id);
-		}
-		return false;
-	}
+//	public boolean f(World world, int i, int j, int k) {
+//		if ((j >= 0) && (j < 256)) {
+//			int l = world.getTypeId(i, j - 1, k);
+//
+//			return (l == Block.MYCEL.id) || ((world.m(i, j, k) < 13) && (d(l))) || 
+//					(l == Block.GLOWSTONE.id) || (l == Block.GLASS.id) || (l == Block.LEAVES.id) || 
+//					(l == Block.FENCE.id) || (l == Block.NETHER_FENCE.id) || (l == Block.TNT.id) || 
+//					(l == Block.THIN_GLASS.id) || (l == Block.IRON_FENCE.id) || (l == Block.STEP.id) || 
+//					(l == Block.ICE.id) || (l == Block.CACTUS.id) || (l == Block.BRICK_STAIRS.id) || 
+//					(l == Block.WOOD_STAIRS.id) || (l == Block.NETHER_BRICK_STAIRS.id) || (l == Block.BRICK_STAIRS.id) || 
+//					(l == Block.COBBLESTONE_STAIRS.id) || (l == Block.PISTON.id) || (l == Block.PISTON_STICKY.id) || 
+//					(l == Block.PISTON_EXTENSION.id) || (l == Block.PISTON_MOVING.id);
+//		}
+//		return false;
+//	}
 }

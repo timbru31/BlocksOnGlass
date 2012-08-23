@@ -8,11 +8,11 @@ import net.minecraft.server.StepSound;
 public class CustomThinFence extends BlockThinFence {
 
 	public CustomThinFence(int i, int j, int k, Material material, boolean flag) {
-		super(i,j,k,material, flag);
+		super(i, j, k, material, flag);
 	}
 	
     // Render as a full block
-    public boolean b() {
+    public boolean c() {
         return true;
     }
 	

@@ -2,6 +2,7 @@ package de.dustplanet.blocksonglass.blocks;
 
 import net.minecraft.server.Block;
 import net.minecraft.server.BlockLightStone;
+import net.minecraft.server.CreativeModeTab;
 import net.minecraft.server.Material;
 import net.minecraft.server.StepSound;
 
@@ -9,7 +10,9 @@ public class CustomGlowstone extends BlockLightStone {
 
 	public CustomGlowstone(int i, int j, Material material) {
 		super(i, j, material);
+		this.a(CreativeModeTab.b);
 	}
+	
 	public CustomGlowstone setHardness(float f) {
 		this.strength = f;
 		if (this.durability < f * 5.0F) {
@@ -29,7 +32,7 @@ public class CustomGlowstone extends BlockLightStone {
 	}
 	
     // Render as a full block
-    public boolean b() {
+    public boolean c() {
         return true;
     } 
 }

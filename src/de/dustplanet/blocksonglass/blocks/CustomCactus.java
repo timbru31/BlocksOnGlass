@@ -2,6 +2,7 @@ package de.dustplanet.blocksonglass.blocks;
 
 import net.minecraft.server.Block;
 import net.minecraft.server.BlockCactus;
+import net.minecraft.server.CreativeModeTab;
 import net.minecraft.server.StepSound;
 import net.minecraft.server.World;
 
@@ -9,10 +10,12 @@ public class CustomCactus extends BlockCactus {
 
 	public CustomCactus(int i, int j) {
 		super(i, j);
+		this.b(true);
+		this.a(CreativeModeTab.c);
 	}
 
 	// Render as a full block
-	public boolean b() {
+	public boolean c() {
 		return true;
 	}
 
@@ -29,7 +32,7 @@ public class CustomCactus extends BlockCactus {
 		return this;
 	}
 
-	public boolean f(World world, int i, int j, int k) {
+	public boolean d(World world, int i, int j, int k) {
 		int l = world.getTypeId(i, j - 1, k);
 		if ((l == Block.CACTUS.id) || (l == Block.SAND.id)) {
 			if (world.getMaterial(i - 1, j, k).isBuildable())

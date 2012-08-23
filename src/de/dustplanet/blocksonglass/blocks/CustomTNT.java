@@ -2,12 +2,14 @@ package de.dustplanet.blocksonglass.blocks;
 
 import net.minecraft.server.Block;
 import net.minecraft.server.BlockTNT;
+import net.minecraft.server.CreativeModeTab;
 import net.minecraft.server.StepSound;
 
 public class CustomTNT extends BlockTNT{
 
 	public CustomTNT(int i, int j) {
 		super(i, j);
+		this.a(CreativeModeTab.d);
 	}
 
 	public CustomTNT setHardness(float f) {

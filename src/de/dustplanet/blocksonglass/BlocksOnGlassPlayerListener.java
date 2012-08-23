@@ -99,7 +99,7 @@ public class BlocksOnGlassPlayerListener implements Listener {
 				cancel("bonf.", itemMaterial, player, event);
 			}
 			// Glowstone: bogl.*  -> Blocks On Glowstone = bogl
-			else if (blockMaterial == Material.GLOWSTONE && plugin.config.getBoolean("blocks.glowstone")) {
+			else if (blockMaterial == Material.GLOWSTONE /*&& plugin.config.getBoolean("blocks.glowstone")*/) {
 				cancel("bogl.", itemMaterial, player, event);
 			}
 			// TNT: bot.* -> Blocks On TNT = bot
@@ -147,9 +147,9 @@ public class BlocksOnGlassPlayerListener implements Listener {
 			if (plugin.blocks.contains(itemMaterial)) {
 				if (!player.hasPermission(permission + itemMaterial.name().toLowerCase())) {
 					event.setCancelled(true);
+					plugin.log.info("cancelled");
 				}
 			}
 		}
-		return;
 	}
 }

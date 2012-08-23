@@ -2,12 +2,15 @@ package de.dustplanet.blocksonglass.blocks;
 
 import net.minecraft.server.Block;
 import net.minecraft.server.BlockLeaves;
+import net.minecraft.server.CreativeModeTab;
 import net.minecraft.server.StepSound;
 
 public class CustomLeaves extends BlockLeaves {
 	
 	public CustomLeaves(int i, int j) {
         super(i, j);
+        this.b(true);
+        this.a(CreativeModeTab.c);
     }
 	
 	public CustomLeaves setHardness(float f) {
